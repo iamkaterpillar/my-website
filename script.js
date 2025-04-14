@@ -33,3 +33,28 @@ document.addEventListener("DOMContentLoaded", () => {
       blogGrid.innerHTML = "<p>Oops! Could not load posts.</p>";
     });
 });
+
+// Handle loading a single blog post's content on post.html
+document.addEventListener("DOMContentLoaded", () => {
+  const params = new URLSearchParams(window.location.search);
+  const postId = params.get("id");
+
+  // If no ID was passed, show a fallback message
+  if (!postId) {
+    document.getElementById("postContent").innerHTML = "<p>Post not found.</p>";
+    return;
+  }
+
+  // Fetch the post content from its HTML version (not .md)
+  fetch(`posts/${postId}/index.html`)
+    .then((res) => {
+      if (!res.ok) throw new Error("Not found");
+      return res.text();
+    })
+    .then((html) => {
+      document.getElementById("postContent").innerHTML = html;
+    })
+    .catch(() => {
+      document.getElementById("postContent").innerHTML = "<p>Could not load this post.</p>";
+    });
+});
