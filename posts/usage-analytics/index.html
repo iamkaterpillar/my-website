@@ -1,98 +1,89 @@
----
-title: "Usage analytics"
-date: "2025-04-14"
-track: "building iamkaterpillar"
-summary: "Adding Google Analytics to the site and troubleshooting privacy blockers."
----
+<h1>Setting up Google Analytics for my personal site (and why you should too)</h1>
 
-# Setting up Google Analytics for my personal site (and why you should too)
+<p>If you’ve built a personal website, blog, or portfolio, it’s fun and actually super useful to know if anyone is visiting it — and where they’re coming from.</p>
 
-If you’ve built a personal website, blog, or portfolio, it’s fun and actually super useful to know if anyone is visiting it — and where they’re coming from.
+<p>That’s where usage analytics come in. They help you answer questions like:</p>
 
-That’s where usage analytics come in. They help you answer questions like:
+<ul>
+  <li>How many people are visiting my site?</li>
+  <li>Which pages are most popular?</li>
+  <li>Where are visitors coming from (e.g. Twitter, Google, random internet magic)?</li>
+  <li>What devices or browsers are people using?</li>
+</ul>
 
-- How many people are visiting my site?
-- Which pages are most popular?
-- Where are visitors coming from (e.g. Twitter, Google, random internet magic)?
-- What devices or browsers are people using?
+<p>You don’t need to be a data nerd to appreciate those insights — even knowing that someone out there found your site is kind of motivating when you're just starting out.</p>
 
-You don’t need to be a data nerd to appreciate those insights — even knowing that someone out there found your site is kind of motivating when you're just starting out.
+<h2>Why I chose Google Analytics</h2>
 
----
+<p>I went with Google Analytics (GA) because:</p>
 
-## Why I chose Google Analytics
+<ul>
+  <li>It’s free</li>
+  <li>It’s easy to set up</li>
+  <li>And it’s very powerful if you want to get deeper down the road</li>
+</ul>
 
-I went with Google Analytics (GA) because:
+<p>There are alternatives (like Plausible, Fathom, or Simple Analytics) that are more privacy-focused or simpler, but for a basic project, GA is a great starting point.</p>
 
-- It’s free  
-- It’s easy to set up  
-- And it’s very powerful if you want to get deeper down the road
+<h2>How to set up Google Analytics (GA4) on your site</h2>
 
-There are alternatives (like Plausible, Fathom, or Simple Analytics) that are more privacy-focused or simpler, but for a basic project, GA is a great starting point.
+<h3>1. Create a Google Analytics account</h3>
 
----
+<p>Go to <a href="https://analytics.google.com">analytics.google.com</a> and:</p>
 
-## How to set up Google Analytics (GA4) on your site
+<ul>
+  <li>Click <strong>Start measuring</strong></li>
+  <li>Create an account and a property (you can call it something like "My Website")</li>
+  <li>Follow the steps to set up a web data stream</li>
+  <li>You’ll get a <strong>Measurement ID</strong> that looks like <code>G-XXXXXXXXXX</code></li>
+</ul>
 
-### 1. Create a Google Analytics account
+<h3>2. Add the GA script to your site</h3>
 
-Go to [analytics.google.com](https://analytics.google.com) and:
+<p>Paste the following code inside the <code>&lt;head&gt;</code> tag of your <code>index.html</code>:</p>
 
-- Click **Start measuring**
-- Create an account and a property (you can call it something like "My Website")
-- Follow the steps to set up a web data stream
-- You’ll get a Measurement ID that looks like `G-XXXXXXXXXX`
-
-### 2. Add the GA script to your site
-
-Paste the following code inside the `<head>` tag of your `index.html`:
-
-```html
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>
+<pre><code class="language-html">&lt;!-- Google tag (gtag.js) --&gt;
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"&gt;&lt;/script&gt;
+&lt;script&gt;
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
   gtag('config', 'G-XXXXXXXXXX');
-</script>
-```
+&lt;/script&gt;
+</code></pre>
 
-Replace `G-XXXXXXXXXX` with your actual Measurement ID.
+<p><em>Replace <code>G-XXXXXXXXXX</code> with your actual Measurement ID.</em></p>
 
----
+<h2>How to check if it’s working</h2>
 
-## 3. How to check if it’s working
+<p>After you publish your site:</p>
 
-After you publish your site:
+<ul>
+  <li>Open your site in Chrome</li>
+  <li>Right-click → Inspect → Go to the <strong>Network</strong> tab</li>
+  <li>Reload the page and look for a request to <code>gtag/js?id=...</code></li>
+</ul>
 
-- Open your site in Chrome
-- Right-click → Inspect → Go to the **Network** tab
-- Reload the page and look for a request to `gtag/js?id=...`
+<p>If it shows up (ideally with a <code>200</code> status), it means the script is loading. If it fails at first, don’t panic — it might just take a little time for Google to activate your new property.</p>
 
-If it shows up (ideally with a **200** status), it means the script is loading.  
-If it fails at first, don’t panic — it might just take a little time for Google to activate your new property.
+<p>You can also check Google Analytics → Realtime to see if your visit shows up.</p>
 
-You can also check **Google Analytics → Realtime** to see if your visit shows up.
+<h2>What happens once it's working?</h2>
 
----
+<p>You’ll start seeing dashboards with:</p>
 
-## 4. What happens once it's working?
+<ul>
+  <li>Realtime visitors</li>
+  <li>Traffic sources</li>
+  <li>Device/browser data</li>
+  <li>Page views and more</li>
+</ul>
 
-You’ll start seeing dashboards with:
+<p>You can use this info to figure out what’s resonating with people and where you might want to tweak things.</p>
 
-- Realtime visitors  
-- Traffic sources  
-- Device/browser data  
-- Page views and more
+<h2>Final thoughts</h2>
 
-You can use this info to figure out what’s resonating with people and where you might want to tweak things.
+<p>Setting up analytics might feel like overkill for a personal site — but it’s not! It's fun, motivating, and gives you a peek into how people engage with your little corner of the web.</p>
 
----
-
-## 5. Final thoughts
-
-Setting up analytics might feel like overkill for a personal site — but it’s not!  
-It's fun, motivating, and gives you a peek into how people engage with your little corner of the web.
-
-If you have questions, feel free to reach out (or copy this post for your own setup — I won't tell 😉).
+<p>If you have questions, feel free to reach out (or copy this post for your own setup — I won't tell 😉).</p>
