@@ -245,3 +245,31 @@ pre code {
   height: 1px;
   background-color: #ddd;
 }
+
+/* ---------------------------------------
+   11. Simple tables
+--------------------------------------- */
+
+.simple-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1.2rem;
+  margin-bottom: 1.2rem;
+  font-size: 1rem;
+  overflow-x: auto;
+  display: block;
+}
+
+.simple-table th,
+.simple-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  vertical-align: top;
+  min-width: 120px; /* helps prevent columns from squishing too hard */
+}
+
+.simple-table th {
+  font-weight: 600;
+  background-color: #f9f9f9;
+}
