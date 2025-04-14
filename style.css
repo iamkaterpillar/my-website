@@ -103,3 +103,37 @@ nav a:hover {
   margin: 1.5rem auto;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+
+.blog-card {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.blog-card img {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.blog-card h2 {
+  margin: 0 0 0.5rem;
+}
+
+.blog-card p {
+  margin: 0 0 0.5rem;
+}
+
+pre code {
+  display: block;
+  background: #f5f5f5;
+  padding: 1rem;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-family: Menlo, Monaco, Consolas, monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+}
