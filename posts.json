@@ -22,5 +22,13 @@
     "track": "building iamkaterpillar",
     "summary": "Cleaning up file structure for a scalable and maintainable setup.",
     "thumbnail": "posts/adding-structure/thumb.jpg"
+  },
+  {
+    "id": "network-requests",
+    "title": "Network requests",
+    "date": "2025-04-14",
+    "track": "building iamkaterpillar",
+    "summary": "Diving into the network requests my website makes.",
+    "thumbnail": "posts/network-requests/thumb.jpg"
   }
 ]
