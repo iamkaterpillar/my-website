@@ -49,6 +49,8 @@ Paste the following code inside the `<head>` tag of your `index.html`:
   gtag('js', new Date());
   gtag('config', 'G-XXXXXXXXXX');
 </script>
+```
+
 Replace `G-XXXXXXXXXX` with your actual Measurement ID.
 
 ---
