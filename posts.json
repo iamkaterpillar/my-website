@@ -30,5 +30,13 @@
     "track": "building iamkaterpillar",
     "summary": "Diving into the network requests my website makes.",
     "thumbnail": "posts/network-requests/thumb.jpg"
+  },
+  {
+    "id": "coding-languages",
+    "title": "Coding languages",
+    "date": "2025-04-14",
+    "track": "building iamkaterpillar",
+    "summary": "A look at the languages I've used to build this site.",
+    "thumbnail": "posts/coding-languages/thumb.jpg"
   }
 ]
