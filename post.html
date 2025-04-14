@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Post – Kat</title>
+  <title>Blog Post</title>
   <link rel="stylesheet" href="style.css" />
-  <script defer src="script.js"></script>
+  <link rel="icon" href="assets/images/icons/favicon.ico" type="image/x-icon" />
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
   <header>
@@ -15,8 +16,30 @@
       <a href="blog.html">Blog</a>
     </nav>
   </header>
+
   <main>
-    <article id="postContent"></article>
+    <article id="postContent">Loading...</article>
   </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const postId = params.get("id");
+
+    if (!postId) {
+      document.getElementById("postContent").innerHTML = "<p>Post not found.</p>";
+    } else {
+      fetch(`posts/${postId}/index.md`)
+        .then((res) => {
+          if (!res.ok) throw new Error("Not found");
+          return res.text();
+        })
+        .then((markdown) => {
+          document.getElementById("postContent").innerHTML = marked.parse(markdown);
+        })
+        .catch(() => {
+          document.getElementById("postContent").innerHTML = "<p>Could not load this post.</p>";
+        });
+    }
+  </script>
 </body>
 </html>
