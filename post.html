@@ -28,13 +28,13 @@
     if (!postId) {
       document.getElementById("postContent").innerHTML = "<p>Post not found.</p>";
     } else {
-      fetch(`posts/${postId}/index.md`)
+      fetch(`posts/${postId}/index.html`)
         .then((res) => {
           if (!res.ok) throw new Error("Not found");
           return res.text();
         })
-        .then((markdown) => {
-          document.getElementById("postContent").innerHTML = marked.parse(markdown);
+        .then((html) => {
+          document.getElementById("postContent").innerHTML = html;
         })
         .catch(() => {
           document.getElementById("postContent").innerHTML = "<p>Could not load this post.</p>";
