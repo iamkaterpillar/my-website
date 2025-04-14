@@ -1,0 +1,26 @@
+[
+  {
+    "id": "website-setup",
+    "title": "Website setup",
+    "date": "2025-04-14",
+    "track": "building iamkaterpillar",
+    "summary": "How I set up this personal site from scratch using HTML, CSS, and a touch of magic.",
+    "thumbnail": "posts/website-setup/thumb.jpg"
+  },
+  {
+    "id": "usage-analytics",
+    "title": "Usage analytics",
+    "date": "2025-04-14",
+    "track": "building iamkaterpillar",
+    "summary": "Adding Google Analytics to the site and troubleshooting privacy blockers.",
+    "thumbnail": "posts/usage-analytics/thumb.jpg"
+  },
+  {
+    "id": "adding-structure",
+    "title": "Adding structure",
+    "date": "2025-04-14",
+    "track": "building iamkaterpillar",
+    "summary": "Cleaning up file structure for a scalable and maintainable setup.",
+    "thumbnail": "posts/adding-structure/thumb.jpg"
+  }
+]
