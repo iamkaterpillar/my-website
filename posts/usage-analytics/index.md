@@ -1,3 +1,10 @@
+---
+title: "Usage analytics"
+date: "2025-04-14"
+track: "building iamkaterpillar"
+summary: "Adding Google Analytics to the site and troubleshooting privacy blockers."
+---
+
 # Setting up Google Analytics for my personal site (and why you should too)
 
 If you’ve built a personal website, blog, or portfolio, it’s fun and actually super useful to know if anyone is visiting it — and where they’re coming from.
