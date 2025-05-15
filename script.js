@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Fill the card with the blog post's content using a template literal
         card.innerHTML = `
           <a href="post.html?id=${post.id}">
-            <img src="${post.thumbnail}" alt="${post.title}" />
+            <img src="${post.thumbnail}" alt="${post.title}" loading="lazy" />
             <h2>${post.title}</h2>
             <p>${post.summary}</p>
             <small>${post.date} • ${post.track}</small>
