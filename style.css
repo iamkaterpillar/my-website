@@ -158,6 +158,13 @@ hr {
    8. Blog card layout (blog.html)
 --------------------------------------- */
 
+.blog-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
 .blog-card {
   display: flex;
   gap: 1rem;

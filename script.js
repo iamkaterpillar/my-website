@@ -3,15 +3,16 @@ document.addEventListener("DOMContentLoaded", () => {
   // Select the blogGrid container where we'll place all blog cards
   const blogGrid = document.getElementById("blogGrid");
 
+  // Only proceed if we found the blogGrid element
+  if (!blogGrid) return;
+
   // Fetch blog post metadata from posts.json
   fetch("posts.json")
     .then((response) => response.json()) // Convert JSON response into a JS object
     .then((posts) => {
-      // Filter for 'vibe coding' posts only if on the Vibe coding page
+      // On blog.html page, show only 'vibe coding' posts
       const isVibeCodingPage = window.location.pathname.endsWith("blog.html");
-      const filteredPosts = isVibeCodingPage
-        ? posts.filter((post) => post.track && post.track.toLowerCase() === "vibe coding")
-        : posts;
+      const filteredPosts = posts.filter((post) => post.track && post.track.toLowerCase() === "vibe coding");
 
       if (filteredPosts.length === 0) {
         blogGrid.innerHTML = "<p>No blog posts to show yet!</p>";
