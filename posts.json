@@ -3,7 +3,7 @@
     "id": "website-setup",
     "title": "Website setup",
     "date": "2025-04-14",
-    "track": "building iamkaterpillar",
+    "track": "vibe coding",
     "summary": "Setting up this site from scratch using HTML, CSS, and a touch of magic.",
     "thumbnail": "posts/website-setup/thumb.jpg"
   },
@@ -11,7 +11,7 @@
     "id": "usage-analytics",
     "title": "Usage analytics",
     "date": "2025-04-14",
-    "track": "building iamkaterpillar",
+    "track": "vibe coding",
     "summary": "Adding Google Analytics to the site and troubleshooting privacy blockers.",
     "thumbnail": "posts/usage-analytics/thumb.jpg"
   },
@@ -19,7 +19,7 @@
     "id": "adding-structure",
     "title": "Adding structure",
     "date": "2025-04-14",
-    "track": "building iamkaterpillar",
+    "track": "vibe coding",
     "summary": "Cleaning up file structure for a scalable and maintainable setup.",
     "thumbnail": "posts/adding-structure/thumb.jpg"
   },
@@ -27,7 +27,7 @@
     "id": "network-requests",
     "title": "Network requests",
     "date": "2025-04-14",
-    "track": "building iamkaterpillar",
+    "track": "vibe coding",
     "summary": "Diving into the network requests my website makes.",
     "thumbnail": "posts/network-requests/thumb.jpg"
   },
@@ -35,7 +35,7 @@
     "id": "coding-languages",
     "title": "Coding languages",
     "date": "2025-04-14",
-    "track": "building iamkaterpillar",
+    "track": "vibe coding",
     "summary": "A look at the languages I've used to build this site.",
     "thumbnail": "posts/coding-languages/thumb.jpg"
   },
