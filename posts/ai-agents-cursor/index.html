@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using AI Agents in Cursor</title>
+  <link rel="stylesheet" href="../../style.css" />
+  <link rel="icon" href="../../assets/images/icons/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+  <main class="blog-post">
+    <h1>Using AI Agents in Cursor</h1>
+    <p class="post-meta">March 26, 2024</p>
+    <img src="thumb.png" alt="AI Agents in Cursor thumbnail" class="post-thumb" style="max-width: 300px; margin-bottom: 1em;" />
+    <p>I've been playing around with Cursor's AI agent lately, and let me tell you — it's pretty mind-blowing. Today, I want to share how I used it to solve a real problem I had with my website: duplicate navigation code across every page.</p>
+    <h2>The Problem</h2>
+    <p>When I first built this site, I was copying and pasting the same navigation bar into every HTML file. You know, the classic "it works for now" solution that developers love to hate. Here's what I had in every single page:</p>
+    <pre><code>&lt;header&gt;
+  &lt;nav&gt;
+    &lt;a href="index.html"&gt;Home&lt;/a&gt;
+    &lt;a href="about.html"&gt;About me&lt;/a&gt;
+    &lt;a href="blog.html"&gt;Vibe coding&lt;/a&gt;
+    &lt;a href="bebop.html"&gt;Building Bebop&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+</code></pre>
+    <p>Not only was this annoying to maintain (imagine updating the navigation in five different files!), but it also meant I had duplicate code everywhere. Not exactly what you'd call "clean code."</p>
+    <h2>The Solution</h2>
+    <p>Enter Cursor's AI agent. I asked it to help me refactor my site to use a shared layout component, and it did something pretty cool: it created a new <code>components</code> directory with two files:</p>
+    <ol>
+      <li><strong>layout.html</strong> - A template that contains all the shared elements:
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;!-- All the common stuff: meta tags, styles, analytics --&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Navigation --&gt;
+  &lt;header&gt;
+    &lt;nav&gt;
+      &lt;a href="/index.html"&gt;Home&lt;/a&gt;
+      &lt;a href="/about.html"&gt;About me&lt;/a&gt;
+      &lt;a href="/blog.html"&gt;Vibe coding&lt;/a&gt;
+      &lt;a href="/bebop.html"&gt;Building Bebop&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;  
+  &lt;!-- Main content --&gt;
+  &lt;main&gt;
+    {{content}}
+  &lt;/main&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+      </li>
+      <li><strong>layout.js</strong> - A small script that handles the magic:
+        <pre><code>async function loadLayout() {
+  const layoutResponse = await fetch('/components/layout.html');
+  const layoutHtml = await layoutResponse.text();
+  // Get the current page's content
+  const mainContent = document.querySelector('main').innerHTML;
+  // Replace the content placeholder in the layout
+  const finalHtml = layoutHtml.replace('{{content}}', mainContent);
+  // Update the document
+  document.documentElement.innerHTML = finalHtml;
+}
+// Load the layout when the DOM is ready
+document.addEventListener('DOMContentLoaded', loadLayout);
+</code></pre>
+      </li>
+    </ol>
+    <p>Now, each page only needs to contain its unique content, wrapped in a <code>&lt;main&gt;</code> tag. The layout script handles loading the shared template and injecting the page-specific content into it.</p>
+    <h2>Why This Rocks</h2>
+    <ul>
+      <li>Navigation changes only need to be made in one place</li>
+      <li>Common elements (like analytics, styles, and favicon) are managed centrally</li>
+      <li>Each page is cleaner and focused on its unique content</li>
+      <li>If I want to add a new page, I don't have to copy-paste all the boilerplate</li>
+    </ul>
+    <h2>The AI Experience</h2>
+    <p>What's really cool about this whole process is how natural it felt. I just told the AI what I wanted to achieve ("refactor my site to use a shared layout"), and it:</p>
+    <ol>
+      <li>Understood the problem</li>
+      <li>Proposed a solution</li>
+      <li>Created the necessary files</li>
+      <li>Updated all my existing pages</li>
+      <li>Explained what it did and why</li>
+    </ol>
+    <p>It's like having a pair programmer who's really good at refactoring and explaining their thought process. The best part? I learned something new about web development patterns while getting my code cleaned up.</p>
+    <p>I'm still getting used to working with AI agents, but moments like this make me excited about the future of coding. It's not just about writing code faster — it's about having a partner that helps you write better code and learn along the way.</p>
+    <p><em>P.S. If you're curious about the full implementation, you can check out the <a href="https://github.com/iamkaterpillar/my-website/tree/main/components" target="_blank">components directory</a> in my GitHub repo.</em></p>
+  </main>
+  <script src="../../components/layout.js"></script>
+</body>
+</html> 
