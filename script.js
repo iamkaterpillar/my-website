@@ -7,8 +7,19 @@ document.addEventListener("DOMContentLoaded", () => {
   fetch("posts.json")
     .then((response) => response.json()) // Convert JSON response into a JS object
     .then((posts) => {
-      // Loop through each post in the JSON array
-      posts.forEach((post) => {
+      // Filter for 'vibe coding' posts only if on the Vibe coding page
+      const isVibeCodingPage = window.location.pathname.endsWith("blog.html");
+      const filteredPosts = isVibeCodingPage
+        ? posts.filter((post) => post.track && post.track.toLowerCase() === "vibe coding")
+        : posts;
+
+      if (filteredPosts.length === 0) {
+        blogGrid.innerHTML = "<p>No blog posts to show yet!</p>";
+        return;
+      }
+
+      // Loop through each post in the filtered array
+      filteredPosts.forEach((post) => {
         // Create a new <div> for each blog card
         const card = document.createElement("div");
         card.className = "blog-card"; // Add a class for styling
