@@ -6,8 +6,8 @@
   <title>Kat's Website</title>
 
   <!-- Styles and favicon -->
-  <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="assets/images/icons/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="/style.css" />
+  <link rel="icon" href="/assets/images/icons/favicon.ico" type="image/x-icon" />
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F00DE4HSRP"></script>
@@ -19,13 +19,21 @@
   </script>
 </head>
 <body>
-  <main>
-    <h1>Hiya, I'm Kat 👋</h1>
-    <p>The best way to learn is by doing. So, welcome to my personal site. Brought to you by the girl who once thought that Java and JavaScript were the same thing.</p>
+  <!-- Navigation -->
+  <header>
+    <nav>
+      <a href="/index.html">Home</a>
+      <a href="/about.html">About me</a>
+      <a href="/blog.html">Vibe coding</a>
+      <a href="/bebop.html">Building Bebop</a>
+    </nav>
+  </header>  
 
-    <img src="assets/images/kat-wmt.jpg" alt="Kat at Wintermute" class="profile-photo" />
+  <!-- Main content -->
+  <main>
+    {{content}}
   </main>
 
-  <script src="/components/layout.js"></script>
+  <script src="/script.js"></script>
 </body>
-</html>
+</html> 
