@@ -36,6 +36,7 @@ nav {
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #ddd;
   margin-bottom: 0;
+  position: relative;
 }
 
 .home-link {
@@ -127,54 +128,45 @@ body.menu-open {
 
   .menu-toggle {
     display: block;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   nav {
-    position: relative;
     padding: 1rem 0;
-    border-bottom: none;
   }
 
   .nav-links {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.98);
+    background: #fff;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 2rem;
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
     z-index: 90;
   }
 
   .nav-links.active {
-    opacity: 1;
-    visibility: visible;
+    display: flex;
   }
 
   nav a {
     font-size: 1.2rem;
     padding: 0.5rem 1rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
   }
 
-  .nav-links.active a {
+  /* Remove opacity transitions as they might cause issues */
+  .nav-links a {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
-
-  /* Stagger the animation of nav items */
-  .nav-links a:nth-child(1) { transition-delay: 0.1s; }
-  .nav-links a:nth-child(2) { transition-delay: 0.2s; }
-  .nav-links a:nth-child(3) { transition-delay: 0.3s; }
-  .nav-links a:nth-child(4) { transition-delay: 0.4s; }
 }
 
 /* ---------------------------------------
