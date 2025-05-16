@@ -20,10 +20,64 @@
 </head>
 <body>
   <main>
-    <h1>Hiya, I'm Kat 👋</h1>
-    <p>The best way to learn is by doing. So, welcome to my personal site. Brought to you by the girl who once thought that Java and JavaScript were the same thing.</p>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Hiya, I'm Kat 👋</h1>
+        <p class="hero-text">The best way to learn is by doing. So, welcome to my personal site. Brought to you by the girl who once thought that Java and JavaScript were the same thing.</p>
+        
+        <div class="hero-links">
+          <a href="/blog.html" class="cta-link">Read my blog →</a>
+          <a href="/about.html" class="cta-link secondary">More about me →</a>
+        </div>
+      </div>
 
-    <img src="assets/images/kat-wmt.jpg" alt="Kat at Wintermute" class="profile-photo" />
+      <div class="hero-image">
+        <img 
+          src="assets/images/kat-wmt-400.jpg" 
+          srcset="assets/images/kat-wmt-400.jpg 400w,
+                  assets/images/kat-wmt-800.jpg 800w"
+          sizes="(max-width: 600px) 400px,
+                 800px"
+          alt="Kat at Wintermute" 
+          class="profile-photo"
+          loading="eager" />
+      </div>
+    </section>
+
+    <section class="featured-content">
+      <h2>Latest Posts</h2>
+      <div id="blogGrid" class="blog-grid featured"></div>
+    </section>
+
+    <section class="current-focus">
+      <h2>What I'm Working On</h2>
+      <div class="focus-grid">
+        <div class="focus-card">
+          <h3>Building bebop</h3>
+          <p>Reimagining how people trade crypto through smart order routing and user-friendly interfaces.</p>
+          <a href="/bebop.html" class="learn-more">Learn more →</a>
+        </div>
+        <div class="focus-card">
+          <h3>Learning to Code</h3>
+          <p>Documenting my journey from product to technical understanding, with help from AI tools.</p>
+          <a href="/blog.html" class="learn-more">Read my blog →</a>
+        </div>
+        <div class="focus-card">
+          <h3>Writing & Sharing</h3>
+          <p>Capturing lessons learned in product, crypto, and life to help others on similar paths.</p>
+          <a href="/blog.html" class="learn-more">View posts →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="connect">
+      <h2>Let's Connect</h2>
+      <div class="social-links">
+        <a href="https://github.com/iamkaterpillar" target="_blank" class="social-link">GitHub</a>
+        <a href="https://x.com/iamkaterpillar" target="_blank" class="social-link">Twitter</a>
+        <a href="https://www.linkedin.com/in/katharinafore/" target="_blank" class="social-link">LinkedIn</a>
+      </div>
+    </section>
   </main>
 
   <script src="/components/layout.js"></script>
