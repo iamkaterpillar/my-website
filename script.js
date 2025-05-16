@@ -1,76 +1,66 @@
-// Mobile menu functionality
+// Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', () => {
-  const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
-
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
-      menuToggle.classList.toggle('active');
-      navLinks.classList.toggle('active');
-      document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
-    });
-
-    // Close menu when clicking a link
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-        document.body.style.overflow = '';
-      });
-    });
-  }
+  // Mobile menu functionality
+  initMobileMenu();
+  
+  // Blog functionality
+  initBlogPosts();
+  
+  // Post content functionality
+  initPostContent();
 });
 
-// Blog functionality
-document.addEventListener("DOMContentLoaded", () => {
-  // Select the blogGrid container where we'll place all blog cards
+function initMobileMenu() {
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (!menuToggle || !navLinks) return;
+  
+  menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navLinks.classList.toggle('active');
+    document.body.classList.toggle('menu-open');
+  });
+
+  // Close menu when clicking a link
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    });
+  });
+}
+
+function initBlogPosts() {
   const blogGrid = document.getElementById("blogGrid");
-  console.log("Looking for blogGrid element:", blogGrid);
+  if (!blogGrid) return;
 
-  // Only proceed if we found the blogGrid element
-  if (!blogGrid) {
-    console.log("blogGrid element not found - are you on the right page?");
-    return;
-  }
-
-  // Fetch blog post metadata from posts.json
-  console.log("Fetching posts.json...");
   fetch("posts.json")
-    .then((response) => {
-      console.log("posts.json response status:", response.status);
-      return response.json();
-    })
-    .then((posts) => {
-      console.log("Loaded posts:", posts);
-      
+    .then(response => response.json())
+    .then(posts => {
       // Filter posts based on current page
       const isBebopPage = window.location.pathname.endsWith("bebop.html");
       const isVibeCodingPage = window.location.pathname.endsWith("blog.html");
       
       let filteredPosts;
       if (isBebopPage) {
-        filteredPosts = posts.filter((post) => post.track && post.track.toLowerCase() === "bebop");
+        filteredPosts = posts.filter(post => post.track && post.track.toLowerCase() === "bebop");
       } else if (isVibeCodingPage) {
-        filteredPosts = posts.filter((post) => post.track && post.track.toLowerCase() === "vibe coding");
+        filteredPosts = posts.filter(post => post.track && post.track.toLowerCase() === "vibe coding");
       } else {
         filteredPosts = posts;
       }
-      
-      console.log("Filtered posts:", filteredPosts);
 
       if (filteredPosts.length === 0) {
-        console.log("No posts found after filtering");
         blogGrid.innerHTML = "<p class='no-posts'>No blog posts to show yet!</p>";
         return;
       }
 
       // Loop through each post in the filtered array
-      filteredPosts.forEach((post) => {
-        // Create a new <div> for each blog card
+      filteredPosts.forEach(post => {
         const card = document.createElement("div");
-        card.className = "blog-card"; // Add a class for styling
-
-        // Fill the card with the blog post's content using a template literal
+        card.className = "blog-card";
         card.innerHTML = `
           <a href="post.html?id=${post.id}">
             <img src="${post.thumbnail}" alt="${post.title}" loading="lazy" />
@@ -79,40 +69,36 @@ document.addEventListener("DOMContentLoaded", () => {
             <small>${post.date} • ${post.track}</small>
           </a>
         `;
-
-        // Append the card to the grid on the blog page
         blogGrid.appendChild(card);
       });
-      console.log("Finished adding blog cards");
     })
-    .catch((error) => {
-      // Handle any errors that occur (e.g. file missing or bad JSON format)
+    .catch(error => {
       console.error("Failed to load blog posts:", error);
       blogGrid.innerHTML = "<p class='no-posts'>Oops! Could not load posts.</p>";
     });
-});
+}
 
-// Handle loading a single blog post's content on post.html
-document.addEventListener("DOMContentLoaded", () => {
+function initPostContent() {
+  const postContent = document.getElementById("postContent");
+  if (!postContent) return;
+
   const params = new URLSearchParams(window.location.search);
   const postId = params.get("id");
 
-  // If no ID was passed, show a fallback message
   if (!postId) {
-    document.getElementById("postContent").innerHTML = "<p>Post not found.</p>";
+    postContent.innerHTML = "<p>Post not found.</p>";
     return;
   }
 
-  // Fetch the post content from its HTML version (not .md)
   fetch(`posts/${postId}/index.html`)
-    .then((res) => {
+    .then(res => {
       if (!res.ok) throw new Error("Not found");
       return res.text();
     })
-    .then((html) => {
-      document.getElementById("postContent").innerHTML = html;
+    .then(html => {
+      postContent.innerHTML = html;
     })
     .catch(() => {
-      document.getElementById("postContent").innerHTML = "<p>Could not load this post.</p>";
+      postContent.innerHTML = "<p>Could not load this post.</p>";
     });
-});
+}
