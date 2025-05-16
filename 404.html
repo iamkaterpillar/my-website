@@ -139,8 +139,16 @@
         return;
       }
       
-      // If it's not a known page, redirect to home
-      window.location.replace('/');
+      // If it's not a known page, show 404 content
+      document.body.innerHTML = `
+        <main>
+          <div class="post-content">
+            <h1>Page Not Found</h1>
+            <p>Sorry, we couldn't find the page you're looking for.</p>
+            <a href="/" class="back-button">back to home</a>
+          </div>
+        </main>
+      `;
     }
 
     // Start routing when the layout script is loaded
