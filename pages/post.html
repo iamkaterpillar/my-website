@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog Post | iamkaterpillar</title>
+  <title>Loading... | iamkaterpillar</title>
   
   <!-- Meta tags -->
   <meta name="description" content="">
@@ -59,6 +59,7 @@
       const slug = urlParams.get('slug');
       
       if (!slug) {
+        document.title = "Post Not Found | iamkaterpillar";
         postContent.innerHTML = "<p>Post not found.</p>";
         return;
       }
@@ -125,11 +126,11 @@
             .then(html => {
               // Add back button and post content
               let backLink = '/blog';
-              let backText = 'back to vibe coding';
+              let backText = 'Back to Vibe Coding';
               
               if (post.track && post.track.toLowerCase() === 'bebop') {
                 backLink = '/bebop';
-                backText = 'back to building bebop';
+                backText = 'Back to Building Bebop';
               }
               
               postContent.innerHTML = `
@@ -145,7 +146,7 @@
           console.error("Failed to load post:", error);
           document.title = "Post Not Found | iamkaterpillar";
           postContent.innerHTML = `
-            <a href="/blog" class="back-button">back to blog</a>
+            <a href="/blog" class="back-button">Back to Blog</a>
             <p>Could not load this post.</p>
           `;
         });
