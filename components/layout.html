@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kat's Website</title>
+  <title>{{title}}</title>
 
   <!-- Styles and favicon -->
   <link rel="stylesheet" href="/style.css" />
@@ -22,14 +22,14 @@
   <!-- Navigation -->
   <header>
     <nav>
+      <a href="/" class="home-link">Kat's Blog</a>
       <button class="menu-toggle" aria-label="Toggle menu">
         <span class="hamburger"></span>
       </button>
       <div class="nav-links">
-        <a href="/index.html">Home</a>
-        <a href="/about.html">About me</a>
-        <a href="/blog.html">Vibe coding</a>
+        <a href="/about.html">About</a>
         <a href="/bebop.html">Building Bebop</a>
+        <a href="/blog.html">Vibe coding</a>
       </div>
     </nav>
   </header>  
@@ -39,6 +39,6 @@
     {{content}}
   </main>
 
-  <script src="/script.js"></script>
+  <script src="/script.js" defer></script>
 </body>
 </html> 

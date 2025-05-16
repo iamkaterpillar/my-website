@@ -14,9 +14,13 @@ function initMobileMenu() {
   const menuToggle = document.querySelector('.menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   
-  if (!menuToggle || !navLinks) return;
+  if (!menuToggle || !navLinks) {
+    console.log('Mobile menu elements not found');
+    return;
+  }
   
-  menuToggle.addEventListener('click', () => {
+  menuToggle.addEventListener('click', (e) => {
+    e.preventDefault();
     menuToggle.classList.toggle('active');
     navLinks.classList.toggle('active');
     document.body.classList.toggle('menu-open');
@@ -29,6 +33,17 @@ function initMobileMenu() {
       navLinks.classList.remove('active');
       document.body.classList.remove('menu-open');
     });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('active') && 
+        !navLinks.contains(e.target) && 
+        !menuToggle.contains(e.target)) {
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    }
   });
 }
 
