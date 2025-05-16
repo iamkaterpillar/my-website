@@ -119,8 +119,8 @@ function initBlogPosts() {
         const card = document.createElement("div");
         card.className = "blog-card";
         card.innerHTML = `
-          <a href="post.html?id=${post.id}">
-            <img src="${post.thumbnail}" alt="${post.title}" loading="lazy" />
+          <a href="/post.html?id=${post.id}">
+            <img src="/${post.thumbnail}" alt="${post.title}" loading="lazy" />
             <h2>${post.title}</h2>
             <p>${post.summary}</p>
             <small>${post.date} • ${post.track}</small>
@@ -147,7 +147,7 @@ function initPostContent() {
     return;
   }
 
-  fetch(`posts/${postId}/index.html`)
+  fetch(`/posts/${postId}/index.html`)
     .then(res => {
       if (!res.ok) throw new Error("Not found");
       return res.text();
@@ -155,7 +155,8 @@ function initPostContent() {
     .then(html => {
       postContent.innerHTML = html;
     })
-    .catch(() => {
+    .catch((error) => {
+      console.error("Failed to load post:", error);
       postContent.innerHTML = "<p>Could not load this post.</p>";
     });
 }
