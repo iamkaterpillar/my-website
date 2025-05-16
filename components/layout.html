@@ -3,11 +3,97 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{{title}} | iamkaterpillar</title>
+  <title>iamkaterpillar</title>
 
-  <!-- Styles and favicon -->
-  <link rel="stylesheet" href="/style.css" />
-  <link rel="icon" href="/assets/images/icons/favicon.ico" type="image/x-icon" />
+  <!-- Critical CSS -->
+  <style>
+    /* Critical styles for above-the-fold content */
+    :root {
+      --text-color: #222;
+      --bg-color: #fdfbf7;
+      --link-color: #0070f3;
+      --border-color: #ddd;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding: 2rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    header {
+      margin-bottom: 2rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-color);
+      position: relative;
+    }
+
+    .home-link {
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: var(--text-color);
+      text-decoration: none;
+      margin-right: 2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      font-weight: 500;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      .menu-toggle { display: block; }
+      .nav-links {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: var(--bg-color);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        z-index: 90;
+      }
+      .nav-links.active { display: flex; }
+    }
+  </style>
+
+  <!-- Preload critical resources -->
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preload" href="/style.css" as="style">
+  <link rel="preload" href="/script.js" as="script">
+
+  <!-- Non-critical CSS -->
+  <link rel="stylesheet" href="/style.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="/style.css"></noscript>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/assets/images/icons/favicon.ico" type="image/x-icon">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-F00DE4HSRP"></script>
@@ -39,6 +125,20 @@
     {{content}}
   </main>
 
+  <!-- Service worker registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+          console.log('ServiceWorker registered:', registration);
+        }).catch(error => {
+          console.log('ServiceWorker registration failed:', error);
+        });
+      });
+    }
+  </script>
+
+  <!-- Main script -->
   <script src="/script.js" defer></script>
 </body>
 </html> 

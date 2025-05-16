@@ -90,6 +90,9 @@ function initBlogPosts() {
   const blogGrid = document.getElementById("blogGrid");
   if (!blogGrid) return;
 
+  // Clear existing posts before loading new ones
+  blogGrid.innerHTML = '';
+
   fetch("posts.json")
     .then(response => response.json())
     .then(posts => {
