@@ -8,42 +8,39 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
 
       - name: Create redirects and copy files
         run: |
+          # Create dist directory
+          mkdir -p dist
+          
           # Create _redirects file for clean URLs
-          echo "/* /404.html 404" > _redirects
+          echo "/* /404.html 404" > dist/_redirects
           
-          # Ensure all directories exist
-          mkdir -p dist/posts
-          mkdir -p dist/data
-          mkdir -p dist/js
-          mkdir -p dist/css
-          mkdir -p dist/components
-          mkdir -p dist/pages
+          # Copy static files
+          cp -r index.html 404.html .nojekyll CNAME dist/ || true
           
-          # Copy all files
-          cp -r posts/* dist/posts/
-          cp -r data/* dist/data/
-          cp -r js/* dist/js/
-          cp -r css/* dist/css/
-          cp -r components/* dist/components/
-          cp -r pages/* dist/pages/
-          cp index.html dist/
-          cp 404.html dist/
-          cp .nojekyll dist/
-          cp _redirects dist/
+          # Copy directories if they exist and have content
+          for dir in posts data js css components pages assets public src; do
+            if [ -d "$dir" ] && [ "$(ls -A $dir)" ]; then
+              mkdir -p dist/$dir
+              cp -r $dir/* dist/$dir/ || echo "Warning: Could not copy all files from $dir"
+            fi
+          done
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
-          enable_jekyll: false 
+          enable_jekyll: false
+          force_orphan: true 
