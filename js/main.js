@@ -38,11 +38,12 @@ function initMobileMenu() {
   });
 
   // Toggle menu when clicking the button
-  menuToggle.addEventListener('click', (e) => {
-    console.log('Menu toggle clicked');
-    e.preventDefault();
-    e.stopPropagation();
-    toggleMenu();
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    menuToggle.classList.toggle('active');
+    menuToggle.setAttribute('aria-expanded', 
+      menuToggle.classList.contains('active').toString()
+    );
   });
 
   // Close menu when clicking a link
@@ -110,8 +111,8 @@ function initBlogPosts() {
 
       // Filter posts based on current page
       const currentPath = window.location.pathname.replace(/^\/+|\/+$|\.[^/.]+$/g, '');
-      const isBebopPage = currentPath === "pages/bebop";
-      const isVibeCodingPage = currentPath === "pages/blog";
+      const isBebopPage = currentPath === "bebop" || currentPath === "pages/bebop";
+      const isVibeCodingPage = currentPath === "blog" || currentPath === "pages/blog";
       const isHomePage = currentPath === "" || currentPath === "index";
       
       let filteredPosts;
@@ -135,9 +136,13 @@ function initBlogPosts() {
       filteredPosts.forEach(post => {
         const card = document.createElement("div");
         card.className = "blog-card";
+        
+        // Ensure thumbnail path starts with a slash
+        const thumbnailPath = post.thumbnail.startsWith('/') ? post.thumbnail : `/${post.thumbnail}`;
+        
         card.innerHTML = `
           <a href="/${post.slug}">
-            <img src="/${post.thumbnail}" alt="${post.title}" loading="lazy" />
+            <img src="${thumbnailPath}" alt="${post.title}" loading="lazy" />
             <h2>${post.title}</h2>
             <p>${post.summary}</p>
             <small>${post.date} • ${post.track}</small>
@@ -174,25 +179,25 @@ function initPostContent() {
       // Update page title and meta tags
       const baseUrl = window.location.origin;
       const canonicalUrl = `${baseUrl}/${post.slug}`;
-      const imageUrl = `${baseUrl}/assets/${post.thumbnail}`;
+      const imageUrl = `${baseUrl}${post.thumbnail.startsWith('/') ? post.thumbnail : `/${post.thumbnail}`}`;
       
       // Basic meta tags
       document.title = `${post.title} | iamkaterpillar`;
-      document.querySelector('meta[name="description"]').setAttribute('content', post.summary);
+      document.querySelector('meta[name="description"]')?.setAttribute('content', post.summary);
       
       // OpenGraph meta tags
-      document.querySelector('meta[property="og:title"]').setAttribute('content', post.title);
-      document.querySelector('meta[property="og:description"]').setAttribute('content', post.summary);
-      document.querySelector('meta[property="og:url"]').setAttribute('content', canonicalUrl);
-      document.querySelector('meta[property="og:image"]').setAttribute('content', imageUrl);
+      document.querySelector('meta[property="og:title"]')?.setAttribute('content', post.title);
+      document.querySelector('meta[property="og:description"]')?.setAttribute('content', post.summary);
+      document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl);
+      document.querySelector('meta[property="og:image"]')?.setAttribute('content', imageUrl);
       
       // Twitter Card meta tags
-      document.querySelector('meta[name="twitter:title"]').setAttribute('content', post.title);
-      document.querySelector('meta[name="twitter:description"]').setAttribute('content', post.summary);
-      document.querySelector('meta[name="twitter:image"]').setAttribute('content', imageUrl);
+      document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', post.title);
+      document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', post.summary);
+      document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', imageUrl);
       
       // Canonical URL
-      document.querySelector('link[rel="canonical"]').setAttribute('href', canonicalUrl);
+      document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl);
       
       // Update JSON-LD structured data
       const structuredData = {
@@ -219,11 +224,11 @@ function initPostContent() {
         JSON.stringify(structuredData, null, 2);
       
       // Determine back link based on track
-      let backLink = '/pages/blog.html';
+      let backLink = '/blog';
       let backText = 'back to vibe coding';
       
       if (post.track && post.track.toLowerCase() === 'bebop') {
-        backLink = '/pages/bebop.html';
+        backLink = '/bebop';
         backText = 'back to building bebop';
       }
 
@@ -245,7 +250,7 @@ function initPostContent() {
       console.error("Failed to load post:", error);
       document.title = "Post Not Found | iamkaterpillar";
       postContent.innerHTML = `
-        <a href="/pages/blog.html" class="back-button">Back to Blog</a>
+        <a href="/blog" class="back-button">back to blog</a>
         <p>Could not load this post.</p>
       `;
     });

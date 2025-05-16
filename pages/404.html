@@ -41,25 +41,58 @@
       // Check if it's a blog post
       const post = await checkIfBlogPost(path);
       if (post) {
-        // If it's a blog post, load the post template
-        const postTemplate = await fetch('/pages/post.html').then(res => res.text());
-        document.documentElement.innerHTML = postTemplate;
+        // If it's a blog post, first load the layout
+        const layoutResponse = await fetch('/components/layout.html');
+        const layoutHtml = await layoutResponse.text();
         
-        // Initialize the post content
-        window.addEventListener('layoutLoaded', () => {
-          const postContent = document.getElementById('postContent');
-          if (postContent) {
-            fetch(`/posts/${post.id}/index.html`)
-              .then(res => res.text())
-              .then(html => {
-                postContent.innerHTML = html;
-              })
-              .catch(error => {
-                console.error('Error loading post content:', error);
-                postContent.innerHTML = '<p>Could not load post content.</p>';
-              });
+        // Create a temporary container to parse the layout HTML
+        const temp = document.createElement('template');
+        temp.innerHTML = layoutHtml;
+        
+        // Add post content placeholder
+        const mainElement = temp.content.querySelector('main');
+        if (mainElement) {
+          mainElement.innerHTML = '<div id="postContent" class="post-content"><p>Loading post...</p></div>';
+        }
+        
+        // Update the document with new layout
+        document.documentElement.innerHTML = temp.innerHTML;
+        
+        // Load post content
+        const postContent = document.getElementById('postContent');
+        if (postContent) {
+          try {
+            const postResponse = await fetch(`/posts/${post.id}/index.html`);
+            if (!postResponse.ok) throw new Error('Post not found');
+            const html = await postResponse.text();
+            postContent.innerHTML = html;
+            
+            // Update meta tags
+            document.title = `${post.title} | iamkaterpillar`;
+            document.querySelector('meta[name="description"]')?.setAttribute('content', post.summary);
+            
+            // Update Open Graph tags
+            const baseUrl = window.location.origin;
+            const canonicalUrl = `${baseUrl}/${post.slug}`;
+            const imageUrl = `${baseUrl}${post.thumbnail}`;
+            
+            document.querySelector('meta[property="og:title"]')?.setAttribute('content', post.title);
+            document.querySelector('meta[property="og:description"]')?.setAttribute('content', post.summary);
+            document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl);
+            document.querySelector('meta[property="og:image"]')?.setAttribute('content', imageUrl);
+            
+            // Update Twitter Card tags
+            document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', post.title);
+            document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', post.summary);
+            document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', imageUrl);
+            
+            // Update canonical URL
+            document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl);
+          } catch (error) {
+            console.error('Error loading post:', error);
+            postContent.innerHTML = '<p>Could not load post content.</p>';
           }
-        });
+        }
         return;
       }
       
