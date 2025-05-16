@@ -905,40 +905,39 @@ pre code {
 
 /* Bebop page styles */
 .page-header {
-  text-align: center;
-  margin: 3rem 0 4rem;
+  text-align: left;
+  margin: 2rem 0;
 }
 
 .page-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .lead-text {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--text-color);
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0;
   line-height: 1.6;
 }
 
 .intro-section {
-  margin: 4rem 0;
+  margin: 2rem 0;
 }
 
 .intro-content {
   max-width: 800px;
-  margin: 0 auto;
 }
 
 .feature-list {
   list-style: none;
-  margin: 2rem 0;
+  margin: 1rem 0;
   padding: 0;
 }
 
 .feature-list li {
-  margin: 1rem 0;
+  margin: 0.5rem 0;
   padding-left: 1.5rem;
   position: relative;
 }
@@ -953,29 +952,33 @@ pre code {
 .cta-group {
   display: flex;
   gap: 1rem;
-  margin: 2rem 0;
+  margin: 1.5rem 0;
 }
 
 .feature-image {
   display: block;
   width: 100%;
-  max-width: 1000px;
+  max-width: 800px;
   height: auto;
-  margin: 4rem auto;
+  margin: 2rem 0;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+.content-section {
+  margin: 2rem 0;
+}
+
 .topic-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin: 2rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin: 1rem 0;
 }
 
 .topic-card {
   background: white;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 12px;
   border: 1px solid var(--border-color);
   transition: all 0.3s ease;
@@ -988,7 +991,7 @@ pre code {
 }
 
 .topic-card h3 {
-  margin: 0 0 1rem;
+  margin: 0 0 0.5rem;
   color: var(--accent-color);
 }
 
@@ -999,23 +1002,27 @@ pre code {
 }
 
 .blog-section {
-  margin: 4rem 0;
+  margin: 2rem 0;
 }
 
 .coming-soon {
-  text-align: center;
+  text-align: left;
   font-style: italic;
   color: var(--text-color);
-  margin: 2rem 0;
+  margin: 1rem 0;
 }
 
 @media (max-width: 768px) {
   .page-header {
-    margin: 2rem 0 3rem;
+    margin: 1.5rem 0;
   }
 
   .page-header h1 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+
+  .lead-text {
+    font-size: 1rem;
   }
 
   .cta-group {
@@ -1023,7 +1030,7 @@ pre code {
   }
 
   .feature-image {
-    margin: 2rem auto;
+    margin: 1.5rem 0;
     border-radius: 8px;
   }
 
