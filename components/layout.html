@@ -5,6 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iamkaterpillar</title>
 
+  <!-- Meta tags -->
+  <meta name="description" content="Personal website of Katharina Fore, sharing thoughts on coding and building bebop.">
+  <meta property="og:title" content="iamkaterpillar">
+  <meta property="og:description" content="Personal website of Katharina Fore, sharing thoughts on coding and building bebop.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="">
+  <link rel="canonical" href="">
+
   <!-- CSS -->
   <link rel="stylesheet" href="/style.css" type="text/css">
 
@@ -19,6 +27,15 @@
     gtag('js', new Date());
     gtag('config', 'G-F00DE4HSRP');
   </script>
+
+  <script>
+    // Set canonical URL and og:url
+    const path = window.location.pathname.replace(/\.html$/, '');
+    const baseUrl = window.location.origin;
+    const canonicalUrl = baseUrl + (path === '/index' ? '/' : path);
+    document.querySelector('meta[property="og:url"]').setAttribute('content', canonicalUrl);
+    document.querySelector('link[rel="canonical"]').setAttribute('href', canonicalUrl);
+  </script>
 </head>
 <body>
   <!-- Navigation -->
@@ -26,9 +43,9 @@
     <nav>
       <a href="/" class="home-link">iamkaterpillar</a>
       <div class="nav-links">
-        <a href="/about.html">About</a>
-        <a href="/bebop.html">Building bebop</a>
-        <a href="/blog.html">Vibe coding</a>
+        <a href="/about">About</a>
+        <a href="/bebop">Building bebop</a>
+        <a href="/blog">Vibe coding</a>
       </div>
     </nav>
   </header>  

@@ -1,6 +1,7 @@
 [
   {
     "id": "website-setup",
+    "slug": "website-setup",
     "title": "Website setup",
     "date": "2025-04-14",
     "track": "vibe coding",
@@ -9,6 +10,7 @@
   },
   {
     "id": "usage-analytics",
+    "slug": "usage-analytics",
     "title": "Usage analytics",
     "date": "2025-04-14",
     "track": "vibe coding",
@@ -17,6 +19,7 @@
   },
   {
     "id": "adding-structure",
+    "slug": "adding-structure",
     "title": "Adding structure",
     "date": "2025-04-14",
     "track": "vibe coding",
@@ -25,6 +28,7 @@
   },
   {
     "id": "network-requests",
+    "slug": "network-requests",
     "title": "Network requests",
     "date": "2025-04-14",
     "track": "vibe coding",
@@ -33,6 +37,7 @@
   },
   {
     "id": "coding-languages",
+    "slug": "coding-languages",
     "title": "Coding languages",
     "date": "2025-04-14",
     "track": "vibe coding",
@@ -41,8 +46,9 @@
   },
   {
     "id": "using-ai-agents-in-cursor",
+    "slug": "using-ai-agents-in-cursor",
     "title": "Using AI agents in Cursor",
-    "date": "2024-03-26",
+    "date": "2024-04-26",
     "track": "vibe coding",
     "summary": "How I used Cursor's AI agent to clean up my website's code and make it more maintainable.",
     "thumbnail": "posts/ai-agents-cursor/thumb.png"

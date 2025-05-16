@@ -109,9 +109,10 @@ function initBlogPosts() {
       posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       // Filter posts based on current page
-      const isBebopPage = window.location.pathname.endsWith("bebop.html");
-      const isVibeCodingPage = window.location.pathname.endsWith("blog.html");
-      const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("index.html");
+      const currentPath = window.location.pathname.replace(/^\/+|\/+$|\.[^/.]+$/g, '');
+      const isBebopPage = currentPath === "bebop";
+      const isVibeCodingPage = currentPath === "blog";
+      const isHomePage = currentPath === "" || currentPath === "index";
       
       let filteredPosts;
       if (isBebopPage) {
@@ -135,7 +136,7 @@ function initBlogPosts() {
         const card = document.createElement("div");
         card.className = "blog-card";
         card.innerHTML = `
-          <a href="/post.html?id=${post.id}">
+          <a href="/${post.slug}">
             <img src="/${post.thumbnail}" alt="${post.title}" loading="lazy" />
             <h2>${post.title}</h2>
             <p>${post.summary}</p>
@@ -155,10 +156,10 @@ function initPostContent() {
   const postContent = document.getElementById("postContent");
   if (!postContent) return;
 
-  const params = new URLSearchParams(window.location.search);
-  const postId = params.get("id");
+  // Get the slug from the URL path
+  const slug = window.location.pathname.replace(/^\/+|\/+$/g, '');
 
-  if (!postId) {
+  if (!slug) {
     postContent.innerHTML = "<p>Post not found.</p>";
     return;
   }
@@ -167,20 +168,67 @@ function initPostContent() {
   fetch("/posts.json")
     .then(res => res.json())
     .then(posts => {
-      const post = posts.find(p => p.id === postId);
+      const post = posts.find(p => p.slug === slug);
       if (!post) throw new Error("Post not found");
       
+      // Update page title and meta tags
+      const baseUrl = window.location.origin;
+      const canonicalUrl = `${baseUrl}/${post.slug}`;
+      const imageUrl = `${baseUrl}/${post.thumbnail}`;
+      
+      // Basic meta tags
+      document.title = `${post.title} | iamkaterpillar`;
+      document.querySelector('meta[name="description"]').setAttribute('content', post.summary);
+      
+      // OpenGraph meta tags
+      document.querySelector('meta[property="og:title"]').setAttribute('content', post.title);
+      document.querySelector('meta[property="og:description"]').setAttribute('content', post.summary);
+      document.querySelector('meta[property="og:url"]').setAttribute('content', canonicalUrl);
+      document.querySelector('meta[property="og:image"]').setAttribute('content', imageUrl);
+      
+      // Twitter Card meta tags
+      document.querySelector('meta[name="twitter:title"]').setAttribute('content', post.title);
+      document.querySelector('meta[name="twitter:description"]').setAttribute('content', post.summary);
+      document.querySelector('meta[name="twitter:image"]').setAttribute('content', imageUrl);
+      
+      // Canonical URL
+      document.querySelector('link[rel="canonical"]').setAttribute('href', canonicalUrl);
+      
+      // Update JSON-LD structured data
+      const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "description": post.summary,
+        "datePublished": post.date,
+        "url": canonicalUrl,
+        "image": imageUrl,
+        "author": {
+          "@type": "Person",
+          "name": "Katharina Fore",
+          "url": "https://iamkaterpillar.com/about"
+        },
+        "publisher": {
+          "@type": "Person",
+          "name": "Katharina Fore",
+          "url": "https://iamkaterpillar.com"
+        }
+      };
+      
+      document.querySelector('script[type="application/ld+json"]').textContent = 
+        JSON.stringify(structuredData, null, 2);
+      
       // Determine back link based on track
-      let backLink = '/blog.html';
+      let backLink = '/blog';
       let backText = 'Back to Vibe Coding';
       
       if (post.track && post.track.toLowerCase() === 'bebop') {
-        backLink = '/bebop.html';
+        backLink = '/bebop';
         backText = 'Back to Building Bebop';
       }
 
       // Then fetch the post content
-      return fetch(`/posts/${postId}/index.html`)
+      return fetch(`/posts/${post.id}/index.html`)
         .then(res => {
           if (!res.ok) throw new Error("Not found");
           return res.text();
@@ -195,8 +243,9 @@ function initPostContent() {
     })
     .catch((error) => {
       console.error("Failed to load post:", error);
+      document.title = "Post Not Found | iamkaterpillar";
       postContent.innerHTML = `
-        <a href="/blog.html" class="back-button">Back to Blog</a>
+        <a href="/blog" class="back-button">Back to Blog</a>
         <p>Could not load this post.</p>
       `;
     });
