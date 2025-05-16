@@ -1,3 +1,12 @@
+// Unregister service workers
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(registrations => {
+    for (let registration of registrations) {
+      registration.unregister();
+    }
+  });
+}
+
 // Initialize everything after layout is loaded
 window.addEventListener('layoutLoaded', () => {
   console.log('Layout loaded, initializing features...');

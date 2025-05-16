@@ -1,4 +1,4 @@
-const CACHE_VERSION = '2';
+const CACHE_VERSION = '3';
 const CACHE_NAME = `iamkaterpillar-v${CACHE_VERSION}`;
 const STATIC_ASSETS = [
   '/',
@@ -42,17 +42,21 @@ self.addEventListener('fetch', event => {
   // Skip Google Analytics requests
   if (event.request.url.includes('googletagmanager.com')) return;
 
-  // Handle CSS files with network-first strategy
-  if (event.request.url.endsWith('.css')) {
+  // Handle CSS files with stale-while-revalidate strategy
+  if (event.request.url.endsWith('.css') || event.request.url.includes('.css?')) {
     event.respondWith(
-      fetch(event.request)
-        .then(response => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME)
-            .then(cache => cache.put(event.request, clone));
-          return response;
-        })
-        .catch(() => caches.match(event.request))
+      caches.open(CACHE_NAME).then(cache => {
+        return cache.match(event.request).then(cachedResponse => {
+          const fetchPromise = fetch(event.request)
+            .then(networkResponse => {
+              cache.put(event.request, networkResponse.clone());
+              return networkResponse;
+            })
+            .catch(() => cachedResponse);
+
+          return cachedResponse || fetchPromise;
+        });
+      })
     );
     return;
   }

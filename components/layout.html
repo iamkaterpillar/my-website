@@ -5,13 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iamkaterpillar</title>
 
-  <!-- Preload critical resources -->
-  <link rel="preconnect" href="https://www.googletagmanager.com">
-  <link rel="preload" href="/style.css" as="style">
-  <link rel="preload" href="/script.js" as="script">
-
-  <!-- Non-critical CSS with cache busting -->
-  <link rel="stylesheet" href="/style.css?v=2">
+  <!-- CSS -->
+  <link rel="stylesheet" href="/style.css" type="text/css">
 
   <!-- Favicon -->
   <link rel="icon" href="/assets/images/icons/favicon.ico" type="image/x-icon">
@@ -45,19 +40,6 @@
   <main>
     {{content}}
   </main>
-
-  <!-- Service worker registration -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then(registration => {
-          console.log('ServiceWorker registered:', registration);
-        }).catch(error => {
-          console.log('ServiceWorker registration failed:', error);
-        });
-      });
-    }
-  </script>
 
   <!-- Main script -->
   <script src="/script.js" defer></script>

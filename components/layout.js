@@ -1,37 +1,48 @@
 async function loadLayout() {
   try {
-    // Load and apply CSS first
-    const cssLink = document.querySelector('link[rel="stylesheet"]');
-    if (!cssLink) {
-      const newCssLink = document.createElement('link');
-      newCssLink.rel = 'stylesheet';
-      newCssLink.href = '/style.css';
-      document.head.appendChild(newCssLink);
-      
-      // Wait for CSS to load
-      await new Promise((resolve, reject) => {
-        newCssLink.onload = resolve;
-        newCssLink.onerror = reject;
-      });
-    }
-
-    // Then load layout
+    // Load layout
     const layoutResponse = await fetch('/components/layout.html');
     const layoutHtml = await layoutResponse.text();
     
     // Get the current page's content
     const mainContent = document.querySelector('main').innerHTML;
     
-    // Replace the content placeholder in the layout
-    const finalHtml = layoutHtml.replace('{{content}}', mainContent);
+    // Create a temporary container to parse the layout HTML
+    const temp = document.createElement('template');
+    temp.innerHTML = layoutHtml;
     
-    // Update the document
-    document.documentElement.innerHTML = finalHtml;
+    // Replace the content placeholder
+    const mainElement = temp.content.querySelector('main');
+    if (mainElement) {
+      mainElement.innerHTML = mainContent;
+    }
+
+    // Store references to important elements
+    const currentHead = document.head;
+    const currentCss = document.querySelector('link[rel="stylesheet"]');
+    const currentFavicon = document.querySelector('link[rel="icon"]');
     
-    // Re-execute all scripts
+    // Update the document with new layout
+    document.documentElement.innerHTML = temp.innerHTML;
+    
+    // Restore critical head elements
+    if (currentCss) {
+      document.head.appendChild(currentCss);
+    }
+    if (currentFavicon) {
+      document.head.appendChild(currentFavicon);
+    }
+
+    // Re-execute scripts
     const scripts = Array.from(document.getElementsByTagName('script'));
     const scriptPromises = scripts.map(script => {
       return new Promise((resolve, reject) => {
+        // Skip if it's an analytics script
+        if (script.src && script.src.includes('googletagmanager.com')) {
+          resolve();
+          return;
+        }
+
         const newScript = document.createElement('script');
         
         // Copy all attributes
