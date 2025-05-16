@@ -1030,3 +1030,79 @@ pre code {
     margin-bottom: 1rem;
   }
 }
+
+/* About page specific styles */
+.about-content {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.about-content h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+.about-content h2 {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.about-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 1.2rem;
+  color: var(--text-color);
+}
+
+.about-content ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-content li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.about-content a {
+  color: var(--accent-color);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.2s ease;
+}
+
+.about-content a:hover {
+  color: var(--hover-color);
+  border-bottom-color: var(--hover-color);
+}
+
+.about-content s {
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .about-content h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .about-content h2 {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+  }
+
+  .about-content p,
+  .about-content li {
+    font-size: 1rem;
+  }
+}

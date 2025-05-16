@@ -137,7 +137,7 @@ function initBlogPosts() {
         card.className = "blog-card";
         card.innerHTML = `
           <a href="/${post.slug}">
-            <img src="/assets/${post.thumbnail}" alt="${post.title}" loading="lazy" />
+            <img src="/${post.thumbnail}" alt="${post.title}" loading="lazy" />
             <h2>${post.title}</h2>
             <p>${post.summary}</p>
             <small>${post.date} • ${post.track}</small>
@@ -220,11 +220,11 @@ function initPostContent() {
       
       // Determine back link based on track
       let backLink = '/pages/blog.html';
-      let backText = 'Back to Vibe Coding';
+      let backText = 'back to vibe coding';
       
       if (post.track && post.track.toLowerCase() === 'bebop') {
         backLink = '/pages/bebop.html';
-        backText = 'Back to Building Bebop';
+        backText = 'back to building bebop';
       }
 
       // Then fetch the post content
