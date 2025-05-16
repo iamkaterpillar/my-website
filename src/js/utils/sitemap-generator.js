@@ -1,7 +1,8 @@
 const fs = require('fs');
+const path = require('path');
 
 // Read posts.json to get all blog posts
-const posts = JSON.parse(fs.readFileSync('posts.json', 'utf8'));
+const posts = JSON.parse(fs.readFileSync(path.join(__dirname, '../../../public/data/posts.json'), 'utf8'));
 
 // Base URL of the website
 const baseUrl = 'https://iamkaterpillar.com';
@@ -43,6 +44,6 @@ posts.forEach(post => {
 
 xml += '</urlset>';
 
-// Write sitemap.xml
-fs.writeFileSync('sitemap.xml', xml);
+// Write sitemap.xml to the public directory
+fs.writeFileSync(path.join(__dirname, '../../../public/sitemap.xml'), xml);
 console.log('Sitemap generated successfully!'); 
