@@ -1,7 +1,7 @@
-const CACHE_NAME = 'iamkaterpillar-v1';
+const CACHE_VERSION = '2';
+const CACHE_NAME = `iamkaterpillar-v${CACHE_VERSION}`;
 const STATIC_ASSETS = [
   '/',
-  '/style.css',
   '/script.js',
   '/about.html',
   '/blog.html',
@@ -24,9 +24,12 @@ self.addEventListener('activate', event => {
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames
-          .filter(name => name !== CACHE_NAME)
+          .filter(name => name.startsWith('iamkaterpillar-') && name !== CACHE_NAME)
           .map(name => caches.delete(name))
       );
+    }).then(() => {
+      // Take control of all pages immediately
+      return clients.claim();
     })
   );
 });
@@ -39,8 +42,23 @@ self.addEventListener('fetch', event => {
   // Skip Google Analytics requests
   if (event.request.url.includes('googletagmanager.com')) return;
 
+  // Handle CSS files with network-first strategy
+  if (event.request.url.endsWith('.css')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME)
+            .then(cache => cache.put(event.request, clone));
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
   // Handle HTML requests with network-first strategy
-  if (event.request.headers.get('accept').includes('text/html')) {
+  if (event.request.headers.get('accept')?.includes('text/html')) {
     event.respondWith(
       fetch(event.request)
         .then(response => {
@@ -59,13 +77,9 @@ self.addEventListener('fetch', event => {
     caches.match(event.request)
       .then(response => {
         if (response) {
-          // Return cached response
           return response;
         }
-
-        // Fetch from network
         return fetch(event.request).then(response => {
-          // Cache the response if it's valid
           if (response.ok && response.type === 'basic') {
             const clone = response.clone();
             caches.open(CACHE_NAME)
