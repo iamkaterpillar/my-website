@@ -139,15 +139,34 @@ function initBlogPosts() {
         
         // Ensure thumbnail path starts with a slash
         const thumbnailPath = post.thumbnail.startsWith('/') ? post.thumbnail : `/${post.thumbnail}`;
+        console.log('Loading thumbnail:', thumbnailPath);
         
-        card.innerHTML = `
-          <a href="/${post.slug}">
-            <img src="${thumbnailPath}" alt="${post.title}" loading="lazy" />
-            <h2>${post.title}</h2>
-            <p>${post.summary}</p>
-            <small>${post.date} • ${post.track}</small>
-          </a>
+        // Create image element separately to handle loading errors
+        const img = document.createElement('img');
+        img.src = thumbnailPath;
+        img.alt = post.title;
+        img.loading = 'lazy';
+        img.onerror = () => {
+          console.error('Failed to load thumbnail:', thumbnailPath);
+          img.src = '/assets/images/placeholder.jpg';
+          img.alt = 'Thumbnail not available';
+        };
+        
+        // Create the link element
+        const link = document.createElement('a');
+        link.href = `/${post.slug}`;
+        
+        // Add the image
+        link.appendChild(img);
+        
+        // Add the rest of the content
+        link.innerHTML += `
+          <h2>${post.title}</h2>
+          <p>${post.summary}</p>
+          <small>${post.date} • ${post.track}</small>
         `;
+        
+        card.appendChild(link);
         blogGrid.appendChild(card);
       });
     })

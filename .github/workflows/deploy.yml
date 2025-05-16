@@ -16,14 +16,34 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Create redirects
+      - name: Create redirects and copy files
         run: |
           # Create _redirects file for clean URLs
           echo "/* /404.html 404" > _redirects
+          
+          # Ensure all directories exist
+          mkdir -p dist/posts
+          mkdir -p dist/data
+          mkdir -p dist/js
+          mkdir -p dist/css
+          mkdir -p dist/components
+          mkdir -p dist/pages
+          
+          # Copy all files
+          cp -r posts/* dist/posts/
+          cp -r data/* dist/data/
+          cp -r js/* dist/js/
+          cp -r css/* dist/css/
+          cp -r components/* dist/components/
+          cp -r pages/* dist/pages/
+          cp index.html dist/
+          cp 404.html dist/
+          cp .nojekyll dist/
+          cp _redirects dist/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: .
+          publish_dir: ./dist
           enable_jekyll: false 

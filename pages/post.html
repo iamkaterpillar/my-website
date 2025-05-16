@@ -34,6 +34,9 @@
   <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css">
   <link rel="icon" href="/assets/images/icons/favicon.ico" type="image/x-icon">
+
+  <!-- Layout script -->
+  <script src="/js/layout.js"></script>
 </head>
 <body>
   <main>
@@ -42,7 +45,111 @@
     </div>
   </main>
 
-  <script src="/js/layout.js"></script>
-  <script src="/js/main.js"></script>
+  <!-- Main script -->
+  <script src="/js/main.js" defer></script>
+
+  <script>
+    // Initialize post content after layout is loaded
+    window.addEventListener('layoutLoaded', () => {
+      const postContent = document.getElementById('postContent');
+      if (!postContent) return;
+
+      // Get the slug from the query parameter
+      const urlParams = new URLSearchParams(window.location.search);
+      const slug = urlParams.get('slug');
+      
+      if (!slug) {
+        postContent.innerHTML = "<p>Post not found.</p>";
+        return;
+      }
+
+      // First, fetch the post metadata
+      fetch("/data/posts.json")
+        .then(res => res.json())
+        .then(posts => {
+          const post = posts.find(p => p.slug === slug);
+          if (!post) throw new Error("Post not found");
+          
+          // Update page title and meta tags
+          document.title = `${post.title} | iamkaterpillar`;
+          document.querySelector('meta[name="description"]')?.setAttribute('content', post.summary);
+          
+          // Update Open Graph tags
+          const baseUrl = window.location.origin;
+          const canonicalUrl = `${baseUrl}/${post.slug}`;
+          const imageUrl = `${baseUrl}${post.thumbnail.startsWith('/') ? post.thumbnail : `/${post.thumbnail}`}`;
+          
+          document.querySelector('meta[property="og:title"]')?.setAttribute('content', post.title);
+          document.querySelector('meta[property="og:description"]')?.setAttribute('content', post.summary);
+          document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl);
+          document.querySelector('meta[property="og:image"]')?.setAttribute('content', imageUrl);
+          
+          // Update Twitter Card tags
+          document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', post.title);
+          document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', post.summary);
+          document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', imageUrl);
+          
+          // Update canonical URL
+          document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl);
+          
+          // Update JSON-LD structured data
+          const structuredData = {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": post.summary,
+            "datePublished": post.date,
+            "url": canonicalUrl,
+            "image": imageUrl,
+            "author": {
+              "@type": "Person",
+              "name": "Katharina Fore",
+              "url": "https://iamkaterpillar.com/about"
+            },
+            "publisher": {
+              "@type": "Person",
+              "name": "Katharina Fore",
+              "url": "https://iamkaterpillar.com"
+            }
+          };
+          
+          document.querySelector('script[type="application/ld+json"]').textContent = 
+            JSON.stringify(structuredData, null, 2);
+
+          // Then fetch the post content
+          return fetch(`/posts/${post.id}/index.html`)
+            .then(res => {
+              if (!res.ok) throw new Error("Post not found");
+              return res.text();
+            })
+            .then(html => {
+              // Add back button and post content
+              let backLink = '/blog';
+              let backText = 'back to vibe coding';
+              
+              if (post.track && post.track.toLowerCase() === 'bebop') {
+                backLink = '/bebop';
+                backText = 'back to building bebop';
+              }
+              
+              postContent.innerHTML = `
+                <a href="${backLink}" class="back-button">${backText}</a>
+                ${html}
+              `;
+
+              // Update browser URL to the clean URL
+              window.history.replaceState({}, '', `/${post.slug}`);
+            });
+        })
+        .catch((error) => {
+          console.error("Failed to load post:", error);
+          document.title = "Post Not Found | iamkaterpillar";
+          postContent.innerHTML = `
+            <a href="/blog" class="back-button">back to blog</a>
+            <p>Could not load this post.</p>
+          `;
+        });
+    });
+  </script>
 </body>
 </html> 
