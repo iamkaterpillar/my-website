@@ -105,15 +105,22 @@ function initBlogPosts() {
   fetch("posts.json")
     .then(response => response.json())
     .then(posts => {
+      // Sort posts by date (most recent first)
+      posts.sort((a, b) => new Date(b.date) - new Date(a.date));
+
       // Filter posts based on current page
       const isBebopPage = window.location.pathname.endsWith("bebop.html");
       const isVibeCodingPage = window.location.pathname.endsWith("blog.html");
+      const isHomePage = window.location.pathname === "/" || window.location.pathname.endsWith("index.html");
       
       let filteredPosts;
       if (isBebopPage) {
         filteredPosts = posts.filter(post => post.track && post.track.toLowerCase() === "bebop");
       } else if (isVibeCodingPage) {
         filteredPosts = posts.filter(post => post.track && post.track.toLowerCase() === "vibe coding");
+      } else if (isHomePage) {
+        // On homepage, show only 2 most recent posts (already sorted by date)
+        filteredPosts = posts.slice(0, 2);
       } else {
         filteredPosts = posts;
       }
