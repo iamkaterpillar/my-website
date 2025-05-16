@@ -244,11 +244,11 @@ function initPostContent() {
       
       // Determine back link based on track
       let backLink = '/blog';
-      let backText = 'back to vibe coding';
+      let backText = 'back to Vibe coding';
       
       if (post.track && post.track.toLowerCase() === 'bebop') {
         backLink = '/bebop';
-        backText = 'back to building bebop';
+        backText = 'back to Building bebop';
       }
 
       // Then fetch the post content
