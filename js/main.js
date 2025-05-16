@@ -136,7 +136,7 @@ function initBlogPosts() {
         const card = document.createElement("div");
         card.className = "blog-card";
         card.innerHTML = `
-          <a href="/posts/${post.slug}">
+          <a href="/${post.slug}">
             <img src="/assets/${post.thumbnail}" alt="${post.title}" loading="lazy" />
             <h2>${post.title}</h2>
             <p>${post.summary}</p>
@@ -219,11 +219,11 @@ function initPostContent() {
         JSON.stringify(structuredData, null, 2);
       
       // Determine back link based on track
-      let backLink = '/blog';
+      let backLink = '/pages/blog.html';
       let backText = 'Back to Vibe Coding';
       
       if (post.track && post.track.toLowerCase() === 'bebop') {
-        backLink = '/bebop';
+        backLink = '/pages/bebop.html';
         backText = 'Back to Building Bebop';
       }
 
@@ -245,7 +245,7 @@ function initPostContent() {
       console.error("Failed to load post:", error);
       document.title = "Post Not Found | iamkaterpillar";
       postContent.innerHTML = `
-        <a href="/blog" class="back-button">Back to Blog</a>
+        <a href="/pages/blog.html" class="back-button">Back to Blog</a>
         <p>Could not load this post.</p>
       `;
     });

@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Page Not Found</title>
+  <link rel="stylesheet" href="/css/style.css" />
   <script>
     // List of valid static pages
     const staticPages = ['about', 'blog', 'bebop'];
@@ -16,8 +17,7 @@
       try {
         const response = await fetch('/data/posts.json');
         const posts = await response.json();
-        const post = posts.find(post => post.slug === path);
-        return post ? post.id : false;
+        return posts.find(post => post.slug === path);
       } catch (error) {
         console.error('Error checking blog post:', error);
         return false;
@@ -26,20 +26,45 @@
 
     // Handle routing
     async function handleRouting() {
+      // If it's a known static page without .html extension
       if (staticPages.includes(path)) {
-        // If it's a known static page, redirect to the HTML version
         window.location.replace('/pages/' + path + '.html');
-      } else {
-        // Check if it's a blog post
-        const postId = await checkIfBlogPost(path);
-        if (postId) {
-          // If it's a blog post, load the post content
-          window.location.replace('/posts/' + postId + '/index.html');
-        } else {
-          // If it's not a known page, redirect to home
-          window.location.replace('/');
-        }
+        return;
       }
+      
+      // If it's already a .html page in pages directory
+      if (path.startsWith('pages/') && path.endsWith('.html')) {
+        // This is a direct HTML page access, let it 404 naturally
+        return;
+      }
+      
+      // Check if it's a blog post
+      const post = await checkIfBlogPost(path);
+      if (post) {
+        // If it's a blog post, load the post template
+        const postTemplate = await fetch('/pages/post.html').then(res => res.text());
+        document.documentElement.innerHTML = postTemplate;
+        
+        // Initialize the post content
+        window.addEventListener('layoutLoaded', () => {
+          const postContent = document.getElementById('postContent');
+          if (postContent) {
+            fetch(`/posts/${post.id}/index.html`)
+              .then(res => res.text())
+              .then(html => {
+                postContent.innerHTML = html;
+              })
+              .catch(error => {
+                console.error('Error loading post content:', error);
+                postContent.innerHTML = '<p>Could not load post content.</p>';
+              });
+          }
+        });
+        return;
+      }
+      
+      // If it's not a known page, redirect to home
+      window.location.replace('/');
     }
 
     // Start routing
@@ -47,6 +72,9 @@
   </script>
 </head>
 <body>
-  <p>Redirecting...</p>
+  <main>
+    <h1>Page Not Found</h1>
+    <p>Redirecting you to the right place...</p>
+  </main>
 </body>
 </html> 
