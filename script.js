@@ -1,5 +1,7 @@
-// Wait for DOM to be ready
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize everything after layout is loaded
+window.addEventListener('layoutLoaded', () => {
+  console.log('Layout loaded, initializing features...');
+  
   // Mobile menu functionality
   initMobileMenu();
   
@@ -19,6 +21,8 @@ function initMobileMenu() {
     return;
   }
   
+  console.log('Mobile menu elements found, setting up listeners...');
+  
   // Prevent any click inside the menu from bubbling up
   navLinks.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -26,6 +30,7 @@ function initMobileMenu() {
 
   // Toggle menu when clicking the button
   menuToggle.addEventListener('click', (e) => {
+    console.log('Menu toggle clicked');
     e.preventDefault();
     e.stopPropagation();
     toggleMenu();
@@ -56,6 +61,7 @@ function initMobileMenu() {
 
   function toggleMenu() {
     const isOpen = navLinks.classList.contains('active');
+    console.log('Toggling menu:', isOpen ? 'closing' : 'opening');
     if (isOpen) {
       closeMenu();
     } else {
@@ -68,6 +74,7 @@ function initMobileMenu() {
     navLinks.classList.add('active');
     document.body.classList.add('menu-open');
     menuToggle.setAttribute('aria-expanded', 'true');
+    console.log('Menu opened');
   }
 
   function closeMenu() {
@@ -75,6 +82,7 @@ function initMobileMenu() {
     navLinks.classList.remove('active');
     document.body.classList.remove('menu-open');
     menuToggle.setAttribute('aria-expanded', 'false');
+    console.log('Menu closed');
   }
 }
 

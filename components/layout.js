@@ -13,25 +13,37 @@ async function loadLayout() {
   
   // Re-execute all scripts
   const scripts = Array.from(document.getElementsByTagName('script'));
-  scripts.forEach(script => {
-    const newScript = document.createElement('script');
-    
-    // Copy all attributes
-    Array.from(script.attributes).forEach(attr => {
-      newScript.setAttribute(attr.name, attr.value);
+  const scriptPromises = scripts.map(script => {
+    return new Promise((resolve, reject) => {
+      const newScript = document.createElement('script');
+      
+      // Copy all attributes
+      Array.from(script.attributes).forEach(attr => {
+        newScript.setAttribute(attr.name, attr.value);
+      });
+      
+      // Copy inline script content
+      if (!script.src) {
+        newScript.textContent = script.textContent;
+        document.body.appendChild(newScript);
+        resolve();
+      } else if (!script.src.includes('layout.js')) {
+        // For external scripts, wait for them to load
+        newScript.onload = resolve;
+        newScript.onerror = reject;
+        document.body.appendChild(newScript);
+      } else {
+        resolve();
+      }
     });
-    
-    // Copy inline script content
-    if (!script.src) {
-      newScript.textContent = script.textContent;
-    }
-    
-    // Don't re-add layout.js to avoid infinite loop
-    if (!script.src || !script.src.includes('layout.js')) {
-      document.body.appendChild(newScript);
-    }
   });
+
+  // Wait for all scripts to load
+  await Promise.all(scriptPromises);
+
+  // Dispatch event to notify scripts that layout is ready
+  window.dispatchEvent(new Event('layoutLoaded'));
 }
 
-// Wait for DOM to be ready before loading layout
-document.addEventListener('DOMContentLoaded', loadLayout); 
+// Load layout immediately
+loadLayout(); 
