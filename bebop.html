@@ -21,34 +21,55 @@
   <script src="/components/layout.js"></script>
 </head>
 <body>
-    <nav class="top-nav">
-        <a href="/" class="home-link">Kat's Blog</a>
-        <div class="nav-links">
-            <a href="/about.html">About</a>
-            <a href="/bebop.html" class="active">Building Bebop</a>
-            <a href="/writing.html">Writing</a>
+  <main>
+    <section class="page-header">
+      <h1>Building bebop</h1>
+      <p class="lead-text">Sharing insights and lessons learned while building a next-generation crypto trading platform.</p>
+    </section>
+
+    <section class="intro-section">
+      <div class="intro-content">
+        <h2>About Bebop</h2>
+        <p>Bebop is reimagining how people trade crypto through:</p>
+        <ul class="feature-list">
+          <li>Smart order routing for best execution</li>
+          <li>Price improvement that saves traders money</li>
+          <li>User-friendly interface that makes trading accessible</li>
+          <li>Advanced portfolio tools for better trading decisions</li>
+        </ul>
+        <div class="cta-group">
+          <a href="https://bebop.xyz" target="_blank" class="cta-link">Visit Bebop →</a>
+          <a href="https://docs.bebop.xyz" target="_blank" class="cta-link secondary">Read the docs →</a>
         </div>
-    </nav>
+      </div>
+    </section>
 
-    <main>
-        <h1>Building Bebop</h1>
+    <img src="assets/images/bebop-photo.jpg" alt="Bebop trading interface" class="feature-image">
 
-        <img src="assets/images/bebop-photo.jpg" alt="Bebop" class="feature-image">
-
-        <div class="content-section">
-          <h2>What to expect here</h2>
-          <p>This will be the place where I share things I've learned while working on Bebop — the behind-the-scenes of building a trading platform, product lessons, experiments, and probably a few bug stories too.</p>
-          <p><em>Coming soon.</em></p>
+    <section class="content-section">
+      <h2>What to Expect Here</h2>
+      <div class="topic-grid">
+        <div class="topic-card">
+          <h3>Product Development</h3>
+          <p>Behind-the-scenes looks at how we make product decisions, iterate on features, and respond to user feedback.</p>
         </div>
-
-        <div class="content-section">
-          <h2>About Bebop</h2>
-          <p>Bebop is a trading platform that's reimagining how people trade crypto. We're focused on delivering the best possible trading experience through smart order routing, price improvement, and a user-friendly interface.</p>
-          <a href="https://bebop.xyz" target="_blank" class="cta-button">Visit Bebop →</a>
+        <div class="topic-card">
+          <h3>Technical Insights</h3>
+          <p>Deep dives into the technical challenges of building a trading platform and how we solve them.</p>
         </div>
+        <div class="topic-card">
+          <h3>Learning & Growth</h3>
+          <p>Personal lessons from transitioning from product to technical understanding in a fast-paced startup.</p>
+        </div>
+      </div>
+    </section>
 
-        <div id="blogGrid" class="blog-grid"></div>
-    </main>
+    <section class="blog-section">
+      <h2>Latest Posts</h2>
+      <div id="blogGrid" class="blog-grid"></div>
+      <p class="coming-soon">More posts coming soon! Follow along as I document this journey.</p>
+    </section>
+  </main>
 
   <script src="/script.js" defer></script>
 </body>
