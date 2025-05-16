@@ -156,16 +156,41 @@ function initPostContent() {
     return;
   }
 
-  fetch(`/posts/${postId}/index.html`)
-    .then(res => {
-      if (!res.ok) throw new Error("Not found");
-      return res.text();
-    })
-    .then(html => {
-      postContent.innerHTML = html;
+  // First, fetch the post metadata to determine the track
+  fetch("/posts.json")
+    .then(res => res.json())
+    .then(posts => {
+      const post = posts.find(p => p.id === postId);
+      if (!post) throw new Error("Post not found");
+      
+      // Determine back link based on track
+      let backLink = '/blog.html';
+      let backText = 'Back to Vibe Coding';
+      
+      if (post.track && post.track.toLowerCase() === 'bebop') {
+        backLink = '/bebop.html';
+        backText = 'Back to Building Bebop';
+      }
+
+      // Then fetch the post content
+      return fetch(`/posts/${postId}/index.html`)
+        .then(res => {
+          if (!res.ok) throw new Error("Not found");
+          return res.text();
+        })
+        .then(html => {
+          // Add back button and post content
+          postContent.innerHTML = `
+            <a href="${backLink}" class="back-button">${backText}</a>
+            ${html}
+          `;
+        });
     })
     .catch((error) => {
       console.error("Failed to load post:", error);
-      postContent.innerHTML = "<p>Could not load this post.</p>";
+      postContent.innerHTML = `
+        <a href="/blog.html" class="back-button">Back to Blog</a>
+        <p>Could not load this post.</p>
+      `;
     });
 }

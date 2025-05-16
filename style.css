@@ -1038,3 +1038,31 @@ pre code {
     grid-template-columns: 1fr;
   }
 }
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  margin-bottom: 1.5rem;
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.back-button:hover {
+  color: var(--hover-color);
+  transform: translateX(-4px);
+}
+
+.back-button::before {
+  content: "←";
+  font-size: 1.2em;
+}
+
+@media (max-width: 768px) {
+  .back-button {
+    margin-bottom: 1rem;
+  }
+}
