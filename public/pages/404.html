@@ -14,9 +14,10 @@
     // Function to check if a path is a blog post
     async function checkIfBlogPost(path) {
       try {
-        const response = await fetch('/posts.json');
+        const response = await fetch('/public/data/posts.json');
         const posts = await response.json();
-        return posts.some(post => post.slug === path);
+        const post = posts.find(post => post.slug === path);
+        return post ? post.id : false;
       } catch (error) {
         console.error('Error checking blog post:', error);
         return false;
@@ -27,13 +28,17 @@
     async function handleRouting() {
       if (staticPages.includes(path)) {
         // If it's a known static page, redirect to the HTML version
-        window.location.replace('/' + path + '.html');
-      } else if (await checkIfBlogPost(path)) {
-        // If it's a blog post, redirect to the post page with the slug parameter
-        window.location.replace('/post.html?slug=' + path);
+        window.location.replace('/public/pages/' + path + '.html');
       } else {
-        // If it's not a known page, redirect to home
-        window.location.replace('/');
+        // Check if it's a blog post
+        const postId = await checkIfBlogPost(path);
+        if (postId) {
+          // If it's a blog post, load the post content
+          window.location.replace('/public/posts/' + postId + '/index.html');
+        } else {
+          // If it's not a known page, redirect to home
+          window.location.replace('/');
+        }
       }
     }
 
