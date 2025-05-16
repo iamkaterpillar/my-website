@@ -102,7 +102,7 @@ function initBlogPosts() {
   // Clear existing posts before loading new ones
   blogGrid.innerHTML = '';
 
-  fetch("/src/data/posts.json")
+  fetch("/data/posts.json")
     .then(response => response.json())
     .then(posts => {
       // Sort posts by date (most recent first)
@@ -110,8 +110,8 @@ function initBlogPosts() {
 
       // Filter posts based on current page
       const currentPath = window.location.pathname.replace(/^\/+|\/+$|\.[^/.]+$/g, '');
-      const isBebopPage = currentPath === "bebop";
-      const isVibeCodingPage = currentPath === "blog";
+      const isBebopPage = currentPath === "pages/bebop";
+      const isVibeCodingPage = currentPath === "pages/blog";
       const isHomePage = currentPath === "" || currentPath === "index";
       
       let filteredPosts;
@@ -136,8 +136,8 @@ function initBlogPosts() {
         const card = document.createElement("div");
         card.className = "blog-card";
         card.innerHTML = `
-          <a href="/${post.slug}">
-            <img src="/public/${post.thumbnail}" alt="${post.title}" loading="lazy" />
+          <a href="/posts/${post.slug}">
+            <img src="/assets/${post.thumbnail}" alt="${post.title}" loading="lazy" />
             <h2>${post.title}</h2>
             <p>${post.summary}</p>
             <small>${post.date} • ${post.track}</small>
@@ -165,7 +165,7 @@ function initPostContent() {
   }
 
   // First, fetch the post metadata to determine the track
-  fetch("/src/data/posts.json")
+  fetch("/data/posts.json")
     .then(res => res.json())
     .then(posts => {
       const post = posts.find(p => p.slug === slug);
@@ -174,7 +174,7 @@ function initPostContent() {
       // Update page title and meta tags
       const baseUrl = window.location.origin;
       const canonicalUrl = `${baseUrl}/${post.slug}`;
-      const imageUrl = `${baseUrl}/public/${post.thumbnail}`;
+      const imageUrl = `${baseUrl}/assets/${post.thumbnail}`;
       
       // Basic meta tags
       document.title = `${post.title} | iamkaterpillar`;
@@ -228,7 +228,7 @@ function initPostContent() {
       }
 
       // Then fetch the post content
-      return fetch(`/public/posts/${post.id}/index.html`)
+      return fetch(`/posts/${post.id}/index.html`)
         .then(res => {
           if (!res.ok) throw new Error("Not found");
           return res.text();
