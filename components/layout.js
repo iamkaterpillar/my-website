@@ -33,6 +33,25 @@ async function loadLayout() {
       document.head.appendChild(currentFavicon);
     }
 
+    // Set active navigation state
+    const currentPath = window.location.pathname;
+    const navLinks = document.querySelectorAll('nav a');
+    
+    navLinks.forEach(link => {
+      const linkPath = link.getAttribute('href');
+      
+      // Handle home page
+      if (currentPath === '/' || currentPath.endsWith('index.html')) {
+        if (linkPath === '/') {
+          link.classList.add('active');
+        }
+      }
+      // Handle other pages
+      else if (linkPath !== '/' && currentPath.endsWith(linkPath.slice(1))) {
+        link.classList.add('active');
+      }
+    });
+
     // Re-execute scripts
     const scripts = Array.from(document.getElementsByTagName('script'));
     const scriptPromises = scripts.map(script => {
