@@ -11,13 +11,16 @@ async function loadLayout() {
   // Update the document
   document.documentElement.innerHTML = finalHtml;
   
-  // Reattach event listeners
-  document.querySelector('script').addEventListener('load', () => {
-    if (typeof initPage === 'function') {
-      initPage();
+  // Re-execute any scripts that were in the page
+  const scripts = Array.from(document.getElementsByTagName('script'));
+  scripts.forEach(script => {
+    if (script.src && !script.src.includes('layout.js')) {
+      const newScript = document.createElement('script');
+      newScript.src = script.src;
+      document.body.appendChild(newScript);
     }
   });
 }
 
-// Load the layout when the DOM is ready
-document.addEventListener('DOMContentLoaded', loadLayout); 
+// Load the layout immediately
+loadLayout(); 

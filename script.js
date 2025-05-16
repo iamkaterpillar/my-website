@@ -2,20 +2,42 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Select the blogGrid container where we'll place all blog cards
   const blogGrid = document.getElementById("blogGrid");
+  console.log("Looking for blogGrid element:", blogGrid);
 
   // Only proceed if we found the blogGrid element
-  if (!blogGrid) return;
+  if (!blogGrid) {
+    console.log("blogGrid element not found - are you on the right page?");
+    return;
+  }
 
   // Fetch blog post metadata from posts.json
+  console.log("Fetching posts.json...");
   fetch("posts.json")
-    .then((response) => response.json()) // Convert JSON response into a JS object
+    .then((response) => {
+      console.log("posts.json response status:", response.status);
+      return response.json();
+    })
     .then((posts) => {
-      // On blog.html page, show only 'vibe coding' posts
+      console.log("Loaded posts:", posts);
+      
+      // Filter posts based on current page
+      const isBebopPage = window.location.pathname.endsWith("bebop.html");
       const isVibeCodingPage = window.location.pathname.endsWith("blog.html");
-      const filteredPosts = posts.filter((post) => post.track && post.track.toLowerCase() === "vibe coding");
+      
+      let filteredPosts;
+      if (isBebopPage) {
+        filteredPosts = posts.filter((post) => post.track && post.track.toLowerCase() === "bebop");
+      } else if (isVibeCodingPage) {
+        filteredPosts = posts.filter((post) => post.track && post.track.toLowerCase() === "vibe coding");
+      } else {
+        filteredPosts = posts;
+      }
+      
+      console.log("Filtered posts:", filteredPosts);
 
       if (filteredPosts.length === 0) {
-        blogGrid.innerHTML = "<p>No blog posts to show yet!</p>";
+        console.log("No posts found after filtering");
+        blogGrid.innerHTML = "<p class='no-posts'>No blog posts to show yet!</p>";
         return;
       }
 
@@ -38,11 +60,12 @@ document.addEventListener("DOMContentLoaded", () => {
         // Append the card to the grid on the blog page
         blogGrid.appendChild(card);
       });
+      console.log("Finished adding blog cards");
     })
     .catch((error) => {
       // Handle any errors that occur (e.g. file missing or bad JSON format)
       console.error("Failed to load blog posts:", error);
-      blogGrid.innerHTML = "<p>Oops! Could not load posts.</p>";
+      blogGrid.innerHTML = "<p class='no-posts'>Oops! Could not load posts.</p>";
     });
 });
 
