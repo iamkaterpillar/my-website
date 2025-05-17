@@ -1,36 +1,18 @@
 [
   {
-    "id": "website-setup",
-    "slug": "website-setup",
-    "title": "Website setup",
-    "date": "2025-04-14",
+    "id": "using-ai-agents-in-cursor",
+    "slug": "using-ai-agents-in-cursor",
+    "title": "Using AI agents in Cursor",
+    "date": "2024-04-26",
     "track": "vibe coding",
-    "summary": "Setting up this site from scratch using HTML, CSS, and a touch of magic.",
-    "thumbnail": "/posts/website-setup/thumb.jpg"
-  },
-  {
-    "id": "usage-analytics",
-    "slug": "usage-analytics",
-    "title": "Usage analytics",
-    "date": "2025-04-14",
-    "track": "vibe coding",
-    "summary": "Adding Google Analytics to the site and troubleshooting privacy blockers.",
-    "thumbnail": "/posts/usage-analytics/thumb.jpg"
-  },
-  {
-    "id": "adding-structure",
-    "slug": "adding-structure",
-    "title": "Adding structure",
-    "date": "2025-04-14",
-    "track": "vibe coding",
-    "summary": "Cleaning up file structure for a scalable and maintainable setup.",
-    "thumbnail": "/posts/adding-structure/thumb.jpg"
+    "summary": "How I used Cursor's AI agent to clean up my website's code and make it more maintainable.",
+    "thumbnail": "/posts/ai-agents-cursor/thumb.png"
   },
   {
     "id": "network-requests",
     "slug": "network-requests",
     "title": "Network requests",
-    "date": "2025-04-14",
+    "date": "2024-04-25",
     "track": "vibe coding",
     "summary": "Diving into the network requests my website makes.",
     "thumbnail": "/posts/network-requests/thumb.jpg"
@@ -39,18 +21,36 @@
     "id": "coding-languages",
     "slug": "coding-languages",
     "title": "Coding languages",
-    "date": "2025-04-14",
+    "date": "2024-04-24",
     "track": "vibe coding",
     "summary": "A look at the languages I've used to build this site.",
     "thumbnail": "/posts/coding-languages/thumb.jpg"
   },
   {
-    "id": "using-ai-agents-in-cursor",
-    "slug": "using-ai-agents-in-cursor",
-    "title": "Using AI agents in Cursor",
-    "date": "2024-04-26",
+    "id": "adding-structure",
+    "slug": "adding-structure",
+    "title": "Adding structure",
+    "date": "2024-04-23",
     "track": "vibe coding",
-    "summary": "How I used Cursor's AI agent to clean up my website's code and make it more maintainable.",
-    "thumbnail": "/posts/ai-agents-cursor/thumb.png"
+    "summary": "Cleaning up file structure for a scalable and maintainable setup.",
+    "thumbnail": "/posts/adding-structure/thumb.jpg"
+  },
+  {
+    "id": "usage-analytics",
+    "slug": "usage-analytics",
+    "title": "Usage analytics",
+    "date": "2024-04-22",
+    "track": "vibe coding",
+    "summary": "Adding Google Analytics to the site and troubleshooting privacy blockers.",
+    "thumbnail": "/posts/usage-analytics/thumb.jpg"
+  },
+  {
+    "id": "website-setup",
+    "slug": "website-setup",
+    "title": "Website setup",
+    "date": "2024-04-21",
+    "track": "vibe coding",
+    "summary": "Setting up this site from scratch using HTML, CSS, and a touch of magic.",
+    "thumbnail": "/posts/website-setup/thumb.jpg"
   }
 ]
