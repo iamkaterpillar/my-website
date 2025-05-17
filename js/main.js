@@ -38,12 +38,10 @@ function initMobileMenu() {
   });
 
   // Toggle menu when clicking the button
-  menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('active');
-    menuToggle.classList.toggle('active');
-    menuToggle.setAttribute('aria-expanded', 
-      menuToggle.classList.contains('active').toString()
-    );
+  menuToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleMenu();
   });
 
   // Close menu when clicking a link
