@@ -281,6 +281,7 @@ hr {
   flex-direction: column;
   gap: 0.5rem;
   margin: 1.5rem 0;
+  width: 100%;
 }
 
 .blog-card {
@@ -290,6 +291,8 @@ hr {
   padding: 0.75rem 1rem;
   border-bottom: 1px solid #eee;
   height: 180px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .blog-card a {
@@ -302,16 +305,18 @@ hr {
 
 .blog-card img {
   width: 150px;
-  height: 150px; /* Fixed height to match card height */
+  height: 150px;
   border-radius: 8px;
   object-fit: cover;
+  flex-shrink: 0; /* Prevent image from shrinking */
 }
 
 .blog-card-content {
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Prevent content from spilling */
+  overflow: hidden;
+  min-width: 0; /* Ensure text wrapping works */
 }
 
 .blog-card h2 {
@@ -319,7 +324,6 @@ hr {
   color: var(--accent-color);
   font-size: 1.25rem;
   line-height: 1.4;
-  /* Ensure title doesn't wrap to more than 2 lines */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -329,7 +333,6 @@ hr {
 .blog-card p {
   margin: 0 0 0.5rem;
   color: var(--text-color);
-  /* Ensure description doesn't take too much space */
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
@@ -340,7 +343,64 @@ hr {
 
 .blog-card small {
   color: #666;
-  margin-top: auto; /* Push date to bottom */
+  margin-top: auto;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .blog-grid {
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 0 0.5rem;
+  }
+
+  .blog-card {
+    height: auto;
+    min-height: 160px;
+    padding: 1rem 0.5rem;
+  }
+
+  .blog-card a {
+    flex-direction: row; /* Keep row layout on mobile */
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .blog-card img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .blog-card-content {
+    padding-right: 0.5rem;
+  }
+
+  .blog-card h2 {
+    font-size: 1.1rem;
+    -webkit-line-clamp: 2;
+  }
+  
+  .blog-card p {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 2;
+  }
+}
+
+/* Featured blog grid on homepage */
+.blog-grid.featured {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .blog-grid.featured {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
 }
 
 /* ---------------------------------------
