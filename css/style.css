@@ -282,6 +282,7 @@ hr {
   flex-direction: column;
   gap: 2rem;
   width: 100%;
+  margin: 2rem 0;
 }
 
 .blog-card {
@@ -367,6 +368,7 @@ hr {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    margin: 1.5rem 0;
   }
 
   .blog-card {
@@ -389,6 +391,7 @@ hr {
   .blog-card-content {
     gap: 0.5rem;
     width: 100%;
+    text-align: left;
   }
 
   .blog-card h2 {
@@ -911,38 +914,7 @@ pre code {
     padding: 1.25rem;
   }
 
-  /* Blog page specific mobile adjustments */
-  .blog-grid {
-    gap: 1rem;
-    margin: 2rem 0;
-  }
-
-  .blog-card {
-    padding: 1rem;
-    height: 160px;
-  }
-
-  .blog-card a {
-    flex-direction: column;
-  }
-
-  .blog-card img {
-    width: 130px;
-    height: 130px;
-  }
-
-  .blog-card-content {
-    text-align: center;
-  }
-
-  .blog-card h2 {
-    font-size: 1.1rem;
-  }
-  
-  .blog-card p {
-    font-size: 0.9rem;
-    -webkit-line-clamp: 2; /* Show fewer lines on mobile */
-  }
+  /* Blog page specific mobile adjustments have been moved to the blog card section */
 
   /* Bebop page mobile adjustments */
   .page-header {
@@ -1320,6 +1292,11 @@ pre code {
   line-height: 1.7;
   margin-bottom: 1.2rem;
   color: var(--text-color);
+}
+
+.about-content strong {
+  font-weight: 600;
+  color: var(--accent-color);
 }
 
 .about-content ul {
