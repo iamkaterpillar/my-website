@@ -135,6 +135,14 @@ function initBlogPosts() {
         const card = document.createElement("div");
         card.className = "blog-card";
         
+        // Create the link element
+        const link = document.createElement('a');
+        link.href = `/${post.slug}`;
+        
+        // Create the content container
+        const content = document.createElement('div');
+        content.className = 'blog-card-content';
+        
         // Ensure thumbnail path starts with a slash
         const thumbnailPath = post.thumbnail.startsWith('/') ? post.thumbnail : `/${post.thumbnail}`;
         console.log('Loading thumbnail:', thumbnailPath);
@@ -150,21 +158,23 @@ function initBlogPosts() {
           img.alt = 'Thumbnail not available';
         };
         
-        // Create the link element
-        const link = document.createElement('a');
-        link.href = `/${post.slug}`;
-        
-        // Add the image
+        // Add the image to the link
         link.appendChild(img);
         
-        // Add the rest of the content
-        link.innerHTML += `
+        // Add the content
+        content.innerHTML = `
           <h2>${post.title}</h2>
           <p>${post.summary}</p>
           <small>${post.date} • ${post.track}</small>
         `;
         
+        // Add the content to the link
+        link.appendChild(content);
+        
+        // Add the link to the card
         card.appendChild(link);
+        
+        // Add the card to the grid
         blogGrid.appendChild(card);
       });
     })

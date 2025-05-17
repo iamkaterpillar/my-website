@@ -291,18 +291,37 @@ hr {
   border-bottom: 1px solid #eee;
 }
 
+.blog-card a {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
 .blog-card img {
   width: 150px;
   height: auto;
   border-radius: 8px;
+  object-fit: cover;
+}
+
+.blog-card-content {
+  flex: 1;
 }
 
 .blog-card h2 {
   margin: 0 0 0.5rem;
+  color: var(--accent-color);
 }
 
 .blog-card p {
   margin: 0 0 0.5rem;
+  color: var(--text-color);
+}
+
+.blog-card small {
+  color: #666;
 }
 
 /* ---------------------------------------
@@ -774,14 +793,21 @@ pre code {
 
   /* Blog page specific mobile adjustments */
   .blog-card {
+    padding: 1rem;
+  }
+
+  .blog-card a {
     flex-direction: column;
-    padding: 1.25rem;
   }
 
   .blog-card img {
     width: 100%;
     max-width: 300px;
     margin: 0 auto 1rem;
+  }
+
+  .blog-card-content {
+    text-align: center;
   }
 
   /* Bebop page mobile adjustments */
