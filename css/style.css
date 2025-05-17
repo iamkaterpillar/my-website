@@ -276,26 +276,26 @@ hr {
    8. Blog card layout (blog.html)
 --------------------------------------- */
 
-/* Blog grid base styles */
+/* Blog grid and cards */
 .blog-grid {
   display: flex;
   flex-direction: column;
   gap: 2rem;
   width: 100%;
-  padding: 0 1rem;
 }
 
-/* Blog card base styles */
 .blog-card {
+  width: 100%;
+  padding: 0 1rem 2rem;
   border-bottom: 1px solid var(--border-color);
-  padding-bottom: 2rem;
 }
 
 .blog-card a {
   display: flex;
+  gap: 2rem;
   text-decoration: none;
   color: inherit;
-  gap: 1.5rem;
+  width: 100%;
 }
 
 .blog-card img {
@@ -308,29 +308,34 @@ hr {
 
 .blog-card-content {
   flex: 1;
-  min-width: 0; /* Ensures text wrapping */
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
 }
 
 .blog-card h2 {
-  margin: 0 0 0.75rem 0;
+  margin: 0;
   font-size: 1.25rem;
   line-height: 1.4;
   color: var(--accent-color);
 }
 
 .blog-card p {
-  margin: 0 0 0.75rem 0;
+  margin: 0;
   font-size: 0.95rem;
   line-height: 1.5;
   color: var(--text-color);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .blog-card small {
-  display: block;
   color: #666;
 }
 
-/* Featured blog grid (homepage) */
+/* Featured blog grid on homepage */
 .blog-grid.featured {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -339,13 +344,34 @@ hr {
   margin: 0 auto;
 }
 
-/* Mobile styles */
+/* Tablet breakpoint */
+@media (max-width: 1024px) {
+  .blog-card {
+    padding: 0 1rem 1.5rem;
+  }
+
+  .blog-card a {
+    gap: 1.5rem;
+  }
+
+  .blog-card img {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+/* Mobile breakpoint */
 @media (max-width: 768px) {
   .blog-grid,
   .blog-grid.featured {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
+  }
+
+  .blog-card {
+    padding: 0 0.75rem 1.5rem;
+    height: auto;
   }
 
   .blog-card a {
@@ -355,27 +381,29 @@ hr {
 
   .blog-card img {
     width: 100%;
-    height: 180px;
+    height: auto;
+    aspect-ratio: 16/9;
+    margin: 0;
   }
 
   .blog-card-content {
+    gap: 0.5rem;
     width: 100%;
+  }
+
+  .blog-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .blog-card p {
+    -webkit-line-clamp: 2;
   }
 }
 
 /* Small mobile adjustments */
 @media (max-width: 480px) {
-  .blog-grid,
-  .blog-grid.featured {
-    gap: 1.5rem;
-  }
-
   .blog-card {
-    padding-bottom: 1.5rem;
-  }
-
-  .blog-card img {
-    height: 160px;
+    padding: 0 0.5rem 1.5rem;
   }
 
   .blog-card h2 {
