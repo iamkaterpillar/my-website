@@ -1,0 +1,7 @@
+# Handle clean URLs without .html extension
+/pages/about     /pages/about.html     200
+/pages/blog      /pages/blog.html      200
+/pages/bebop     /pages/bebop.html     200
+
+# Handle 404s
+/*    /404.html   404 
