@@ -1,5 +1,23 @@
 [
   {
+    "id": "bebop-basics",
+    "slug": "bebop-basics",
+    "title": "Bebop basics",
+    "date": "2024-04-28",
+    "track": "bebop",
+    "summary": "A comprehensive guide to understanding what Bebop is, how it works, and why it matters in the DeFi ecosystem.",
+    "thumbnail": "/posts/bebop-basics/thumb.jpg"
+  },
+  {
+    "id": "about-me-lists",
+    "slug": "about-me-lists",
+    "title": "About me (in lists)",
+    "date": "2024-04-27",
+    "track": "about me",
+    "summary": "Getting to know me through a series of curated lists.",
+    "thumbnail": "/posts/about-me-lists/thumb.jpg"
+  },
+  {
     "id": "using-ai-agents-in-cursor",
     "slug": "using-ai-agents-in-cursor",
     "title": "Using AI agents in Cursor",

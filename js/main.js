@@ -111,6 +111,7 @@ function initBlogPosts() {
       const currentPath = window.location.pathname.replace(/^\/+|\/+$|\.[^/.]+$/g, '');
       const isBebopPage = currentPath === "bebop";
       const isVibeCodingPage = currentPath === "blog";
+      const isAboutPage = currentPath === "about";
       const isHomePage = currentPath === "" || currentPath === "index";
       
       let filteredPosts;
@@ -118,6 +119,8 @@ function initBlogPosts() {
         filteredPosts = posts.filter(post => post.track && post.track.toLowerCase() === "bebop");
       } else if (isVibeCodingPage) {
         filteredPosts = posts.filter(post => post.track && post.track.toLowerCase() === "vibe coding");
+      } else if (isAboutPage) {
+        filteredPosts = posts.filter(post => post.track && post.track.toLowerCase() === "about me");
       } else if (isHomePage) {
         // On homepage, show only 2 most recent posts (already sorted by date)
         filteredPosts = posts.slice(0, 2);
