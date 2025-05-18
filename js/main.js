@@ -109,8 +109,8 @@ function initBlogPosts() {
 
       // Filter posts based on current page
       const currentPath = window.location.pathname.replace(/^\/+|\/+$|\.[^/.]+$/g, '');
-      const isBebopPage = currentPath === "bebop" || currentPath === "pages/bebop";
-      const isVibeCodingPage = currentPath === "blog" || currentPath === "pages/blog";
+      const isBebopPage = currentPath === "bebop";
+      const isVibeCodingPage = currentPath === "blog";
       const isHomePage = currentPath === "" || currentPath === "index";
       
       let filteredPosts;
