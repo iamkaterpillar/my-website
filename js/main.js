@@ -109,9 +109,9 @@ function initBlogPosts() {
 
       // Filter posts based on current page
       const currentPath = window.location.pathname.replace(/^\/+|\/+$|\.[^/.]+$/g, '');
-      const isBebopPage = currentPath === "bebop";
-      const isVibeCodingPage = currentPath === "blog";
-      const isAboutPage = currentPath === "about";
+      const isBebopPage = currentPath === "bebop" || currentPath === "pages/bebop";
+      const isVibeCodingPage = currentPath === "blog" || currentPath === "pages/blog";
+      const isAboutPage = currentPath === "about" || currentPath === "pages/about";
       const isHomePage = currentPath === "" || currentPath === "index";
       
       let filteredPosts;
@@ -125,7 +125,7 @@ function initBlogPosts() {
         // On homepage, show only 2 most recent posts (already sorted by date)
         filteredPosts = posts.slice(0, 2);
       } else {
-        filteredPosts = posts;
+        filteredPosts = [];
       }
 
       if (filteredPosts.length === 0) {
@@ -140,7 +140,7 @@ function initBlogPosts() {
         
         // Create the link element
         const link = document.createElement('a');
-        link.href = `/${post.slug}`;
+        link.href = `/pages/post.html?slug=${post.slug}`;
         
         // Create the content container
         const content = document.createElement('div');
@@ -190,11 +190,16 @@ function initPostContent() {
   const postContent = document.getElementById("postContent");
   if (!postContent) return;
 
-  // Get the slug from either the URL path or query parameter
-  let slug = window.location.pathname.replace(/^\/+|\/+$/g, '');
+  // First try to get the slug from query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  let slug = urlParams.get('slug');
+
+  // If no slug in query params, try to get it from the path
   if (!slug) {
-    const urlParams = new URLSearchParams(window.location.search);
-    slug = urlParams.get('slug');
+    slug = window.location.pathname.replace(/^\/+|\/+$|\.[^/.]+$/g, '');
+    if (slug.startsWith('pages/')) {
+      slug = slug.replace('pages/', '');
+    }
   }
 
   if (!slug) {
@@ -260,12 +265,15 @@ function initPostContent() {
       }
       
       // Determine back link based on track
-      let backLink = '/blog';
+      let backLink = '/pages/blog';
       let backText = 'back to Vibe coding';
       
       if (post.track && post.track.toLowerCase() === 'bebop') {
-        backLink = '/bebop';
+        backLink = '/pages/bebop';
         backText = 'back to Building bebop';
+      } else if (post.track && post.track.toLowerCase() === 'about me') {
+        backLink = '/pages/about';
+        backText = 'back to About me';
       }
 
       // Then fetch the post content
@@ -291,7 +299,7 @@ function initPostContent() {
       console.error("Failed to load post:", error);
       document.title = "Post Not Found | iamkaterpillar";
       postContent.innerHTML = `
-        <a href="/blog" class="back-button">back to blog</a>
+        <a href="/pages/blog" class="back-button">back to blog</a>
         <p>Could not load this post.</p>
       `;
     });
