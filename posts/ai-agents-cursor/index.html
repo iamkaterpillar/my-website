@@ -1,77 +1,48 @@
-<h1>Using AI Agents in Cursor</h1>
-<p>I've been playing around with Cursor's AI agent lately, and let me tell you — it's pretty mind-blowing. Today, I want to share how I used it to solve a real problem I had with my website: duplicate navigation code across every page.</p>
-<h2>The Problem</h2>
-<p>When I first built this site, I was copying and pasting the same navigation bar into every HTML file. You know, the classic "it works for now" solution that developers love to hate. Here's what I had in every single page:</p>
-<pre><code>&lt;header&gt;
-  &lt;nav&gt;
-    &lt;a href="index.html"&gt;Home&lt;/a&gt;
-    &lt;a href="about.html"&gt;About me&lt;/a&gt;
-    &lt;a href="blog.html"&gt;Vibe coding&lt;/a&gt;
-    &lt;a href="bebop.html"&gt;Building Bebop&lt;/a&gt;
-  &lt;/nav&gt;
-&lt;/header&gt;
-</code></pre>
-<p>Not only was this annoying to maintain (imagine updating the navigation in five different files!), but it also meant I had duplicate code everywhere. Not exactly what you'd call "clean code."</p>
-<h2>The Solution</h2>
-<p>Enter Cursor's AI agent. I asked it to help me refactor my site to use a shared layout component, and it did something pretty cool: it created a new <code>components</code> directory with two files:</p>
-<ol>
-  <li><strong>layout.html</strong> - A template that contains all the shared elements:
-    <pre><code>&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;!-- All the common stuff: meta tags, styles, analytics --&gt;
-&lt;/head&gt;
-&lt;body&gt;
-  &lt;!-- Navigation --&gt;
-  &lt;header&gt;
-    &lt;nav&gt;
-      &lt;a href="/index.html"&gt;Home&lt;/a&gt;
-      &lt;a href="/about.html"&gt;About me&lt;/a&gt;
-      &lt;a href="/blog.html"&gt;vibe coding&lt;/a&gt;
-      &lt;a href="/bebop.html"&gt;Building Bebop&lt;/a&gt;
-    &lt;/nav&gt;
-  &lt;/header&gt;  
-  &lt;!-- Main content --&gt;
-  &lt;main&gt;
-    {{content}}
-  &lt;/main&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-  </li>
-  <li><strong>layout.js</strong> - A small script that handles the magic:
-    <pre><code>async function loadLayout() {
-  const layoutResponse = await fetch('/components/layout.html');
-  const layoutHtml = await layoutResponse.text();
-  // Get the current page's content
-  const mainContent = document.querySelector('main').innerHTML;
-  // Replace the content placeholder in the layout
-  const finalHtml = layoutHtml.replace('{{content}}', mainContent);
-  // Update the document
-  document.documentElement.innerHTML = finalHtml;
-}
-// Load the layout when the DOM is ready
-document.addEventListener('DOMContentLoaded', loadLayout);
-</code></pre>
-  </li>
-</ol>
-<p>Now, each page only needs to contain its unique content, wrapped in a <code>&lt;main&gt;</code> tag. The layout script handles loading the shared template and injecting the page-specific content into it.</p>
-<h2>Why This Rocks</h2>
+<h1>Using AI agents in Cursor</h1>
+<p>When I first started building this website, I was using VS Code—but I wouldn’t say I was comfortable with it. Everything felt unfamiliar, and I was relying heavily on ChatGPT to walk me through each step.</p>
+<p>After hearing a lot of people recommend <strong>Cursor</strong>, I figured it was worth upgrading and giving it a try. I liked the interface right away, but at first, I didn’t even think to explore the AI agents. I was mostly just using it like a smarter version of VS Code.</p>
+<p>Recently though, I finally started digging into the AI features—and it’s been a game changer.</p>
+
+<h2>What is Cursor?</h2>
+<p><a href="https://www.cursor.so/" target="_blank">Cursor</a> is an AI-native IDE (Integrated Development Environment). Think of it as VS Code, but with superpowers. It’s designed from the ground up to integrate AI into your workflow—whether that’s writing new code, debugging issues, or learning as you go.</p>
+
+<h2>How I’m using AI agents</h2>
+<p>Here’s how I’ve been using Cursor’s AI agents to build and improve this site:</p>
 <ul>
-  <li>Navigation changes only need to be made in one place</li>
-  <li>Common elements (like analytics, styles, and favicon) are managed centrally</li>
-  <li>Each page is cleaner and focused on its unique content</li>
-  <li>If I want to add a new page, I don't have to copy-paste all the boilerplate</li>
+  <li><strong>Code cleanup:</strong> The AI helps tidy up formatting, catch inconsistencies, and suggest clearer patterns.</li>
+  <li><strong>Feature implementation:</strong> When adding new features, it recommends best practices and even scaffolds out clean, efficient code.</li>
+  <li><strong>Bug fixing:</strong> I can paste error messages or describe weird behavior, and it often points me directly to the fix.</li>
+  <li><strong>Learning:</strong> The AI doesn't just give solutions—it explains them. That’s been huge for leveling up my understanding.</li>
 </ul>
-<h2>The AI Experience</h2>
-<p>What's really cool about this whole process is how natural it felt. I just told the AI what I wanted to achieve ("refactor my site to use a shared layout"), and it:</p>
-<ol>
-  <li>Understood the problem</li>
-  <li>Proposed a solution</li>
-  <li>Created the necessary files</li>
-  <li>Updated all my existing pages</li>
-  <li>Explained what it did and why</li>
-</ol>
-<p>It's like having a pair programmer who's really good at refactoring and explaining their thought process. The best part? I learned something new about web development patterns while getting my code cleaned up.</p>
-<p>I'm still getting used to working with AI agents, but moments like this make me excited about the future of coding. It's not just about writing code faster — it's about having a partner that helps you write better code and learn along the way.</p>
-<p><em>P.S. If you're curious about the full implementation, you can check out the <a href="https://github.com/iamkaterpillar/my-website/tree/main/components" target="_blank">components directory</a> in my GitHub repo.</em></p> 
+
+<h2>Recent improvements (thanks to Cursor)</h2>
+<p>Some tangible improvements I’ve made recently with the help of Cursor’s AI:</p>
+<ul>
+  <li>Reorganized the file structure for better clarity and scalability</li>
+  <li>Added meta tags for SEO and social previews</li>
+  <li>Implemented responsive design patterns for mobile friendliness</li>
+  <li>Created a reusable styling system using utility classes</li>
+  <li>Added social media icons using clean, lightweight SVGs</li>
+</ul>
+
+<h2>Tips for working with AI agents</h2>
+<p>If you’re new to using AI in your dev workflow, here are a few things I’ve learned:</p>
+<ul>
+  <li><strong>Be specific:</strong> Vague prompts = vague results. Tell the AI exactly what you need.</li>
+  <li><strong>Stay in control:</strong> Don’t blindly accept suggestions—use them as a starting point, and verify everything.</li>
+  <li><strong>Ask “Why?”:</strong> Let the AI teach you. It’s a surprisingly good mentor when prompted to explain.</li>
+  <li><strong>Start small:</strong> Try it on low-risk tasks first. You’ll build trust over time.</li>
+</ul>
+
+<h2>What’s next: other AI tools I want to explore</h2>
+<p>Now that I’ve started using AI agents in Cursor, I’m excited to try out more tools that can streamline different parts of the development process. Here are a few on my radar:</p>
+<ul>
+  <li><a href="https://balsamiq.com/" target="_blank"><strong>Balsamiq</strong></a> – For wireframing and sketching out UI ideas quickly</li>
+  <li><a href="https://www.chatprd.ai/" target="_blank"><strong>ChatPRD</strong></a> – To help structure and iterate on product requirement documents</li>
+  <li><a href="https://devin.ai/" target="_blank"><strong>Devin</strong></a> – The so-called “AI software engineer”—I’m curious how it holds up in practice</li>
+  <li><a href="https://windsurf.com/" target="_blank"><strong>Windsurf</strong></a> – An AI-powered IDE that helps you understand large codebases and collaborate in real-time</li>
+  <li><a href="https://bolt.new/" target="_blank"><strong>Bolt</strong></a> – A browser-based AI agent that lets you prompt, run, and deploy full-stack apps with zero local setup</li>
+</ul>
+<p>I’m still early in exploring what AI can do for solo builders like me, but it’s already made a big difference in how I approach coding—and how much I enjoy it.</p>
+
+<p><em>Have you tried using AI in your coding workflow? I’d love to hear what’s worked for you—or what didn’t. Feel free to reach out!</em></p>

@@ -187,8 +187,12 @@ function initPostContent() {
   const postContent = document.getElementById("postContent");
   if (!postContent) return;
 
-  // Get the slug from the URL path
-  const slug = window.location.pathname.replace(/^\/+|\/+$/g, '');
+  // Get the slug from either the URL path or query parameter
+  let slug = window.location.pathname.replace(/^\/+|\/+$/g, '');
+  if (!slug) {
+    const urlParams = new URLSearchParams(window.location.search);
+    slug = urlParams.get('slug');
+  }
 
   if (!slug) {
     postContent.innerHTML = "<p>Post not found.</p>";
@@ -218,6 +222,7 @@ function initPostContent() {
       document.querySelector('meta[property="og:image"]')?.setAttribute('content', imageUrl);
       
       // Twitter Card meta tags
+      document.querySelector('meta[name="twitter:card"]')?.setAttribute('content', 'summary_large_image');
       document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', post.title);
       document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', post.summary);
       document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', imageUrl);
@@ -246,8 +251,10 @@ function initPostContent() {
         }
       };
       
-      document.querySelector('script[type="application/ld+json"]').textContent = 
-        JSON.stringify(structuredData, null, 2);
+      const jsonLdScript = document.querySelector('script[type="application/ld+json"]');
+      if (jsonLdScript) {
+        jsonLdScript.textContent = JSON.stringify(structuredData, null, 2);
+      }
       
       // Determine back link based on track
       let backLink = '/blog';
@@ -270,6 +277,11 @@ function initPostContent() {
             <a href="${backLink}" class="back-button">${backText}</a>
             ${html}
           `;
+
+          // Update URL to clean format if using query parameter
+          if (window.location.search) {
+            window.history.replaceState({}, '', `/${post.slug}`);
+          }
         });
     })
     .catch((error) => {
