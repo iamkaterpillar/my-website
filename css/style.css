@@ -1327,6 +1327,30 @@ pre code {
   color: #666;
 }
 
+.about-content .social-links {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  justify-content: flex-start;
+}
+
+.about-content .social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background-color: var(--secondary-bg);
+  transition: all 0.2s ease;
+}
+
+.about-content .social-link svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: var(--text-color);
+}
+
 @media (max-width: 768px) {
   .about-content {
     padding: 1.5rem 1rem;
@@ -1345,5 +1369,9 @@ pre code {
   .about-content p,
   .about-content li {
     font-size: 1rem;
+  }
+
+  .about-content .social-links {
+    justify-content: center;
   }
 }
