@@ -1375,3 +1375,34 @@ pre code {
     justify-content: center;
   }
 }
+
+.expect-heading {
+  font-size: 1.1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+  letter-spacing: 0.01em;
+}
+
+.topic-grid.compact {
+  gap: 1rem;
+}
+
+.topic-card.compact {
+  padding: 0.75rem 1rem;
+  font-size: 0.98rem;
+  background: #fafbfc;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+.topic-card.compact h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.3rem;
+}
+
+.topic-card.compact p {
+  font-size: 0.95rem;
+  margin-bottom: 0;
+  color: #444;
+}
