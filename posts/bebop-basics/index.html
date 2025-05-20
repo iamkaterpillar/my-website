@@ -1,16 +1,18 @@
 <h1>Bebop basics</h1>
 
-<p>So what is Bebop? Simply put, Bebop as we describe it is a trading app and a suite of APIs that finds the best route for your trades. Quick, secure, any tokens in any size, at the best prices.</p>
+<p>Bebop started as an internal idea at Wintermute around July 2021, originally code-named “Winterswap.” Coming off DeFi summer, we saw a clear opportunity: to launch a decentralized trading product tailored for larger trades—offering RFQ execution via private market makers, designed for whales and institutions. The plan was to incubate the product within Wintermute and progressively open it to a broader set of decentralized liquidity providers.</p>
+
+<p>So what is Bebop? Simply put, Bebop is a trading app and a suite of APIs that finds the best route for your trades. Quick, secure, any tokens in any size, at the best prices.</p>
 
 <p>Bebop brings together the two most efficient trading models in DeFi:<br>
 - Request-for-quote (RFQ) with professional market makers, and<br>
-- Intent based system that creates auctions for independent on-chain aggregation algorithms (solvers) – Bebop JAM</p>
+- Intent-based system that creates auctions for independent on-chain aggregation algorithms (solvers) – Bebop JAM</p>
 
-<p>We have three APIs that are core to our product: <br>
-1) <strong>PMM</strong>, which gives the best route from our private market maker liquidity, <br>
-2) <strong>JAM</strong>, which gives the best routes from solvers solving on-chain, and <br>
-3) our <strong>Router API</strong>, which brings forward the best between the two.</p>
+<p>We have three APIs that are core to our product:<br>
+1) <strong>PMM</strong>, which delivers the best quotes from our private market maker liquidity,<br>
+2) <strong>JAM</strong>, which returns optimal routes from on-chain solver networks, and<br>
+3) our <strong>Router API</strong>, which intelligently chooses the best route between PMM and JAM.</p>
 
 <img src="/posts/bebop-basics/bebop_apis.jpeg" alt="Bebop APIs" style="max-width:100%;border-radius:8px;margin:2rem 0;" />
 
-<p>If you're trading on our UI, we are showing you the best quote from the Bebop Router – so this could be coming from either JAM or PMM.</p>
+<p>If you're trading on our UI, you’re seeing the best quote surfaced by the Bebop Router – whether it comes from JAM or PMM depends on which is more competitive for your trade.</p>
