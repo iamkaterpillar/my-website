@@ -1,5 +1,14 @@
 [
   {
+    "id": "how-i-work",
+    "slug": "how-i-work",
+    "title": "How I work & communicate",
+    "date": "2024-03-26",
+    "track": "about me",
+    "summary": "A guide to how I work, communicate, and stay organized - so we can move fast and work well together.",
+    "thumbnail": "/posts/how-i-work/thumb.jpg"
+  },
+  {
     "id": "bebop-basics",
     "slug": "bebop-basics",
     "title": "Bebop basics",
