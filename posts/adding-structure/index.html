@@ -1,0 +1,68 @@
+<h1>Adding structure</h1>
+
+<p>When you’re just starting a personal site or blog, it’s tempting to toss everything into one folder and call it a day. But if you think your project might grow — even just a little — it’s worth taking a moment early on to build structure into your setup.</p>
+
+<p>That’s what this post is about: setting up a neat, scalable file structure from the beginning to make things easier later.</p>
+
+<h2>Why structure matters</h2>
+
+<p>Right now, my site only has a few pages. But I know I’m going to be adding more blog posts, some images, and likely other resources (scripts, analytics tools, maybe even interactive pages). Without a clear structure, things could quickly get messy:</p>
+
+<ul>
+  <li>Hard to find files</li>
+  <li>Duplicate images or assets</li>
+  <li>Confusing link paths</li>
+  <li>Refactoring pain when things grow</li>
+</ul>
+
+<p>So instead of deferring that cleanup to “someday,” I decided to do it now.</p>
+
+<h2>What I set up</h2>
+
+<p>I landed on a simple but clean structure:</p>
+
+<pre><code>my-website/
+├── index.html
+├── about.html
+├── blog.html
+├── post.html
+├── posts/               # All blog post content lives here
+│   ├── usage-analytics/
+│   │   ├── index.html
+│   │   └── thumb.jpg
+│   ├── website-setup/
+│   │   ├── index.html
+│   │   └── thumb.jpg
+│   └── adding-structure/
+│       ├── index.html
+│       └── thumb.jpg
+├── assets/              # Site-wide assets
+│   ├── images/
+│   │   └── icons/
+│   │       └── favicon.ico
+│   ├── fonts/
+├── style.css
+├── script.js
+├── posts.json           # Blog post metadata for rendering
+└── CNAME                # For custom domain
+</code></pre>
+
+<h3>Why images go with posts</h3>
+
+<p>One of the decisions I spent time on was whether to put blog post images (like thumbnails) inside a global <code>assets/</code> folder or right next to the <code>.html</code> file for the post.</p>
+
+<p>I decided to keep post-specific assets <em>with the post itself</em>. Why?</p>
+
+<ul>
+  <li>Easier to move/delete/edit posts later without breaking things</li>
+  <li>Keeps global <code>assets/</code> clean and focused on site-wide assets</li>
+  <li>Everything related to a blog post lives together, which just feels right</li>
+</ul>
+
+<p>If I had to migrate this blog to another system or export a post, I’d want it to be self-contained.</p>
+
+<h2>Final thoughts</h2>
+
+<p>This kind of structure might feel like overkill when you only have three blog posts and a favicon, but it’s a gift to your future self. I’d rather spend 10 extra minutes now than have to refactor everything in a month.</p>
+
+<p>If you’re building your own site and wondering whether to invest time in structure early on — I say yes. It keeps your project organized, easier to debug, and ready to scale if inspiration hits ✨</p>
