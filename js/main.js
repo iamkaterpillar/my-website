@@ -122,8 +122,8 @@ function initBlogPosts() {
       } else if (isAboutPage) {
         filteredPosts = posts.filter(post => post.track && post.track.toLowerCase() === "about me");
       } else if (isHomePage) {
-        // On homepage, show only 2 most recent posts (already sorted by date)
-        filteredPosts = posts.slice(0, 2);
+        // On homepage, show only 4 most recent posts (already sorted by date)
+        filteredPosts = posts.slice(0, 4);
       } else {
         filteredPosts = [];
       }
