@@ -138,6 +138,11 @@ function initBlogPosts() {
         const card = document.createElement("div");
         card.className = "blog-card";
         
+        // Add compact class if the grid has it
+        if (blogGrid.classList.contains('compact')) {
+          card.classList.add('compact');
+        }
+        
         // Create the link element
         const link = document.createElement('a');
         link.href = `/pages/post.html?slug=${post.slug}`;
