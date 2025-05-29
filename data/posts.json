@@ -1,5 +1,14 @@
 [
   {
+    "id": "pm-lessons",
+    "slug": "pm-lessons",
+    "title": "Lessons I've learned as a PM",
+    "date": "2024-05-29",
+    "track": "bebop",
+    "summary": "Ten key lessons from my journey as a Product Manager at Bebop, building a technical crypto product.",
+    "thumbnail": "/posts/pm-lessons/thumb.jpg"
+  },
+  {
     "id": "how-i-work",
     "slug": "how-i-work",
     "title": "How I work & communicate",
