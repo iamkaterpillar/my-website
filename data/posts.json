@@ -3,7 +3,7 @@
     "id": "pm-lessons",
     "slug": "pm-lessons",
     "title": "Lessons as a PM",
-    "date": "2024-05-29",
+    "date": "2025-05-29",
     "track": "bebop",
     "summary": "Ten key lessons from my journey as a Product Manager at Bebop, building a technical crypto product.",
     "thumbnail": "/posts/pm-lessons/thumb.jpg"
@@ -12,7 +12,7 @@
     "id": "how-i-work",
     "slug": "how-i-work",
     "title": "How I work & communicate",
-    "date": "2024-05-23",
+    "date": "2025-05-23",
     "track": "about me",
     "summary": "A guide to how I work, communicate, and stay organized - so we can move fast and work well together.",
     "thumbnail": "/posts/how-i-work/thumb.jpg"
@@ -21,7 +21,7 @@
     "id": "bebop-basics",
     "slug": "bebop-basics",
     "title": "Bebop basics",
-    "date": "2024-04-28",
+    "date": "2025-04-28",
     "track": "bebop",
     "summary": "A simple introduction to Bebop - what it is, how it works, and why it matters in DeFi.",
     "thumbnail": "/posts/bebop-basics/thumb.png"
@@ -30,7 +30,7 @@
     "id": "about-me-lists",
     "slug": "about-me-lists",
     "title": "About me (in lists)",
-    "date": "2024-04-27",
+    "date": "2025-04-27",
     "track": "about me",
     "summary": "Getting to know me through a series of curated lists.",
     "thumbnail": "/posts/about-me-lists/thumb.jpg"
@@ -39,7 +39,7 @@
     "id": "ai-agents-cursor",
     "slug": "using-ai-agents-in-cursor",
     "title": "Using AI agents in Cursor",
-    "date": "2024-04-26",
+    "date": "2025-04-26",
     "track": "vibe coding",
     "summary": "How I used Cursor's AI agent to clean up my website's code and make it more maintainable.",
     "thumbnail": "/posts/ai-agents-cursor/thumb.png"
@@ -48,7 +48,7 @@
     "id": "network-requests",
     "slug": "network-requests",
     "title": "Network requests",
-    "date": "2024-04-25",
+    "date": "2025-04-25",
     "track": "vibe coding",
     "summary": "Diving into the network requests my website makes.",
     "thumbnail": "/posts/network-requests/thumb.jpg"
@@ -57,7 +57,7 @@
     "id": "coding-languages",
     "slug": "coding-languages",
     "title": "Coding languages",
-    "date": "2024-04-24",
+    "date": "2025-04-24",
     "track": "vibe coding",
     "summary": "A look at the languages I've used to build this site.",
     "thumbnail": "/posts/coding-languages/thumb.jpg"
@@ -66,7 +66,7 @@
     "id": "adding-structure",
     "slug": "adding-structure",
     "title": "Adding structure",
-    "date": "2024-04-23",
+    "date": "2025-04-23",
     "track": "vibe coding",
     "summary": "Cleaning up file structure for a scalable and maintainable setup.",
     "thumbnail": "/posts/adding-structure/thumb.jpg"
@@ -75,7 +75,7 @@
     "id": "usage-analytics",
     "slug": "usage-analytics",
     "title": "Usage analytics",
-    "date": "2024-04-22",
+    "date": "2025-04-22",
     "track": "vibe coding",
     "summary": "Adding Google Analytics to the site and troubleshooting privacy blockers.",
     "thumbnail": "/posts/usage-analytics/thumb.jpg"
@@ -84,7 +84,7 @@
     "id": "website-setup",
     "slug": "website-setup",
     "title": "Website setup",
-    "date": "2024-04-21",
+    "date": "2025-04-21",
     "track": "vibe coding",
     "summary": "Setting up this site from scratch using HTML, CSS, and a touch of magic.",
     "thumbnail": "/posts/website-setup/thumb.jpg"
