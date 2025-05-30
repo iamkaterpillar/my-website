@@ -21,7 +21,7 @@
     "id": "bebop-basics",
     "slug": "bebop-basics",
     "title": "Bebop basics",
-    "date": "2025-04-28",
+    "date": "2025-05-24",
     "track": "bebop",
     "summary": "A simple introduction to Bebop - what it is, how it works, and why it matters in DeFi.",
     "thumbnail": "/posts/bebop-basics/thumb.png"
@@ -30,7 +30,7 @@
     "id": "about-me-lists",
     "slug": "about-me-lists",
     "title": "About me (in lists)",
-    "date": "2025-04-27",
+    "date": "2025-05-22",
     "track": "about me",
     "summary": "Getting to know me through a series of curated lists.",
     "thumbnail": "/posts/about-me-lists/thumb.jpg"
@@ -39,7 +39,7 @@
     "id": "ai-agents-cursor",
     "slug": "using-ai-agents-in-cursor",
     "title": "Using AI agents in Cursor",
-    "date": "2025-04-26",
+    "date": "2025-05-21",
     "track": "vibe coding",
     "summary": "How I used Cursor's AI agent to clean up my website's code and make it more maintainable.",
     "thumbnail": "/posts/ai-agents-cursor/thumb.png"
@@ -48,7 +48,7 @@
     "id": "network-requests",
     "slug": "network-requests",
     "title": "Network requests",
-    "date": "2025-04-25",
+    "date": "2025-05-11",
     "track": "vibe coding",
     "summary": "Diving into the network requests my website makes.",
     "thumbnail": "/posts/network-requests/thumb.jpg"
@@ -57,7 +57,7 @@
     "id": "coding-languages",
     "slug": "coding-languages",
     "title": "Coding languages",
-    "date": "2025-04-24",
+    "date": "2025-05-07",
     "track": "vibe coding",
     "summary": "A look at the languages I've used to build this site.",
     "thumbnail": "/posts/coding-languages/thumb.jpg"
