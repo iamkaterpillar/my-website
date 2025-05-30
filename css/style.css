@@ -1614,3 +1614,25 @@ pre code {
     height: 90px;
   }
 }
+
+.color-bar-footer {
+  width: 100%;
+  background: #101627;
+  color: #bfc6d1;
+  text-align: center;
+  padding: 2rem 0 1.5rem 0;
+  font-size: 1.2rem;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  letter-spacing: 0.01em;
+  margin-top: 0;
+}
+
+@media (max-width: 600px) {
+  .color-bar-footer {
+    font-size: 1rem;
+    padding: 1.25rem 0 1rem 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+}
