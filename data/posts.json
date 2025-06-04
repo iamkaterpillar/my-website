@@ -1,5 +1,14 @@
 [
   {
+    "id": "rwas-ondo",
+    "slug": "rwas-ondo",
+    "title": "RWAs & Ondo Finance",
+    "date": "2025-06-04",
+    "track": "about me",
+    "summary": "Exploring how Ondo Finance brings U.S. Treasuries onchain through tokenized assets like USDY and OUSG.",
+    "thumbnail": "/posts/rwas-ondo/thumb.png"
+  },
+  {
     "id": "bebop-tech-stack",
     "slug": "bebop-tech-stack",
     "title": "Our tech stack",
