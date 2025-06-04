@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found</title>
+  <script>
+    // List of valid static pages
+    const staticPages = ['about', 'blog', 'bebop'];
+    
+    // Get the path without leading/trailing slashes
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    
+    // Function to check if a path is a blog post
+    async function checkIfBlogPost(path) {
+      try {
+        const response = await fetch('/data/posts.json');
+        const posts = await response.json();
+        const post = posts.find(post => post.slug === path);
+        return post ? post.id : false;
+      } catch (error) {
+        console.error('Error checking blog post:', error);
+        return false;
+      }
+    }
+
+    // Handle routing
+    async function handleRouting() {
+      if (staticPages.includes(path)) {
+        // If it's a known static page, redirect to the HTML version
+        window.location.replace('/pages/' + path + '.html');
+      } else {
+        // Check if it's a blog post
+        const postId = await checkIfBlogPost(path);
+        if (postId) {
+          // If it's a blog post, load the post content
+          window.location.replace('/posts/' + postId + '/index.html');
+        } else {
+          // If it's not a known page, redirect to home
+          window.location.replace('/');
+        }
+      }
+    }
+
+    // Start routing
+    handleRouting();
+  </script>
+</head>
+<body>
+  <p>Redirecting...</p>
+</body>
+</html> 

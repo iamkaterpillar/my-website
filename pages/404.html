@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script src="/js/layout.js"></script>
+  <script>
+    // List of valid static pages
+    const staticPages = ['about', 'blog', 'bebop'];
+    
+    // Get the path without leading/trailing slashes
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    
+    // Function to check if a path is a blog post
+    async function checkIfBlogPost(path) {
+      try {
+        const response = await fetch('/data/posts.json');
+        const posts = await response.json();
+        return posts.find(post => post.slug === path);
+      } catch (error) {
+        console.error('Error checking blog post:', error);
+        return false;
+      }
+    }
+
+    // Handle routing
+    async function handleRouting() {
+      // If it's a known static page without .html extension
+      if (staticPages.includes(path)) {
+        window.location.replace('/pages/' + path + '.html');
+        return;
+      }
+      
+      // If it's already a .html page in pages directory
+      if (path.startsWith('pages/') && path.endsWith('.html')) {
+        // This is a direct HTML page access, let it 404 naturally
+        return;
+      }
+      
+      // Check if it's a blog post
+      const post = await checkIfBlogPost(path);
+      if (post) {
+        try {
+          // First load the layout
+          const layoutResponse = await fetch('/components/layout.html');
+          const layoutHtml = await layoutResponse.text();
+          
+          // Create a temporary container to parse the layout HTML
+          const temp = document.createElement('template');
+          temp.innerHTML = layoutHtml;
+          
+          // Add post content placeholder
+          const mainElement = temp.content.querySelector('main');
+          if (mainElement) {
+            mainElement.innerHTML = '<div id="postContent" class="post-content"><p>Loading post...</p></div>';
+          }
+          
+          // Update the document with new layout
+          document.documentElement.innerHTML = temp.innerHTML;
+          
+          // Add back the stylesheet
+          const stylesheet = document.createElement('link');
+          stylesheet.rel = 'stylesheet';
+          stylesheet.href = '/css/style.css';
+          document.head.appendChild(stylesheet);
+          
+          // Add back the layout script
+          const layoutScript = document.createElement('script');
+          layoutScript.src = '/js/layout.js';
+          document.head.appendChild(layoutScript);
+          
+          // Add the main script
+          const mainScript = document.createElement('script');
+          mainScript.src = '/js/main.js';
+          mainScript.defer = true;
+          document.head.appendChild(mainScript);
+          
+          // Wait for layout to load
+          await new Promise(resolve => {
+            window.addEventListener('layoutLoaded', resolve, { once: true });
+          });
+          
+          // Now load the post content
+          const postContent = document.getElementById('postContent');
+          if (postContent) {
+            const postResponse = await fetch(`/posts/${post.id}/index.html`);
+            if (!postResponse.ok) throw new Error('Post not found');
+            const html = await postResponse.text();
+            
+            // Add back button and post content
+            let backLink = '/blog';
+            let backText = 'back to Vibe coding';
+            
+            if (post.track && post.track.toLowerCase() === 'bebop') {
+              backLink = '/bebop';
+              backText = 'back to Building bebop';
+            }
+            
+            postContent.innerHTML = `
+              <a href="${backLink}" class="back-button">${backText}</a>
+              ${html}
+            `;
+            
+            // Update meta tags
+            document.title = `${post.title} | iamkaterpillar`;
+            document.querySelector('meta[name="description"]')?.setAttribute('content', post.summary);
+            
+            // Update Open Graph tags
+            const baseUrl = window.location.origin;
+            const canonicalUrl = `${baseUrl}/${post.slug}`;
+            const imageUrl = `${baseUrl}${post.thumbnail.startsWith('/') ? post.thumbnail : `/${post.thumbnail}`}`;
+            
+            document.querySelector('meta[property="og:title"]')?.setAttribute('content', post.title);
+            document.querySelector('meta[property="og:description"]')?.setAttribute('content', post.summary);
+            document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl);
+            document.querySelector('meta[property="og:image"]')?.setAttribute('content', imageUrl);
+            
+            // Update Twitter Card tags
+            document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', post.title);
+            document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', post.summary);
+            document.querySelector('meta[name="twitter:image"]')?.setAttribute('content', imageUrl);
+            
+            // Update canonical URL
+            document.querySelector('link[rel="canonical"]')?.setAttribute('href', canonicalUrl);
+          }
+        } catch (error) {
+          console.error('Error loading post:', error);
+          document.body.innerHTML = `
+            <main>
+              <div class="post-content">
+                <h1>Page Not Found</h1>
+                <p>Sorry, we couldn't find the page you're looking for.</p>
+                <a href="/" class="back-button">Back to Home</a>
+              </div>
+            </main>
+          `;
+        }
+        return;
+      }
+      
+      // If it's not a known page, redirect to home
+      window.location.replace('/');
+    }
+
+    // Start routing when the layout script is loaded
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', handleRouting);
+    } else {
+      handleRouting();
+    }
+  </script>
+</head>
+<body>
+  <main>
+    <h1>Page Not Found</h1>
+    <p>Redirecting you to the right place...</p>
+  </main>
+</body>
+</html> 

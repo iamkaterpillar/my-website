@@ -1,0 +1,42 @@
+<article>
+    <h1>Vibe coding with Lovable</h1>
+  
+    <p>I recently built my personal portfolio site — <a href="https://katfore.com" target="_blank">katfore.com</a> — using a tool called <a href="https://lovable.dev" target="_blank">Lovable</a>. It took less than a day from idea to live site, and I didn't even have to write code to get started. Here's how it all worked.</p>
+
+    <img src="/posts/lovable/lovable_website.png" alt="Screenshot of Lovable" class="blog-image">
+    
+    <h2>What is Lovable?</h2>
+    <p><strong>Lovable</strong> is an AI-powered app builder that turns natural language prompts into full-stack applications. You describe what you want — "a portfolio site with a hero section, project grid, and contact form" — and Lovable builds it. You can preview the design, iterate, connect GitHub, and deploy, all within the tool. It's fast, beginner-friendly, and surprisingly powerful.</p>
+  
+    <h2>Building my site</h2>
+    <p>I knew I wanted a portfolio — something quick to share with recruiters and collaborators. I bought the domain <strong>katfore.com</strong> (yay, it was available!), created my content, and prompted Lovable with the layout I wanted. Within minutes, I had a working design.</p>
+  
+    <p>I connected Lovable to GitHub and created a new repository: <a href="https://github.com/iamkaterpillar/portfolio-site" target="_blank">github.com/iamkaterpillar/portfolio-site</a>. Since the free version of Lovable doesn't allow direct code edits, I cloned the repo locally and used <strong>Cursor</strong> to make custom changes.</p>
+  
+    <p>Switching between Lovable, GitHub, and Cursor did cause some versioning headaches — pushing local changes could conflict with anything edited via Lovable afterward. Worth noting if you're planning to go hybrid like I did.</p>
+  
+    <h2>Hosting with Vercel</h2>
+    <p>Instead of hosting with GitHub Pages like my other site, I gave <strong>Vercel</strong> a try. We use it at Bebop for PR preview links, so I already knew it worked well. Setup was seamless: I connected my GitHub repo to Vercel, deployed the site, and now whenever I redeploy from Lovable, the live site updates instantly.</p>
+  
+    <img src="/posts/lovable/vercel_host.png" alt="Screenshot from Vercel" class="blog-image">
+
+    <h2>What I liked about Lovable</h2>
+    <ul>
+      <li>Natural language interface — no blank page syndrome</li>
+      <li>Instant iterations — you can go from sketch to site in minutes</li>
+      <li>GitHub integration</li>
+      <li>Frontend and backend support (auth, database, endpoints)</li>
+      <li>Great starting point for MVPs or mockups</li>
+    </ul>
+  
+    <h2>What I'd improve</h2>
+    <ul>
+      <li>Free users can't edit code inside Lovable</li>
+      <li>Syncing between GitHub, local edits, and Lovable versions can get messy</li>
+      <li>You'll want to replace the default Lovable branding (favicon, share image, etc.)</li>
+    </ul>
+  
+    <h2>Final thoughts</h2>
+    <p>If you've ever wanted to launch a site but felt blocked by the code, Lovable + Vercel is an incredible combo. You can go from an idea in your head to a live website in under an hour — seriously.</p>
+  
+    <p><a href="https://katfore.com" target="_blank">Check out my site here</a>, and if you're curious to try it yourself, <a href="https://lovable.dev" target="_blank">start with Lovable</a>.</p>
