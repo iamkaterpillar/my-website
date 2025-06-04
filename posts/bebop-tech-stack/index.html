@@ -1,0 +1,58 @@
+<h1>The tools we used to build Bebop</h1>
+<p>When you’re building a product as fast as we were at Bebop, you don’t always stop to document every tool, integration, or dependency you pulled in along the way. You just… keep shipping.</p>
+<p>But now that I’m nearing the end of my time with the team, I wanted to pause and actually write it all down—partly so I don’t forget, and partly because there’s a lot here I’d want to reuse (or avoid) next time.</p>
+<p>This is the stack we built Bebop with—from the code editor to the chain integrations to the dashboards we checked every morning.</p>
+
+<h2>How we worked together</h2>
+<p>First up: collaboration. A lot of this is standard startup fare, but a few things—like Gather or 1Password—were surprisingly critical to keeping the team aligned.</p>
+<ul>
+  <li><strong>Slack:</strong> Where everything happened (and occasionally too much).</li>
+  <li><strong>Google Workspace:</strong> Docs, Sheets, Slides, Calendar—classic, and still essential.</li>
+  <li><strong>1Password:</strong> Shared credentials, secure notes, API keys… a lifesaver.</li>
+  <li><strong>Confluence + Jira:</strong> Product specs and sprint boards. Not everyone’s favorite, but it worked.</li>
+  <li><strong>GitBook:</strong> Public-facing docs and guides.</li>
+  <li><strong>Figma + Storybook:</strong> For design handoff and UI consistency.</li>
+  <li><strong>Gather:</strong> We actually used this. It made remote work feel a little less isolating.</li>
+  <li><strong>Tunnelblick (VPN):</strong> For secure access when needed.</li>
+</ul>
+
+<h2>What we built with</h2>
+<p>On the dev side, we leaned heavily into TypeScript, React, and Next.js—with a modern Web3 stack layered on top.</p>
+<ul>
+  <li><strong>GitHub:</strong> For repo management, of course.</li>
+  <li><strong>Cursor / VS Code:</strong> Each dev had their own preferences.</li>
+  <li><strong>Vercel:</strong> Preview links for every PR—huge for async reviews.</li>
+  <li><strong>Playwright + Cypress:</strong> For E2E testing, depending on the flow.</li>
+  <li><strong>PostHog + Google Analytics:</strong> We started with GA, then moved to PostHog for product feature tracking.</li>
+  <li><strong>DBeaver:</strong> Great for poking around in databases (historicasl trades, tokens, etc.)</li>
+  <li><strong>Grafana:</strong> For system-level monitoring.</li>
+  <li><strong>React, TypeScript, Next.js, Wagmi, Viem, RainbowKit:</strong> Our front-end foundation.</li>
+  <li><strong>Web3Modal / ConnectKit:</strong> To make wallet connection as smooth as possible.</li>
+</ul>
+
+<h2>API integrations</h2>
+<p>This is where things got fun—and occasionally messy. We stitched together data and functionality from a ton of sources.</p>
+<ul>
+  <li><strong>Alchemy / QuickNode / Helius:</strong> Node providers for chain data and RPCs.</li>
+  <li><strong>Across:</strong> We didn't integrate but I would have loved to for bridging in-app!</li>
+  <li><strong>ENS + clusters:</strong> For usernames within the app and for features like swap & send.</li>
+  <li><strong>GoPlus + Webacy:</strong> For token safety and risk warnings.</li>
+  <li><strong>CoinGecko API:</strong> Token prices, metadata, and icons.</li>
+  <li><strong>Dune API:</strong> Powered our portfolio dashboards.</li>
+  <li><strong>TradingView:</strong> For candlestick charts on token pairs.</li>
+  <li><strong>Cloudflare:</strong> CDN and security layer for the frontend.</li>
+</ul>
+
+<h2>How we did marketing</h2>
+<p>We were a small team, so everything from memes to press to newsletters ran through the same stack.</p>
+<ul>
+  <li><strong>Medium:</strong> Where we originally published long-form posts.</li>
+  <li><strong>Beehiiv:</strong> For newsletters (but was moved to Twitter).</li>
+  <li><strong>Twitter:</strong> Still our biggest community channel by far.</li>
+  <li><strong>LinkedIn:</strong> Occasionally useful. Mostly ignored.</li>
+  <li><strong>Farcaster:</strong> We tried. Didn’t stick.</li>
+</ul>
+
+<h2>Why I wrote this</h2>
+<p>This isn’t a pitch or a product update. It’s just a snapshot—for myself, really. When I move on from Bebop, I want to remember the stack we built, the tools that helped (and the ones that didn’t), and what I’d reach for again in future roles.</p>
+<p>If you’re building something similar, I hope this helps you shortcut a few decisions.</p>

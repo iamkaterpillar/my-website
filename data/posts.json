@@ -1,5 +1,14 @@
 [
   {
+    "id": "bebop-tech-stack",
+    "slug": "bebop-tech-stack",
+    "title": "Our tech stack",
+    "date": "2025-06-04",
+    "track": "building bebop",
+    "summary": "A not-quite-complete but very honest record of the tools that we used at Bebop.",
+    "thumbnail": "/posts/bebop-tech-stack/thumb.jpg"
+  },
+  {
     "id": "lovable",
     "slug": "lovable",
     "title": "Vibe coding with Lovable",
