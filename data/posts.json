@@ -1,5 +1,14 @@
 [
   {
+    "id": "lovable",
+    "slug": "lovable",
+    "title": "Vibe coding with Lovable",
+    "date": "2025-06-04",
+    "track": "vibe coding",
+    "summary": "I built my personal portfolio site — katfore.com — in a few hours using Lovable, GitHub, Cursor, and Vercel.",
+    "thumbnail": "/posts/lovable/thumb.jpg"
+  },
+  {
     "id": "pm-lessons",
     "slug": "pm-lessons",
     "title": "Lessons as a PM",
