@@ -1,0 +1,62 @@
+<article>
+    <h1>A peek under the hood: My website’s network requests</h1>
+  
+    <p>When you visit a website, your browser quietly performs a bunch of behind-the-scenes work to fetch everything needed to display the page. These are called <strong>network requests</strong>, and they include things like HTML files, stylesheets, images, and analytics scripts.</p>
+  
+    <p>If you're curious to see this for yourself, most browsers let you inspect these requests in real time:</p>
+  
+    <h2>🔍 How to view network requests in your browser</h2>
+    <ol>
+      <li><strong>Right-click</strong> anywhere on a web page and choose <strong>“Inspect”</strong></li>
+      <li>Navigate to the <strong>“Network”</strong> tab at the top of the panel</li>
+      <li><strong>Reload the page</strong> (Cmd + R / Ctrl + R) to see a list of all network activity</li>
+    </ol>
+  
+    <p>This is a super useful way to debug missing files, spot performance issues, or see which tools and scripts a site is loading behind the scenes.</p>
+  
+    <p>Here’s what it looks like on my own site:</p>
+  
+    <img src="/posts/network-requests/network-requests.jpg" alt="Network tab screenshot" style="max-width:100%; border:1px solid #ddd; padding:4px;">
+  
+    <h2>What each request does</h2>
+  
+    <h3><code>index.html</code></h3>
+    <p><strong>Initiator:</strong> Other<br>
+    <strong>Time:</strong> 1 ms<br>
+    This is the <strong>main HTML document</strong> that the browser loads first. It contains the basic structure of the page and references other resources like stylesheets, scripts, and images.</p>
+  
+    <h3><code>style.css</code></h3>
+    <p><strong>Initiator:</strong> index.html:8<br>
+    <strong>Time:</strong> 0 ms<br>
+    This file defines the <strong>visual styling</strong> of the page—everything from fonts and colors to layout and spacing. It keeps things looking clean and consistent.</p>
+  
+    <h3><code>js?id=G-F00DE4HSRP</code></h3>
+    <p><strong>Initiator:</strong> index.html:12<br>
+    <strong>Time:</strong> 0 ms<br>
+    This is a <strong>Google Analytics script</strong>, used to track page views and user activity. The <code>id=G-F00DE4HSRP</code> part is my site's unique GA4 tracking ID.</p>
+  
+    <h3><code>collect?v=2&amp;tid=G-F00DE4HSRP...</code></h3>
+    <p><strong>Initiator:</strong> js?id=G-F00DE4HSRP:198<br>
+    <strong>Time:</strong> 17 ms<br>
+    This is a <strong>tracking beacon</strong> sent by the Analytics script after the page loads. It collects data like device type, user behavior, and referrer info.</p>
+  
+    <h3><code>ghibli-kat.jpg</code></h3>
+    <p><strong>Initiator:</strong> index.html:36<br>
+    <strong>Time:</strong> 0 ms<br>
+    This is the <strong>main image</strong> on my site. It's a little nod to Studio Ghibli, which I love—and yes, the filename is exactly what it sounds like.</p>
+  
+    <h3><code>favicon.ico</code></h3>
+    <p><strong>Initiator:</strong> Other<br>
+    <strong>Time:</strong> 1 ms<br>
+    This is the <strong>tiny icon</strong> that appears in your browser tab next to the site title. Even if you don’t explicitly add one, the browser will try to request it.</p>
+  
+    <h2>Why this matters</h2>
+    <p>Understanding what’s being requested can help you:</p>
+    <ul>
+      <li>Optimize loading speed by reducing unnecessary requests</li>
+      <li>Debug loading issues (like a broken script or missing image)</li>
+      <li>Track analytics behavior to improve UX</li>
+      <li>Control exactly what your users see and when</li>
+    </ul>
+  
+  </article>  

@@ -1,0 +1,51 @@
+<h1>Bebop basics</h1>
+
+<p>Crypto is confusing—there’s no way around it. It’s full of technical jargon, and diving in can feel overwhelming. When I started my first official Product role at Bebop, I had to ramp up fast. Unlike many of my peers in Product who can stay high-level or UI-focused, I needed to jump straight into the tech. At Bebop, our APIs are the product. We’re a liquidity aggregator, and everything we do revolves around that.</p>
+
+<h2>What is liquidity aggregation?</h2>
+
+<p>At its core, Bebop is a trading app and a suite of APIs designed to find the best route for your crypto trades. We do this by combining two of the most efficient trading models in DeFi:</p>
+
+<ul>
+  <li><strong>RFQ (Request for Quote)</strong> – trading with private market makers</li>
+  <li><strong>Intent-based auctions</strong> – powered by on-chain solvers</li>
+</ul>
+
+<p>Let’s break those down.</p>
+
+<h3>What is RFQ?</h3>
+
+<p>You’ll often hear RFQ in the context of OTC (over-the-counter) trading. In finance, OTC simply means trading that happens outside of a centralized exchange. Think of it like over-the-counter medicine: instead of going to a hospital (a centralized exchange), you go straight to the pharmacy (a market maker).</p>
+
+<p>In OTC trading, two parties agree on a price and trade directly. RFQ is a model that supports this — it's quote-driven. When using RFQ, a buyer (or seller) sends a request for price quotes to one or more market makers. They respond with offers, and the buyer can pick the best one. It’s a system that’s common in traditional finance and widely used in institutional crypto trading, especially for large orders that benefit from private execution.</p>
+
+<p>If you want to learn more about RFQ, check out my blog post: <a href="https://medium.com/bebop-dex/wtf-is-rfq-on-chain-19560e00058b" target="_blank" rel="noopener noreferrer">WTF is RFQ (on-chain)?</a></p>
+
+<h3>What is intent-based trading with solvers?</h3>
+
+<p>With intents, the user doesn’t say how they want to trade — just what they want to achieve. They submit a signed message that includes parameters like the token they want to sell, the token they want to buy, and the minimum amount they’re willing to receive.</p>
+
+<p>Bebop’s JAM API takes this intent and polls a network of on-chain solvers. Each solver competes to find the best execution path, factoring in two things:</p>
+
+<ul>
+  <li><strong>Total output</strong>: How many tokens the user will receive</li>
+  <li><strong>Execution cost</strong>: Network (gas) fees required to settle the trade</li>
+</ul>
+
+<p>Bebop even runs its own in-house solver, which can tap into private market maker liquidity via smart order routing. This often results in better pricing with lower execution costs — one of the main advantages of using private liquidity sources for settlement.</p>
+
+<p>If you want to learn more about the solver model, check out my blog post: <a href="https://medium.com/bebop-dex/bebop-unveils-jam-intent-based-liquidity-aggregation-system-e14a6feedaae" target="_blank" rel="noopener noreferrer">Bebop Unveils JAM</a></p>
+
+<h2>Our APIs</h2>
+
+<p>We’ve built three core APIs to power this system:</p>
+
+<ul>
+  <li><strong>PMM</strong> – Returns quotes from our network of private market makers</li>
+  <li><strong>JAM</strong> – Delivers on-chain pricing via intent-based solver aggregation</li>
+  <li><strong>Router API</strong> – Selects the optimal route between PMM and JAM for every trade</li>
+</ul>
+
+<img src="/posts/bebop-basics/bebop_apis.jpeg" alt="Bebop APIs" style="max-width:100%;border-radius:8px;margin:2rem 0;" />
+
+<p>When you trade on Bebop’s UI, you're seeing the result of this logic in action. The Router picks the most competitive price—whether it’s surfaced from JAM or PMM—so you always get the best deal available.</p>

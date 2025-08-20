@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <script>
+    // List of valid static pages
+    const staticPages = ['about', 'blog', 'bebop'];
+    
+    // Get the path without leading/trailing slashes
+    const path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+    
+    // Function to check if a path is a blog post
+    async function checkIfBlogPost(path) {
+      try {
+        const response = await fetch('/data/posts.json');
+        const posts = await response.json();
+        return posts.find(post => post.slug === path);
+      } catch (error) {
+        console.error('Error checking blog post:', error);
+        return false;
+      }
+    }
+
+    // Handle routing
+    async function handleRouting() {
+      // If it's a known static page without .html extension
+      if (staticPages.includes(path)) {
+        window.location.replace('/pages/' + path + '.html');
+        return;
+      }
+      
+      // If it's already a .html page in pages directory
+      if (path.startsWith('pages/') && path.endsWith('.html')) {
+        // This is a direct HTML page access, let it 404 naturally
+        return;
+      }
+      
+      // Check if it's a blog post
+      const post = await checkIfBlogPost(path);
+      if (post) {
+        // If it's a blog post, load the post page with the slug as a query parameter
+        window.location.replace(`/pages/post.html?slug=${encodeURIComponent(path)}`);
+        return;
+      }
+      
+      // If it's not a known page, show 404 content
+      document.body.innerHTML = `
+        <main>
+          <div class="post-content">
+            <h1>Page Not Found</h1>
+            <p>Sorry, we couldn't find the page you're looking for.</p>
+            <a href="/" class="back-button">back to home</a>
+          </div>
+        </main>
+      `;
+    }
+
+    // Start routing
+    handleRouting();
+  </script>
+</head>
+<body>
+  <main>
+    <h1>Page Not Found</h1>
+    <p>Redirecting you to the right place...</p>
+  </main>
+</body>
+</html> 
