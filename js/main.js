@@ -157,7 +157,10 @@ function renderPosts(blogGrid, posts) {
     content.innerHTML = `
       <h2>${post.title}</h2>
       <p>${post.summary}</p>
-      <small>${post.date} • ${post.track}</small>
+      <div class="post-meta">
+        <span class="post-track-badge">${post.track}</span>
+        <small>${post.date}</small>
+      </div>
     `;
     link.appendChild(content);
     card.appendChild(link);
