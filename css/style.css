@@ -1438,6 +1438,45 @@ pre code {
   color: #666;
 }
 
+.about-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+}
+
+.chip {
+  background: #f0ede9;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  padding: 0.3em 0.85em;
+  font-size: 0.9rem;
+  color: var(--text-color);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.about-grid h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 600px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .about-content .social-links {
   display: flex;
   gap: 1rem;
