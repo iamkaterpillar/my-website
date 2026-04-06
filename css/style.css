@@ -19,14 +19,15 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", sans-serif;
+  font-size: 17px;
   background-color: var(--bg-color);
   color: var(--text-color);
   padding: 2rem;
   max-width: 1000px;
   margin: 0 auto;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 /* ---------------------------------------
@@ -43,8 +44,8 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #ddd;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 0;
   position: relative;
 }
@@ -65,6 +66,7 @@ nav {
 
 nav a {
   font-weight: 500;
+  font-size: 0.95rem;
   color: #333;
   text-decoration: none;
   transition: color 0.2s ease;
@@ -180,19 +182,30 @@ nav a.active::after {
    3. Typography
 --------------------------------------- */
 
-h1, h2 {
-  color: #333;
-  margin-bottom: 0.5rem;
+h1, h2, h3 {
+  color: #111;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: 2.4rem;
+  line-height: 1.2;
   margin-top: 2rem;
+  margin-bottom: 0.75rem;
 }
 
 h2 {
-  font-size: 1.4rem;
-  margin-top: 2rem;
+  font-size: 1.5rem;
+  line-height: 1.3;
+  margin-top: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.4rem;
 }
 
 p {
@@ -204,29 +217,24 @@ p {
 --------------------------------------- */
 
 a {
-  color: var(--accent-color);
+  color: var(--text-color);
   font-weight: 500;
   text-decoration: underline;
-  text-underline-offset: 2px;
-  transition: color 0.2s, background 0.2s, border-bottom 0.2s;
-  border-bottom: 2px solid transparent;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #aaa;
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
 }
 
 a:hover {
-  color: var(--hover-color);
-  background: #f5f6fa;
-  border-bottom: 2px solid var(--hover-color);
-  text-decoration: none;
-  border-radius: 3px;
+  color: var(--text-color);
+  text-decoration-color: var(--text-color);
 }
 
 a:focus-visible {
-  color: var(--hover-color);
-  border-bottom: 2px solid var(--hover-color);
-  text-decoration: none;
-  border-radius: 3px;
-  outline: 2px solid var(--hover-color);
-  outline-offset: 2px;
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
 /* ---------------------------------------
@@ -490,34 +498,54 @@ pre code {
 --------------------------------------- */
 
 .post-content {
-  max-width: 700px;
-  margin: 2rem auto;
+  max-width: 680px;
+  margin: 2.5rem auto;
   padding: 1rem;
+  font-size: 18px;
+  line-height: 1.75;
   font-family: system-ui, sans-serif;
   line-height: 1.7;
   color: #222;
 }
 
 .post-content h1 {
-  font-size: 2rem;
-  margin: 2rem 0 1rem;
+  font-size: 2.2rem;
+  line-height: 1.2;
+  margin: 0 0 1.5rem;
   color: #111;
+  letter-spacing: -0.02em;
 }
 
 .post-content h2 {
-  font-size: 1.5rem;
-  margin: 2rem 0 1rem;
-  color: #222;
+  font-size: 1.4rem;
+  line-height: 1.3;
+  margin: 2.5rem 0 0.75rem;
+  color: #111;
 }
 
 .post-content h3 {
-  font-size: 1.2rem;
-  margin: 1.5rem 0 1rem;
-  color: #333;
+  font-size: 1.15rem;
+  margin: 2rem 0 0.5rem;
+  color: #222;
 }
 
 .post-content p {
-  margin-bottom: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  font-size: 0.9rem;
+  color: #777;
+  text-decoration: none;
+  text-underline-offset: 3px;
+}
+
+.back-button:hover {
+  color: var(--text-color);
+  text-decoration: underline;
+  text-decoration-color: var(--text-color);
 }
 
 .post-content ul, .post-content ol {
