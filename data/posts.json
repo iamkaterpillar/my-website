@@ -1,5 +1,14 @@
 [
   {
+    "id": "ondo-earnings-bot",
+    "slug": "ondo-earnings-bot",
+    "title": "I automated my most repetitive weekly task with Claude Code",
+    "date": "2026-04-06",
+    "track": "vibe coding",
+    "summary": "How I built a Telegram bot with Claude Code to automate Ondo GM earnings tracking — replacing a manual 30-minute weekly process.",
+    "thumbnail": "/posts/ondo-earnings-bot/thumb.png"
+  },
+  {
     "id": "rwas-ondo",
     "slug": "rwas-ondo",
     "title": "RWAs & Ondo Finance",
