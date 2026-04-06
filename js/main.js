@@ -1,23 +1,7 @@
-// Unregister service workers
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistrations().then(registrations => {
-    for (let registration of registrations) {
-      registration.unregister();
-    }
-  });
-}
-
 // Initialize everything after layout is loaded
 window.addEventListener('layoutLoaded', () => {
-  console.log('Layout loaded, initializing features...');
-  
-  // Mobile menu functionality
   initMobileMenu();
-  
-  // Blog functionality
   initBlogPosts();
-  
-  // Post content functionality
   initPostContent();
 });
 
@@ -26,11 +10,8 @@ function initMobileMenu() {
   const navLinks = document.querySelector('.nav-links');
   
   if (!menuToggle || !navLinks) {
-    console.log('Mobile menu elements not found');
     return;
   }
-  
-  console.log('Mobile menu elements found, setting up listeners...');
   
   // Prevent any click inside the menu from bubbling up
   navLinks.addEventListener('click', (e) => {
@@ -69,7 +50,6 @@ function initMobileMenu() {
 
   function toggleMenu() {
     const isOpen = navLinks.classList.contains('active');
-    console.log('Toggling menu:', isOpen ? 'closing' : 'opening');
     if (isOpen) {
       closeMenu();
     } else {
@@ -82,7 +62,6 @@ function initMobileMenu() {
     navLinks.classList.add('active');
     document.body.classList.add('menu-open');
     menuToggle.setAttribute('aria-expanded', 'true');
-    console.log('Menu opened');
   }
 
   function closeMenu() {
@@ -90,7 +69,6 @@ function initMobileMenu() {
     navLinks.classList.remove('active');
     document.body.classList.remove('menu-open');
     menuToggle.setAttribute('aria-expanded', 'false');
-    console.log('Menu closed');
   }
 }
 

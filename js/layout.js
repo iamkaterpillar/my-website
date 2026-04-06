@@ -96,4 +96,12 @@ async function loadLayout() {
 }
 
 // Execute layout loading
-document.addEventListener('DOMContentLoaded', loadLayout); 
+document.addEventListener('DOMContentLoaded', loadLayout);
+
+// Register service worker for caching
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .catch(() => {}); // silently ignore registration failures
+  });
+} 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kat's Website</title>
+  <title>iamkaterpillar — Kat Fore</title>
 
   <!-- Styles and favicon -->
   <link rel="stylesheet" href="/css/style.css" />
@@ -32,15 +32,21 @@
       </div>
 
       <div class="hero-image">
-        <img 
-          src="/assets/images/kat-wmt-400.jpg" 
-          srcset="/assets/images/kat-wmt-400.jpg 400w,
-                  /assets/images/kat-wmt-800.jpg 800w"
-          sizes="(max-width: 600px) 400px,
-                 800px"
-          alt="Kat at Wintermute" 
-          class="profile-photo"
-          loading="eager" />
+        <picture>
+          <source
+            srcset="/assets/images/kat-wmt-400.webp 400w,
+                    /assets/images/kat-wmt-800.webp 800w"
+            sizes="(max-width: 600px) 400px, 800px"
+            type="image/webp" />
+          <img
+            src="/assets/images/kat-wmt-400.jpg"
+            srcset="/assets/images/kat-wmt-400.jpg 400w,
+                    /assets/images/kat-wmt-800.jpg 800w"
+            sizes="(max-width: 600px) 400px, 800px"
+            alt="Kat at Wintermute"
+            class="profile-photo"
+            loading="eager" />
+        </picture>
       </div>
     </section>
 
@@ -86,14 +92,14 @@
         <div class="focus-card">
           <h3>Sharing things</h3>
           <p>Posting bits about myself - how I work, how I think, and what I'm learning along the way.</p>
-          <a href="/pages/about.html" class="learn-more">Learn more →</a>
+          <a href="/pages/about" class="learn-more">Learn more →</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer class="color-bar-footer">
-    <span>© 2025 Katharina Fore</span>
+    <span>© 2026 Katharina Fore</span>
   </footer>
 
   <script src="/js/layout.js"></script>

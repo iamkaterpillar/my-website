@@ -212,13 +212,21 @@ a {
   border-bottom: 2px solid transparent;
 }
 
-a:hover, a:focus {
+a:hover {
   color: var(--hover-color);
   background: #f5f6fa;
   border-bottom: 2px solid var(--hover-color);
   text-decoration: none;
   border-radius: 3px;
-  outline: none;
+}
+
+a:focus-visible {
+  color: var(--hover-color);
+  border-bottom: 2px solid var(--hover-color);
+  text-decoration: none;
+  border-radius: 3px;
+  outline: 2px solid var(--hover-color);
+  outline-offset: 2px;
 }
 
 /* ---------------------------------------
@@ -524,32 +532,8 @@ pre code {
 }
 
 /* ---------------------------------------
-   11. Simple tables
+   11. Bebop page section (previously 12)
 --------------------------------------- */
-
-.simple-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 1.2rem;
-  margin-bottom: 1.2rem;
-  font-size: 1rem;
-  overflow-x: auto;
-  display: block;
-}
-
-.simple-table th,
-.simple-table td {
-  padding: 0.75rem;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-  vertical-align: top;
-  min-width: 120px; /* helps prevent columns from squishing too hard */
-}
-
-.simple-table th {
-  font-weight: 600;
-  background-color: #f9f9f9;
-}
 
 /* ---------------------------------------
    12. Bebop page specific styles
@@ -603,22 +587,6 @@ pre code {
   font-size: 0.95rem;
 }
 
-.cta-button {
-  display: inline-block;
-  padding: 0.8rem 1.5rem;
-  background-color: #0070f3;
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
-  margin-top: 1.5rem;
-  transition: background-color 0.2s ease;
-}
-
-.cta-button:hover {
-  background-color: #0051cc;
-  text-decoration: none;
-}
 
 @media (max-width: 600px) {
   .topic-grid {
@@ -1155,15 +1123,6 @@ pre code {
     font-size: 0.9rem;
   }
 
-  .simple-table {
-    font-size: 0.9rem;
-  }
-
-  .simple-table th,
-  .simple-table td {
-    padding: 0.5rem;
-    min-width: 100px;
-  }
 }
 
 /* Bebop page styles */
@@ -1275,13 +1234,6 @@ pre code {
   margin-bottom: 2rem;
 }
 
-.coming-soon {
-  text-align: left;
-  font-style: italic;
-  color: var(--text-color);
-  margin: 2rem 0;
-  font-size: 1.1rem;
-}
 
 /* Mobile adjustments */
 @media (max-width: 768px) {
@@ -1349,10 +1301,6 @@ pre code {
     margin-bottom: 1.5rem;
   }
 
-  .coming-soon {
-    font-size: 1rem;
-    margin: 1.5rem 0;
-  }
 }
 
 .back-button {

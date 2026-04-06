@@ -18,17 +18,17 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Create redirects and copy files
+      - name: Copy files to dist
         run: |
           # Create dist directory
           mkdir -p dist
-          
-          # Create _redirects file for clean URLs
-          echo "/* /404.html 404" > dist/_redirects
-          
+
           # Copy static files
-          cp -r index.html 404.html .nojekyll CNAME dist/ || true
-          
+          cp -r index.html 404.html .nojekyll CNAME sitemap.xml robots.txt sw.js dist/ || true
+
+          # Copy _redirects from repo (do NOT overwrite with a hardcoded echo)
+          cp _redirects dist/_redirects
+
           # Copy directories if they exist and have content
           for dir in posts data js css components pages assets public src; do
             if [ -d "$dir" ] && [ "$(ls -A $dir)" ]; then
