@@ -2,18 +2,18 @@
   {
     "id": "ondo-earnings-bot",
     "slug": "ondo-earnings-bot",
-    "title": "I automated my most repetitive weekly task with Claude Code",
+    "title": "Building the Ondo Earnings Bot",
     "date": "2026-04-06",
-    "track": "vibe coding",
+    "track": "ondo",
     "summary": "How I built a Telegram bot with Claude Code to automate Ondo GM earnings tracking — replacing a manual 30-minute weekly process.",
-    "thumbnail": "/posts/ondo-earnings-bot/thumb.png"
+    "thumbnail": "/posts/ondo-earnings-bot/thumb.jpg"
   },
   {
     "id": "rwas-ondo",
     "slug": "rwas-ondo",
     "title": "RWAs & Ondo Finance",
     "date": "2025-06-04",
-    "track": "about me",
+    "track": "ondo",
     "summary": "Exploring how Ondo Finance brings U.S. Treasuries onchain through tokenized assets like USDY and OUSG.",
     "thumbnail": "/posts/rwas-ondo/thumb.png"
   },

@@ -292,6 +292,37 @@ hr {
    8. Blog card layout (blog.html)
 --------------------------------------- */
 
+/* Track filter tabs */
+.track-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0 2rem;
+}
+
+.track-filter {
+  padding: 0.35rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  font-family: inherit;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.track-filter:hover {
+  border-color: var(--accent-color);
+  background: var(--secondary-bg);
+}
+
+.track-filter.active {
+  background: var(--accent-color);
+  color: #fff;
+  border-color: var(--accent-color);
+}
+
 /* Blog grid and cards */
 .blog-grid {
   display: flex;
