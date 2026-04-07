@@ -1196,27 +1196,31 @@ pre code {
 
 /* Photo spread collage */
 .photo-spread {
-  margin: 2rem 0 3.5rem;
-  width: 100%;
+  margin: 2rem -2rem 4rem;
+  width: calc(100% + 4rem);
 }
 
 .photo-spread-inner {
   position: relative;
-  height: 300px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  height: 270px;
 }
 
 .spread-photo {
   position: absolute;
-  bottom: 0;
-  width: 155px;
-  height: 220px;
+  top: 30px;
+  width: 130px;
+  height: 175px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.18);
-  transform-origin: bottom center;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.18);
+  transform-origin: center center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  cursor: pointer;
+}
+
+.spread-photo:hover {
+  box-shadow: 0 14px 36px rgba(0,0,0,0.28);
+  z-index: 20 !important;
 }
 
 .spread-photo img {
@@ -1226,13 +1230,22 @@ pre code {
   display: block;
 }
 
-.spread-photo-1 { transform: rotate(-27deg); z-index: 1; }
-.spread-photo-2 { transform: rotate(-18deg); z-index: 2; }
-.spread-photo-3 { transform: rotate(-9deg);  z-index: 3; }
-.spread-photo-4 { transform: rotate(0deg);   z-index: 7; }
-.spread-photo-5 { transform: rotate(9deg);   z-index: 3; }
-.spread-photo-6 { transform: rotate(18deg);  z-index: 2; }
-.spread-photo-7 { transform: rotate(27deg);  z-index: 1; }
+/* Horizontal spread: left % positions across container, each with a natural tilt */
+.spread-photo-1 { left: 0%;   transform: rotate(-6deg);  z-index: 1; }
+.spread-photo-2 { left: 13%;  transform: rotate(3deg);   z-index: 3; }
+.spread-photo-3 { left: 26%;  transform: rotate(-4deg);  z-index: 2; }
+.spread-photo-4 { left: 37%;  transform: rotate(1deg);   z-index: 7; width: 148px; height: 200px; top: 15px; } /* center: slightly larger */
+.spread-photo-5 { left: 52%;  transform: rotate(-5deg);  z-index: 2; }
+.spread-photo-6 { left: 65%;  transform: rotate(4deg);   z-index: 3; }
+.spread-photo-7 { left: 78%;  transform: rotate(-3deg);  z-index: 1; }
+
+.spread-photo-1:hover { transform: rotate(-6deg) scale(1.08); }
+.spread-photo-2:hover { transform: rotate(3deg)  scale(1.08); }
+.spread-photo-3:hover { transform: rotate(-4deg) scale(1.08); }
+.spread-photo-4:hover { transform: rotate(1deg)  scale(1.06); }
+.spread-photo-5:hover { transform: rotate(-5deg) scale(1.08); }
+.spread-photo-6:hover { transform: rotate(4deg)  scale(1.08); }
+.spread-photo-7:hover { transform: rotate(-3deg) scale(1.08); }
 
 .chat-bubble {
   position: absolute;
@@ -1261,9 +1274,10 @@ pre code {
 }
 
 .chat-bubble-left {
-  top: 20px;
-  left: 5%;
+  top: 8px;
+  left: 2%;
   transform: rotate(-4deg);
+  z-index: 25;
 }
 
 .chat-bubble-left::after {
@@ -1272,9 +1286,10 @@ pre code {
 }
 
 .chat-bubble-right {
-  top: 30px;
-  right: 5%;
+  top: 4px;
+  right: 2%;
   transform: rotate(3deg);
+  z-index: 25;
 }
 
 .chat-bubble-right::after {
@@ -1283,13 +1298,30 @@ pre code {
 }
 
 @media (max-width: 600px) {
+  .photo-spread {
+    margin: 2rem -1rem 3.5rem;
+    width: calc(100% + 2rem);
+  }
+
   .photo-spread-inner {
-    height: 230px;
+    height: 200px;
   }
 
   .spread-photo {
-    width: 115px;
-    height: 165px;
+    width: 90px;
+    height: 120px;
+    top: 30px;
+  }
+
+  .spread-photo-4 {
+    width: 104px;
+    height: 138px;
+    top: 20px;
+  }
+
+  .chat-bubble {
+    font-size: 0.75rem;
+    padding: 6px 10px;
   }
 }
 
