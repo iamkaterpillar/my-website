@@ -2,8 +2,6 @@
 /pages/about     /pages/about.html     200
 /pages/blog      /pages/blog.html      200
 
-# Redirect old bebop page to unified blog with filter
-/pages/bebop     /pages/blog?track=bebop     302
 
 # Handle 404s
 /*    /404.html   404 

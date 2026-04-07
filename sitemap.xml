@@ -15,12 +15,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>
-    <loc>https://www.iamkaterpillar.xyz/pages/bebop</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
+<url>
     <loc>https://www.iamkaterpillar.xyz/ai-headshots</loc>
     <lastmod>2026-04-07</lastmod>
     <changefreq>monthly</changefreq>
