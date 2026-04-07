@@ -643,7 +643,7 @@ pre code {
 .hero {
   display: grid;
   grid-template-columns: 1fr 320px;
-  gap: 5.5rem;
+  gap: 4rem;
   align-items: center;
   margin: 4rem auto 5rem;
 }
@@ -720,7 +720,7 @@ pre code {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 20px 20px 20px 0;
 }
 
 .hero-photo-frame {
