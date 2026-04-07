@@ -88,6 +88,11 @@ async function loadLayout() {
     // Wait for all scripts to load
     await Promise.all(scriptPromises);
 
+    // Load site-wide sparkle effect
+    var sparkleScript = document.createElement('script');
+    sparkleScript.src = '/js/sparkles.js';
+    document.body.appendChild(sparkleScript);
+
     // Dispatch event to notify scripts that layout is ready
     window.dispatchEvent(new Event('layoutLoaded'));
   } catch (error) {
