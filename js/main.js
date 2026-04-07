@@ -204,7 +204,7 @@ function initPostContent() {
       const canonicalUrl = `${baseUrl}/${post.slug}`;
       const imageUrl = `${baseUrl}${post.thumbnail.startsWith('/') ? post.thumbnail : `/${post.thumbnail}`}`;
 
-      document.title = `${post.title} | iamkaterpillar`;
+      document.title = `${post.title} | Kat — figuring it out`;
       document.querySelector('meta[name="description"]')?.setAttribute('content', post.summary);
       document.querySelector('meta[property="og:title"]')?.setAttribute('content', post.title);
       document.querySelector('meta[property="og:description"]')?.setAttribute('content', post.summary);
