@@ -1,4 +1,4 @@
-const CACHE_VERSION = '5';
+const CACHE_VERSION = '6';
 const CACHE_NAME = `iamkaterpillar-v${CACHE_VERSION}`;
 const STATIC_ASSETS = [
   '/',
@@ -59,6 +59,21 @@ self.addEventListener('fetch', event => {
           return cachedResponse || fetchPromise;
         });
       })
+    );
+    return;
+  }
+
+  // Handle layout component with network-first strategy (keeps nav/footer always fresh)
+  if (event.request.url.includes('/components/layout.html')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME)
+            .then(cache => cache.put(event.request, clone));
+          return response;
+        })
+        .catch(() => caches.match(event.request))
     );
     return;
   }
