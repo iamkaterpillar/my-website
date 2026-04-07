@@ -255,10 +255,19 @@ function initPostContent() {
           return res.text();
         })
         .then(html => {
+          const badgesHtml = tracks.map(t => `<span class="post-track-badge">${t}</span>`).join('');
           postContent.innerHTML = `
             <a href="${backUrl}" class="back-button">${backText}</a>
             ${html}
           `;
+          // Inject date + track badges after the first h1
+          const h1 = postContent.querySelector('h1');
+          if (h1) {
+            const meta = document.createElement('div');
+            meta.className = 'post-meta post-header-meta';
+            meta.innerHTML = `${badgesHtml}<small>${formatDate(post.date)}</small>`;
+            h1.insertAdjacentElement('afterend', meta);
+          }
           if (window.location.search) {
             window.history.replaceState({}, '', `/${post.slug}`);
           }
