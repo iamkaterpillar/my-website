@@ -1225,20 +1225,20 @@ pre code {
 
 /* Photo spread collage */
 .photo-spread {
-  margin: 2rem 0 4rem;
+  margin: 0.75rem 0 2.5rem;
   width: 100%;
 }
 
 .photo-spread-inner {
   position: relative;
-  height: 280px;
+  height: 290px;
 }
 
 .spread-photo {
   position: absolute;
-  top: 30px;
-  width: 130px;
-  height: 175px;
+  top: 28px;
+  width: 148px;
+  height: 198px;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 6px 22px rgba(0,0,0,0.18);
@@ -1261,15 +1261,15 @@ pre code {
 
 /* Horizontal spread with subtle vertical offsets for scrapbook feel */
 .spread-photo-1 { left: 0%;   transform: translateY(10px)  rotate(-6deg);  z-index: 1; }
-.spread-photo-2 { left: 13%;  transform: translateY(-6px)  rotate(183deg); z-index: 3; } /* flipped + tilt */
+.spread-photo-2 { left: 13%;  transform: translateY(-6px)  rotate(3deg);   z-index: 3; }
 .spread-photo-3 { left: 26%;  transform: translateY(14px)  rotate(-4deg);  z-index: 2; }
-.spread-photo-4 { left: 37%;  transform: translateY(4px)   rotate(1deg);   z-index: 7; width: 148px; height: 200px; top: 15px; }
+.spread-photo-4 { left: 37%;  transform: translateY(4px)   rotate(1deg);   z-index: 7; width: 168px; height: 224px; top: 12px; }
 .spread-photo-5 { left: 52%;  transform: translateY(12px)  rotate(-5deg);  z-index: 2; }
 .spread-photo-6 { left: 65%;  transform: translateY(-4px)  rotate(4deg);   z-index: 3; }
 .spread-photo-7 { left: 78%;  transform: translateY(8px)   rotate(-3deg);  z-index: 1; }
 
 .spread-photo-1:hover { transform: translateY(10px)  rotate(-6deg)  scale(1.08); }
-.spread-photo-2:hover { transform: translateY(-6px)  rotate(183deg) scale(1.08); }
+.spread-photo-2:hover { transform: translateY(-6px)  rotate(3deg)   scale(1.08); }
 .spread-photo-3:hover { transform: translateY(14px)  rotate(-4deg)  scale(1.08); }
 .spread-photo-4:hover { transform: translateY(4px)   rotate(1deg)   scale(1.06); }
 .spread-photo-5:hover { transform: translateY(12px)  rotate(-5deg)  scale(1.08); }
@@ -1311,12 +1311,11 @@ pre code {
   left: 16px;
 }
 
-/* "hiya!" overlaps top-right corner of last photo */
+/* "hiya!" anchored to top-right area of last photo (photo-7 starts at left: 78%) */
 .chat-bubble-right {
-  top: 22px;
-  right: 0%;
+  top: 18px;
+  left: calc(78% + 55px);
   transform: rotate(3deg);
-  z-index: 30;
 }
 
 .chat-bubble-right::after {
@@ -1325,24 +1324,28 @@ pre code {
 
 @media (max-width: 600px) {
   .photo-spread-inner {
-    height: 210px;
+    height: 222px;
   }
 
   .spread-photo {
-    width: 90px;
-    height: 120px;
-    top: 30px;
+    width: 102px;
+    height: 136px;
+    top: 28px;
   }
 
   .spread-photo-4 {
-    width: 104px;
-    height: 138px;
-    top: 20px;
+    width: 116px;
+    height: 154px;
+    top: 16px;
   }
 
   .chat-bubble {
     font-size: 0.75rem;
     padding: 6px 10px;
+  }
+
+  .chat-bubble-right {
+    left: calc(78% + 30px);
   }
 }
 
@@ -1355,7 +1358,7 @@ pre code {
 
 .about-content h1 {
   font-size: 3rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.75rem;
   color: var(--text-color);
 }
 
@@ -1367,10 +1370,25 @@ pre code {
 }
 
 .about-content p {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  line-height: 1.78;
+  margin-bottom: 1.5rem;
   color: var(--text-color);
+  max-width: 620px;
+}
+
+.about-content p:first-of-type {
+  font-size: 1.12rem;
+}
+
+.about-quote {
+  font-size: 1rem !important;
+  font-style: italic;
+  color: #666 !important;
+  border-left: 3px solid #d6dff5;
+  padding-left: 1rem;
+  margin: 0.5rem 0 1.75rem !important;
+  line-height: 1.7 !important;
 }
 
 .about-content strong {
@@ -1414,12 +1432,12 @@ pre code {
 }
 
 .chip {
-  background: #f0ede9;
-  border: 1px solid var(--border-color);
+  background: #f7f5f2;
+  border: 1px solid #e8e4de;
   border-radius: 20px;
-  padding: 0.3em 0.85em;
-  font-size: 0.9rem;
-  color: var(--text-color);
+  padding: 0.25em 0.8em;
+  font-size: 0.82rem;
+  color: #888;
 }
 
 .about-grid {
