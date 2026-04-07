@@ -14,7 +14,7 @@
     "title": "RWAs & Ondo Finance",
     "date": "2025-06-04",
     "tracks": ["ondo"],
-    "summary": "Exploring how Ondo Finance brings U.S. Treasuries onchain through tokenized assets like USDY and OUSG.",
+    "summary": "A plain-English breakdown of what real-world assets are, why they matter in crypto, and how Ondo Finance is bringing U.S. Treasuries onchain through products like USDY and OUSG.",
     "thumbnail": "/posts/rwas-ondo/thumb.png"
   },
   {
@@ -23,7 +23,7 @@
     "title": "Our tech stack",
     "date": "2025-06-04",
     "tracks": ["bebop"],
-    "summary": "A not-quite-complete but very honest record of the tools that we used at Bebop.",
+    "summary": "A not-quite-complete but very honest record of the tools that powered Bebop — from trading infrastructure to the Slack integrations that kept us sane.",
     "thumbnail": "/posts/bebop-tech-stack/thumb.jpg"
   },
   {
@@ -32,7 +32,7 @@
     "title": "Vibe coding with Lovable",
     "date": "2025-06-04",
     "tracks": ["vibe coding"],
-    "summary": "I built my personal portfolio site at katfore.com in a few hours using Lovable, GitHub, Cursor, and Vercel.",
+    "summary": "I built a full personal portfolio site in a few hours without writing much code — using Lovable to generate it, then Cursor and Vercel to customise and ship it.",
     "thumbnail": "/posts/lovable/thumb.jpg"
   },
   {
@@ -41,7 +41,7 @@
     "title": "Lessons as a PM",
     "date": "2025-05-29",
     "tracks": ["bebop"],
-    "summary": "Ten key lessons from my journey as a Product Manager at Bebop, building a technical crypto product.",
+    "summary": "Ten things I learned the hard way as a PM at Bebop — about prioritisation, working with engineers, and building a technical crypto product as a non-technical person.",
     "thumbnail": "/posts/pm-lessons/thumb.jpg"
   },
   {
@@ -50,7 +50,7 @@
     "title": "How I work & communicate",
     "date": "2025-05-23",
     "tracks": ["about me"],
-    "summary": "A guide to how I work, communicate, and stay organized - so we can move fast and work well together.",
+    "summary": "A practical guide to how I work, communicate, and stay organised — written for anyone I collaborate with so we can skip the calibration phase and move fast.",
     "thumbnail": "/posts/how-i-work/thumb.jpg"
   },
   {
@@ -59,7 +59,7 @@
     "title": "Bebop basics",
     "date": "2025-05-24",
     "tracks": ["bebop"],
-    "summary": "A simple introduction to Bebop - what it is, how it works, and why it matters in DeFi.",
+    "summary": "A jargon-free introduction to Bebop — what it is, how the aggregation and batching works, and why it matters for DeFi traders looking for better prices.",
     "thumbnail": "/posts/bebop-basics/thumb.png"
   },
   {
@@ -68,7 +68,7 @@
     "title": "About me (in lists)",
     "date": "2025-05-22",
     "tracks": ["about me"],
-    "summary": "Getting to know me through a series of curated lists.",
+    "summary": "The fastest way to get to know me: things I love, things I can't stand, places I've lived, and a few facts that don't fit anywhere else.",
     "thumbnail": "/posts/about-me-lists/thumb.jpg"
   },
   {
@@ -77,7 +77,7 @@
     "title": "Using AI agents in Cursor",
     "date": "2025-05-21",
     "tracks": ["vibe coding"],
-    "summary": "How I used Cursor's AI agent to clean up my website's code and make it more maintainable.",
+    "summary": "How I used Cursor's AI agent to refactor messy code I didn't fully understand — and what I learned about working with AI when you're not an engineer.",
     "thumbnail": "/posts/ai-agents-cursor/thumb.png"
   },
   {
@@ -86,7 +86,7 @@
     "title": "Network requests",
     "date": "2025-05-11",
     "tracks": ["vibe coding"],
-    "summary": "Diving into the network requests my website makes.",
+    "summary": "I opened the browser DevTools and actually looked at what my site was loading. Turns out there was more going on than I thought — here's what I found.",
     "thumbnail": "/posts/network-requests/thumb.jpg"
   },
   {
@@ -95,7 +95,7 @@
     "title": "Coding languages",
     "date": "2025-05-07",
     "tracks": ["vibe coding"],
-    "summary": "A look at the languages I've used to build this site.",
+    "summary": "A quick tour of HTML, CSS, and JavaScript — what each one does, how they work together, and what it actually felt like learning them from scratch.",
     "thumbnail": "/posts/coding-languages/thumb.jpg"
   },
   {
@@ -104,7 +104,7 @@
     "title": "Adding structure",
     "date": "2025-04-23",
     "tracks": ["vibe coding"],
-    "summary": "Cleaning up file structure for a scalable and maintainable setup.",
+    "summary": "When my site started getting messy, I stopped adding features and spent a session just cleaning up the file structure — and it made everything easier afterwards.",
     "thumbnail": "/posts/adding-structure/thumb.jpg"
   },
   {
@@ -113,7 +113,7 @@
     "title": "Usage analytics",
     "date": "2025-04-22",
     "tracks": ["vibe coding"],
-    "summary": "Adding Google Analytics to the site and troubleshooting privacy blockers.",
+    "summary": "Adding Google Analytics to see who's actually reading the site — and the annoying troubleshooting process when privacy extensions blocked it from working.",
     "thumbnail": "/posts/usage-analytics/thumb.jpg"
   },
   {
@@ -122,7 +122,7 @@
     "title": "Website setup",
     "date": "2025-04-21",
     "tracks": ["vibe coding"],
-    "summary": "Setting up this site from scratch using HTML, CSS, and a touch of magic.",
+    "summary": "How I set up this site from scratch using plain HTML and CSS — no frameworks, no templates, just Claude Code and a lot of trial and error.",
     "thumbnail": "/posts/website-setup/thumb.jpg"
   }
 ]
