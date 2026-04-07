@@ -90,7 +90,8 @@
             const html = await postResponse.text();
             
             // Add back button and post content
-            const trackKey = (post.track || '').toLowerCase();
+            const postTracks = Array.isArray(post.tracks) ? post.tracks : (post.track ? [post.track] : []);
+            const trackKey = (postTracks[0] || '').toLowerCase();
             const backLink = trackKey ? `/pages/blog?track=${encodeURIComponent(trackKey)}` : '/pages/blog';
             const backText = 'back to blog';
             

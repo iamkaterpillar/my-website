@@ -401,14 +401,18 @@ hr {
 }
 
 .post-track-badge {
-  font-size: 0.72rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.7rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  color: var(--accent-color);
-  border: 1px solid currentColor;
-  padding: 0.15em 0.55em;
+  letter-spacing: 0.05em;
+  line-height: 1;
+  color: #555;
+  border: 1px solid #ccc;
+  padding: 3px 8px;
   border-radius: 20px;
+  white-space: nowrap;
 }
 
 .blog-card small {

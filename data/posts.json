@@ -4,7 +4,7 @@
     "slug": "ondo-earnings-bot",
     "title": "Building the Ondo Earnings Bot",
     "date": "2026-04-06",
-    "track": "ondo",
+    "tracks": ["ondo", "vibe coding"],
     "summary": "How I built a Telegram bot with Claude Code to automate Ondo GM earnings tracking — replacing a manual 30-minute weekly process.",
     "thumbnail": "/posts/ondo-earnings-bot/thumb.jpg"
   },
@@ -13,7 +13,7 @@
     "slug": "rwas-ondo",
     "title": "RWAs & Ondo Finance",
     "date": "2025-06-04",
-    "track": "ondo",
+    "tracks": ["ondo"],
     "summary": "Exploring how Ondo Finance brings U.S. Treasuries onchain through tokenized assets like USDY and OUSG.",
     "thumbnail": "/posts/rwas-ondo/thumb.png"
   },
@@ -22,7 +22,7 @@
     "slug": "bebop-tech-stack",
     "title": "Our tech stack",
     "date": "2025-06-04",
-    "track": "bebop",
+    "tracks": ["bebop"],
     "summary": "A not-quite-complete but very honest record of the tools that we used at Bebop.",
     "thumbnail": "/posts/bebop-tech-stack/thumb.jpg"
   },
@@ -31,7 +31,7 @@
     "slug": "lovable",
     "title": "Vibe coding with Lovable",
     "date": "2025-06-04",
-    "track": "vibe coding",
+    "tracks": ["vibe coding"],
     "summary": "I built my personal portfolio site at katfore.com in a few hours using Lovable, GitHub, Cursor, and Vercel.",
     "thumbnail": "/posts/lovable/thumb.jpg"
   },
@@ -40,7 +40,7 @@
     "slug": "pm-lessons",
     "title": "Lessons as a PM",
     "date": "2025-05-29",
-    "track": "bebop",
+    "tracks": ["bebop"],
     "summary": "Ten key lessons from my journey as a Product Manager at Bebop, building a technical crypto product.",
     "thumbnail": "/posts/pm-lessons/thumb.jpg"
   },
@@ -49,7 +49,7 @@
     "slug": "how-i-work",
     "title": "How I work & communicate",
     "date": "2025-05-23",
-    "track": "about me",
+    "tracks": ["about me"],
     "summary": "A guide to how I work, communicate, and stay organized - so we can move fast and work well together.",
     "thumbnail": "/posts/how-i-work/thumb.jpg"
   },
@@ -58,7 +58,7 @@
     "slug": "bebop-basics",
     "title": "Bebop basics",
     "date": "2025-05-24",
-    "track": "bebop",
+    "tracks": ["bebop"],
     "summary": "A simple introduction to Bebop - what it is, how it works, and why it matters in DeFi.",
     "thumbnail": "/posts/bebop-basics/thumb.png"
   },
@@ -67,7 +67,7 @@
     "slug": "about-me-lists",
     "title": "About me (in lists)",
     "date": "2025-05-22",
-    "track": "about me",
+    "tracks": ["about me"],
     "summary": "Getting to know me through a series of curated lists.",
     "thumbnail": "/posts/about-me-lists/thumb.jpg"
   },
@@ -76,7 +76,7 @@
     "slug": "using-ai-agents-in-cursor",
     "title": "Using AI agents in Cursor",
     "date": "2025-05-21",
-    "track": "vibe coding",
+    "tracks": ["vibe coding"],
     "summary": "How I used Cursor's AI agent to clean up my website's code and make it more maintainable.",
     "thumbnail": "/posts/ai-agents-cursor/thumb.png"
   },
@@ -85,7 +85,7 @@
     "slug": "network-requests",
     "title": "Network requests",
     "date": "2025-05-11",
-    "track": "vibe coding",
+    "tracks": ["vibe coding"],
     "summary": "Diving into the network requests my website makes.",
     "thumbnail": "/posts/network-requests/thumb.jpg"
   },
@@ -94,7 +94,7 @@
     "slug": "coding-languages",
     "title": "Coding languages",
     "date": "2025-05-07",
-    "track": "vibe coding",
+    "tracks": ["vibe coding"],
     "summary": "A look at the languages I've used to build this site.",
     "thumbnail": "/posts/coding-languages/thumb.jpg"
   },
@@ -103,7 +103,7 @@
     "slug": "adding-structure",
     "title": "Adding structure",
     "date": "2025-04-23",
-    "track": "vibe coding",
+    "tracks": ["vibe coding"],
     "summary": "Cleaning up file structure for a scalable and maintainable setup.",
     "thumbnail": "/posts/adding-structure/thumb.jpg"
   },
@@ -112,7 +112,7 @@
     "slug": "usage-analytics",
     "title": "Usage analytics",
     "date": "2025-04-22",
-    "track": "vibe coding",
+    "tracks": ["vibe coding"],
     "summary": "Adding Google Analytics to the site and troubleshooting privacy blockers.",
     "thumbnail": "/posts/usage-analytics/thumb.jpg"
   },
@@ -121,7 +121,7 @@
     "slug": "website-setup",
     "title": "Website setup",
     "date": "2025-04-21",
-    "track": "vibe coding",
+    "tracks": ["vibe coding"],
     "summary": "Setting up this site from scratch using HTML, CSS, and a touch of magic.",
     "thumbnail": "/posts/website-setup/thumb.jpg"
   }

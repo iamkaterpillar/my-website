@@ -120,7 +120,10 @@ function initBlogFilters(blogGrid, posts) {
 function filterAndRender(blogGrid, posts, track) {
   const filtered = track === 'all'
     ? posts
-    : posts.filter(p => p.track && p.track.toLowerCase() === track.toLowerCase());
+    : posts.filter(p => {
+        const tracks = Array.isArray(p.tracks) ? p.tracks : (p.track ? [p.track] : []);
+        return tracks.some(t => t.toLowerCase() === track.toLowerCase());
+      });
   renderPosts(blogGrid, filtered);
 }
 
@@ -158,7 +161,7 @@ function renderPosts(blogGrid, posts) {
       <h2>${post.title}</h2>
       <p>${post.summary}</p>
       <div class="post-meta">
-        <span class="post-track-badge">${post.track}</span>
+        ${(Array.isArray(post.tracks) ? post.tracks : [post.track]).map(t => `<span class="post-track-badge">${t}</span>`).join('')}
         <small>${post.date}</small>
       </div>
     `;
@@ -234,9 +237,10 @@ function initPostContent() {
         jsonLdScript.textContent = JSON.stringify(structuredData, null, 2);
       }
 
-      // Back link always goes to blog, pre-filtered to the post's track
-      const track = (post.track || '').toLowerCase();
-      const backUrl = track === 'all' || !track
+      // Back link always goes to blog, pre-filtered to the post's first track
+      const tracks = Array.isArray(post.tracks) ? post.tracks : (post.track ? [post.track] : []);
+      const track = (tracks[0] || '').toLowerCase();
+      const backUrl = !track
         ? '/pages/blog'
         : `/pages/blog?track=${encodeURIComponent(track)}`;
       const backText = 'back to blog';
