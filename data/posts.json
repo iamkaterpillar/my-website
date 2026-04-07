@@ -42,7 +42,7 @@
     "date": "2025-06-04",
     "tracks": ["vibe coding"],
     "summary": "I built a full personal portfolio site in a few hours without writing much code — using Lovable to generate it, then Cursor and Vercel to customise and ship it.",
-    "thumbnail": "/posts/lovable/thumb.jpg"
+    "thumbnail": "/posts/lovable/thumb.png"
   },
   {
     "id": "pm-lessons",
@@ -51,7 +51,7 @@
     "date": "2025-05-29",
     "tracks": ["bebop"],
     "summary": "Ten things I learned the hard way as a PM at Bebop — about prioritisation, working with engineers, and building a technical crypto product as a non-technical person.",
-    "thumbnail": "/posts/pm-lessons/thumb.jpg"
+    "thumbnail": "/posts/pm-lessons/thumb.png"
   },
   {
     "id": "how-i-work",
