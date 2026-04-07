@@ -1642,9 +1642,16 @@ pre code {
 
 /* Footer */
 footer {
-  border-top: 1px solid var(--border-color);
+  border-top: 1px dashed #e5e7eb;
+  background: linear-gradient(to top, #f5f7ff, transparent);
   margin-top: 4rem;
-  padding: 2.5rem 0 1.5rem;
+  padding: 3rem 0 1.5rem;
+}
+
+.footer-tagline {
+  font-size: 0.95rem;
+  color: #666;
+  margin-bottom: 1.5rem;
 }
 
 .footer-inner {
@@ -1677,11 +1684,13 @@ footer {
   font-size: 0.85rem;
   color: var(--text-secondary);
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: all 0.2s ease;
+  display: inline-block;
 }
 
 .footer-nav a:hover {
-  color: var(--text-color);
+  color: var(--accent-color);
+  transform: translateX(2px);
 }
 
 .footer-copy {
