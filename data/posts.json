@@ -49,7 +49,7 @@
     "slug": "pm-lessons",
     "title": "Lessons as a PM",
     "date": "2025-05-29",
-    "tracks": ["bebop"],
+    "tracks": ["bebop", "about me"],
     "summary": "Ten things I learned the hard way as a PM at Bebop — about prioritisation, working with engineers, and building a technical crypto product as a non-technical person.",
     "thumbnail": "/posts/pm-lessons/thumb.png"
   },
