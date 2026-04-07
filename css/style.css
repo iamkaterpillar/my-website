@@ -1642,65 +1642,66 @@ pre code {
 
 /* Footer */
 footer {
-  border-top: 1px dashed #e5e7eb;
-  background: linear-gradient(to top, #f5f7ff, transparent);
+  border-top: 1px solid #ececec;
+  background: transparent;
   margin-top: 4rem;
-  padding: 3rem 0 1.5rem;
+  padding: 2.5rem 0 2rem;
 }
 
 .footer-tagline {
-  font-size: 0.95rem;
+  font-size: 1rem;
+  line-height: 1.5;
   color: #666;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 .footer-inner {
   display: flex;
-  gap: 3rem;
-  margin-bottom: 2rem;
+  gap: 2rem;
+  margin-bottom: 0;
 }
 
 .footer-group {
   display: flex;
   flex-direction: column;
-  gap: 0.6rem;
+  gap: 0.5rem;
 }
 
 .footer-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #bbb;
+  color: #999;
+  margin-bottom: 0.25rem;
 }
 
 .footer-nav {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.3rem;
 }
 
 .footer-nav a {
   font-size: 0.85rem;
-  color: var(--text-secondary);
+  color: inherit;
   text-decoration: none;
-  transition: all 0.2s ease;
-  display: inline-block;
+  transition: color 0.2s ease;
 }
 
 .footer-nav a:hover {
   color: var(--accent-color);
-  transform: translateX(2px);
 }
 
 .footer-copy {
-  font-size: 0.78rem;
-  color: #bbb;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #aaa;
 }
 
 @media (max-width: 480px) {
   .footer-inner {
     flex-direction: column;
-    gap: 1.75rem;
+    gap: 1.5rem;
   }
 }
