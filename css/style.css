@@ -94,12 +94,12 @@ nav a:hover {
   color: var(--hover-color);
 }
 
-nav a.active {
+header nav a.active {
   color: var(--accent-color);
   font-weight: 600;
 }
 
-nav a.active::after {
+header nav a.active::after {
   content: '';
   position: absolute;
   bottom: -4px;
@@ -190,7 +190,7 @@ nav a.active::after {
     transform: none;
   }
 
-  nav a.active::after {
+  header nav a.active::after {
     bottom: -2px;
   }
 }
@@ -1638,4 +1638,60 @@ pre code {
   font-size: 0.85rem;
   color: #999;
   margin-top: 4rem;
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--border-color);
+  margin-top: 4rem;
+  padding: 2.5rem 0 1.5rem;
+}
+
+.footer-inner {
+  display: flex;
+  gap: 3rem;
+  margin-bottom: 2rem;
+}
+
+.footer-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #bbb;
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.footer-nav a {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-nav a:hover {
+  color: var(--text-color);
+}
+
+.footer-copy {
+  font-size: 0.78rem;
+  color: #bbb;
+}
+
+@media (max-width: 480px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 1.75rem;
+  }
 }
