@@ -189,10 +189,12 @@ h1, h2, h3 {
 }
 
 h1 {
-  font-size: 2.4rem;
-  line-height: 1.2;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 3rem;
+  line-height: 1.15;
   margin-top: 2rem;
   margin-bottom: 0.75rem;
+  letter-spacing: -0.02em;
 }
 
 h2 {
@@ -516,8 +518,9 @@ pre code {
 }
 
 .post-content h1 {
-  font-size: 2.2rem;
-  line-height: 1.2;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.6rem;
+  line-height: 1.15;
   margin: 0 0 0.75rem;
   color: #111;
   letter-spacing: -0.02em;
@@ -1191,6 +1194,66 @@ pre code {
 
 }
 
+/* Photo spread collage */
+.photo-spread {
+  margin: 2rem 0 3rem;
+  width: 100%;
+  overflow: hidden;
+}
+
+.photo-spread-inner {
+  position: relative;
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spread-photo {
+  position: absolute;
+  width: 160px;
+  height: 210px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  transition: transform 0.2s ease, z-index 0s;
+}
+
+.spread-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.spread-photo:hover {
+  transform: scale(1.06) rotate(0deg) !important;
+  z-index: 10 !important;
+}
+
+.spread-photo-1 { transform: rotate(-12deg) translateX(-220px); z-index: 1; }
+.spread-photo-2 { transform: rotate(-5deg)  translateX(-110px); z-index: 2; }
+.spread-photo-3 { transform: rotate(1deg)   translateX(0px);    z-index: 5; }
+.spread-photo-4 { transform: rotate(7deg)   translateX(110px);  z-index: 2; }
+.spread-photo-5 { transform: rotate(14deg)  translateX(220px);  z-index: 1; }
+
+@media (max-width: 600px) {
+  .photo-spread-inner {
+    height: 200px;
+  }
+
+  .spread-photo {
+    width: 115px;
+    height: 155px;
+  }
+
+  .spread-photo-1 { transform: rotate(-12deg) translateX(-155px); }
+  .spread-photo-2 { transform: rotate(-5deg)  translateX(-78px); }
+  .spread-photo-3 { transform: rotate(1deg)   translateX(0px); }
+  .spread-photo-4 { transform: rotate(7deg)   translateX(78px); }
+  .spread-photo-5 { transform: rotate(14deg)  translateX(155px); }
+}
+
 /* About page specific styles */
 .about-content {
   max-width: 700px;
@@ -1199,7 +1262,7 @@ pre code {
 }
 
 .about-content h1 {
-  font-size: 2.4rem;
+  font-size: 3rem;
   margin-bottom: 1.5rem;
   color: var(--text-color);
 }
