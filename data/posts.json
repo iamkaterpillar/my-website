@@ -1,12 +1,21 @@
 [
   {
+    "id": "ai-headshots",
+    "slug": "ai-headshots",
+    "title": "Using AI to generate professional headshots",
+    "date": "2026-04-07",
+    "tracks": ["vibe coding"],
+    "summary": "I needed new headshots but didn't want to book a photographer — so I tried an AI tool instead. Here's how it went, what worked, and what looked a little off.",
+    "thumbnail": "/posts/ai-headshots/thumb.jpg"
+  },
+  {
     "id": "ondo-earnings-bot",
     "slug": "ondo-earnings-bot",
     "title": "Building the Ondo Earnings Bot",
     "date": "2026-04-06",
     "tracks": ["ondo", "vibe coding"],
     "summary": "How I built a Telegram bot with Claude Code to automate Ondo GM earnings tracking — replacing a manual 30-minute weekly process.",
-    "thumbnail": "/posts/ondo-earnings-bot/thumb.jpg"
+    "thumbnail": "/posts/ondo-earnings-bot/thumb.png"
   },
   {
     "id": "rwas-ondo",
