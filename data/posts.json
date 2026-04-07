@@ -29,7 +29,7 @@
   {
     "id": "bebop-tech-stack",
     "slug": "bebop-tech-stack",
-    "title": "Our tech stack",
+    "title": "Bebop's tech stack",
     "date": "2025-06-04",
     "tracks": ["bebop"],
     "summary": "A not-quite-complete but very honest record of the tools that powered Bebop — from trading infrastructure to the Slack integrations that kept us sane.",
