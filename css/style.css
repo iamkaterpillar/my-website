@@ -1253,6 +1253,7 @@ pre code {
 .photo-spread-inner {
   position: relative;
   height: 290px;
+  margin-left: calc(11% - 74px);
 }
 
 .spread-photo {
@@ -1346,6 +1347,7 @@ pre code {
 @media (max-width: 600px) {
   .photo-spread-inner {
     height: 222px;
+    margin-left: calc(11% - 51px);
   }
 
   .spread-photo {
