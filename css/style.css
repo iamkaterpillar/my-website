@@ -1234,6 +1234,54 @@ pre code {
 .spread-photo-6 { transform: rotate(18deg);  z-index: 2; }
 .spread-photo-7 { transform: rotate(27deg);  z-index: 1; }
 
+.chat-bubble {
+  position: absolute;
+  background: #fff;
+  border: 1.5px solid #e8e4de;
+  border-radius: 20px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #333;
+  box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+  z-index: 10;
+  white-space: nowrap;
+}
+
+.chat-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-right: 1.5px solid #e8e4de;
+  border-bottom: 1.5px solid #e8e4de;
+  border-radius: 0 0 4px 0;
+}
+
+.chat-bubble-left {
+  top: 20px;
+  left: 5%;
+  transform: rotate(-4deg);
+}
+
+.chat-bubble-left::after {
+  left: 18px;
+  transform: rotate(45deg);
+}
+
+.chat-bubble-right {
+  top: 30px;
+  right: 5%;
+  transform: rotate(3deg);
+}
+
+.chat-bubble-right::after {
+  right: 18px;
+  transform: rotate(45deg);
+}
+
 @media (max-width: 600px) {
   .photo-spread-inner {
     height: 230px;
