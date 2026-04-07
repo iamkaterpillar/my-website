@@ -29,6 +29,8 @@
 
 <p>That's the core of it. But it grew.</p>
 
+<p>One thing Claude Code couldn't do for me: actually creating the Telegram bot. For that, you go to <strong>@BotFather</strong> — Telegram's official bot for creating bots. (Yes, there's a bot that makes your bot.) You send it a few commands, give your bot a name and username, and it hands you an API token. That token is how your Python script authenticates with Telegram. It sounds more complicated than it is — the whole thing takes about two minutes.</p>
+
 <picture>
   <source srcset="/posts/ondo-earnings-bot/claude-code-build.webp" type="image/webp">
   <img src="/posts/ondo-earnings-bot/claude-code-build.png" alt="Claude Code building the bot with a list of todos" class="blog-image" loading="lazy">
@@ -80,6 +82,8 @@
 <p><strong>Only one instance can run at a time.</strong> Early on I accidentally had the bot running on two terminals at once. Both picked up the same command and both ran it. We added a PID lock file — if the bot is already running, a second instance refuses to start.</p>
 
 <p><strong>Cache hot-reload.</strong> Refreshing earnings data takes a few minutes. We run it as a subprocess so the bot stays responsive, and when it's done, the in-memory cache updates automatically — no restart needed.</p>
+
+<p><strong>Making it always-on.</strong> The bot is a Python script — which means at first, it only worked when I had my laptop open and the terminal running. Obviously not ideal for something meant to send alerts automatically every Friday morning. My husband helped me set it up on a VM on our home server instead. Now the script runs 24/7 in the background, completely independent of my laptop. This part was a bit beyond my solo abilities, but if you know anyone comfortable with Linux, setting up a simple VM is a one-time job that makes the whole thing genuinely useful.</p>
 
 <h2>Why it was worth it</h2>
 
