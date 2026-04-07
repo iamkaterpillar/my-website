@@ -127,6 +127,11 @@ function filterAndRender(blogGrid, posts, track) {
   renderPosts(blogGrid, filtered);
 }
 
+function formatDate(dateStr) {
+  const [year, month, day] = dateStr.split('-').map(Number);
+  return new Date(year, month - 1, day).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
 function renderPosts(blogGrid, posts) {
   blogGrid.innerHTML = '';
 
@@ -162,7 +167,7 @@ function renderPosts(blogGrid, posts) {
       <p>${post.summary}</p>
       <div class="post-meta">
         ${(Array.isArray(post.tracks) ? post.tracks : [post.track]).map(t => `<span class="post-track-badge">${t}</span>`).join('')}
-        <small>${post.date}</small>
+        <small>${formatDate(post.date)}</small>
       </div>
     `;
     link.appendChild(content);

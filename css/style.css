@@ -396,8 +396,13 @@ hr {
 .post-meta {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  margin-top: 0.35rem;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.post-meta small {
+  white-space: nowrap;
 }
 
 .post-track-badge {
