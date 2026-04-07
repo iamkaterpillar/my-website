@@ -143,7 +143,6 @@ function renderPosts(blogGrid, posts) {
   posts.forEach(post => {
     const card = document.createElement("div");
     card.className = "blog-card";
-    if (blogGrid.classList.contains('compact')) card.classList.add('compact');
 
     const link = document.createElement('a');
     link.href = `/pages/post.html?slug=${post.slug}`;

@@ -1597,14 +1597,6 @@ pre code {
   color: #444;
 }
 
-/* Compact blog grid for category pages */
-.blog-grid.compact {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 1rem;
-  margin: 1.5rem 0;
-}
-
 .blog-card.compact {
   padding: 0;
   border-bottom: none;
@@ -1654,19 +1646,7 @@ pre code {
   color: #888;
 }
 
-@media (min-width: 1024px) {
-  .blog-grid.compact {
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 0.75rem;
-  }
-}
-
 @media (max-width: 768px) {
-  .blog-grid.compact {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: 0.75rem;
-  }
-
   .blog-card.compact img {
     height: 100px;
   }
@@ -1677,10 +1657,6 @@ pre code {
 }
 
 @media (max-width: 480px) {
-  .blog-grid.compact {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-  }
-
   .blog-card.compact img {
     height: 90px;
   }
