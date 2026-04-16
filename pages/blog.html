@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog | Kat Fore - Just figuring it out</title>
+
+  <!-- Meta tags -->
+  <meta name="description" content="Writing about vibe coding, building in crypto, working at Ondo Finance, and lessons from building Bebop.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Blog | iamkaterpillar">
+  <meta property="og:description" content="Writing about vibe coding, building in crypto, working at Ondo Finance, and lessons from building Bebop.">
+  <meta property="og:url" content="https://www.iamkaterpillar.xyz/pages/blog">
+  <meta property="og:image" content="https://www.iamkaterpillar.xyz/assets/images/kat/kat-wmt-800.webp">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@iamkaterpillar">
+  <meta name="twitter:title" content="Blog | iamkaterpillar">
+  <meta name="twitter:description" content="Writing about vibe coding, building in crypto, working at Ondo Finance, and lessons from building Bebop.">
+  <meta name="twitter:image" content="https://www.iamkaterpillar.xyz/assets/images/kat/kat-wmt-800.webp">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://www.iamkaterpillar.xyz/pages/blog">
+
+  <!-- Styles and favicon -->
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="icon" href="/assets/images/icons/favicon.ico" type="image/x-icon" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-F00DE4HSRP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-F00DE4HSRP');
+  </script>
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/" class="home-link">iamkaterpillar</a>
+      <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <div class="nav-links">
+        <a href="/">Home</a>
+        <a href="/pages/about">About</a>
+        <a href="/pages/blog">Blog</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Blog</h1>
+    <p>Writing about learning to code, building in crypto, and lessons from my career.</p>
+
+    <div class="track-filters" id="trackFilters">
+      <button class="track-filter" data-track="all">All</button>
+      <button class="track-filter" data-track="vibe coding">Vibe coding</button>
+      <button class="track-filter" data-track="bebop">Bebop</button>
+      <button class="track-filter" data-track="ondo">Ondo</button>
+      <button class="track-filter" data-track="about me">About me</button>
+    </div>
+
+    <div id="blogGrid" class="blog-grid"></div>
+  </main>
+
+  <footer class="color-bar-footer">
+    <span>© 2026 Katharina Fore</span>
+  </footer>
+
+  <script src="/js/layout.js" defer></script>
+  <script src="/js/main.js" defer></script>
+</body>
+</html>

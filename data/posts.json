@@ -1,0 +1,155 @@
+[
+  {
+    "id": "linkedin-cowork",
+    "slug": "linkedin-cowork",
+    "title": "Using Claude CoWork to grow my LinkedIn network",
+    "date": "2026-04-16",
+    "tracks": ["vibe coding", "ondo"],
+    "summary": "I gave Claude a list of crypto reporters and let it loose on LinkedIn. It searched, verified, and drafted personalised connection notes for each one — while I just watched. Here's what worked, what hit the rate limit, and what I want to try next.",
+    "thumbnail": "/posts/linkedin-cowork/thumb.png"
+  },
+  {
+    "id": "claude-cowork",
+    "slug": "claude-cowork",
+    "title": "Claude CoWork is changing the game",
+    "date": "2026-04-16",
+    "tracks": ["vibe coding", "ondo"],
+    "summary": "Three ways Claude CoWork has changed how I work — from building Dune dashboards without a data analyst, to generating slides in 10 minutes, to automating offsite logistics over Slack.",
+    "thumbnail": "/posts/claude-cowork/thumb.png"
+  },
+  {
+    "id": "ai-headshots",
+    "slug": "ai-headshots",
+    "title": "Using AI to generate professional headshots",
+    "date": "2026-04-07",
+    "tracks": ["vibe coding"],
+    "summary": "I needed new headshots but didn't want to book a photographer — so I tried an AI tool instead. Here's how it went, what worked, and what looked a little off.",
+    "thumbnail": "/posts/ai-headshots/thumb.jpg"
+  },
+  {
+    "id": "ondo-earnings-bot",
+    "slug": "ondo-earnings-bot",
+    "title": "Building the Ondo Earnings Bot",
+    "date": "2026-04-06",
+    "tracks": ["ondo", "vibe coding"],
+    "summary": "How I built a Telegram bot with Claude Code to automate Ondo GM earnings tracking — replacing a manual 30-minute weekly process.",
+    "thumbnail": "/posts/ondo-earnings-bot/thumb.png"
+  },
+  {
+    "id": "rwas-ondo",
+    "slug": "rwas-ondo",
+    "title": "RWAs & Ondo Finance",
+    "date": "2025-06-04",
+    "tracks": ["ondo"],
+    "summary": "A plain-English breakdown of what real-world assets are, why they matter in crypto, and how Ondo Finance is bringing U.S. Treasuries onchain through products like USDY and OUSG.",
+    "thumbnail": "/posts/rwas-ondo/thumb.png"
+  },
+  {
+    "id": "bebop-tech-stack",
+    "slug": "bebop-tech-stack",
+    "title": "Bebop's tech stack",
+    "date": "2025-06-04",
+    "tracks": ["bebop"],
+    "summary": "A not-quite-complete but very honest record of the tools that powered Bebop — from trading infrastructure to the Slack integrations that kept us sane.",
+    "thumbnail": "/posts/bebop-tech-stack/thumb.jpg"
+  },
+  {
+    "id": "lovable",
+    "slug": "lovable",
+    "title": "Vibe coding with Lovable",
+    "date": "2025-06-04",
+    "tracks": ["vibe coding"],
+    "summary": "I built a full personal portfolio site in a few hours without writing much code — using Lovable to generate it, then Cursor and Vercel to customise and ship it.",
+    "thumbnail": "/posts/lovable/thumb.png"
+  },
+  {
+    "id": "pm-lessons",
+    "slug": "pm-lessons",
+    "title": "Lessons as a PM",
+    "date": "2025-05-29",
+    "tracks": ["bebop", "about me"],
+    "summary": "Ten things I learned the hard way as a PM at Bebop — about prioritisation, working with engineers, and building a technical crypto product as a non-technical person.",
+    "thumbnail": "/posts/pm-lessons/thumb.png"
+  },
+  {
+    "id": "how-i-work",
+    "slug": "how-i-work",
+    "title": "How I work & communicate",
+    "date": "2025-05-23",
+    "tracks": ["about me"],
+    "summary": "A practical guide to how I work, communicate, and stay organised — written for anyone I collaborate with so we can skip the calibration phase and move fast.",
+    "thumbnail": "/posts/how-i-work/thumb.jpg"
+  },
+  {
+    "id": "bebop-basics",
+    "slug": "bebop-basics",
+    "title": "Bebop basics",
+    "date": "2025-05-24",
+    "tracks": ["bebop"],
+    "summary": "A jargon-free introduction to Bebop — what it is, how the aggregation and batching works, and why it matters for DeFi traders looking for better prices.",
+    "thumbnail": "/posts/bebop-basics/thumb.png"
+  },
+  {
+    "id": "about-me-lists",
+    "slug": "about-me-lists",
+    "title": "About me (in lists)",
+    "date": "2025-05-22",
+    "tracks": ["about me"],
+    "summary": "The fastest way to get to know me: things I love, things I can't stand, places I've lived, and a few facts that don't fit anywhere else.",
+    "thumbnail": "/posts/about-me-lists/thumb.jpg"
+  },
+  {
+    "id": "ai-agents-cursor",
+    "slug": "using-ai-agents-in-cursor",
+    "title": "Using AI agents in Cursor",
+    "date": "2025-05-21",
+    "tracks": ["vibe coding"],
+    "summary": "How I used Cursor's AI agent to refactor messy code I didn't fully understand — and what I learned about working with AI when you're not an engineer.",
+    "thumbnail": "/posts/ai-agents-cursor/thumb.png"
+  },
+  {
+    "id": "network-requests",
+    "slug": "network-requests",
+    "title": "Network requests",
+    "date": "2025-05-11",
+    "tracks": ["vibe coding"],
+    "summary": "I opened the browser DevTools and actually looked at what my site was loading. Turns out there was more going on than I thought — here's what I found.",
+    "thumbnail": "/posts/network-requests/thumb.jpg"
+  },
+  {
+    "id": "coding-languages",
+    "slug": "coding-languages",
+    "title": "Coding languages",
+    "date": "2025-05-07",
+    "tracks": ["vibe coding"],
+    "summary": "A quick tour of HTML, CSS, and JavaScript — what each one does, how they work together, and what it actually felt like learning them from scratch.",
+    "thumbnail": "/posts/coding-languages/thumb.jpg"
+  },
+  {
+    "id": "adding-structure",
+    "slug": "adding-structure",
+    "title": "Adding structure",
+    "date": "2025-04-23",
+    "tracks": ["vibe coding"],
+    "summary": "When my site started getting messy, I stopped adding features and spent a session just cleaning up the file structure — and it made everything easier afterwards.",
+    "thumbnail": "/posts/adding-structure/thumb.jpg"
+  },
+  {
+    "id": "usage-analytics",
+    "slug": "usage-analytics",
+    "title": "Usage analytics",
+    "date": "2025-04-22",
+    "tracks": ["vibe coding"],
+    "summary": "Adding Google Analytics to see who's actually reading the site — and the annoying troubleshooting process when privacy extensions blocked it from working.",
+    "thumbnail": "/posts/usage-analytics/thumb.jpg"
+  },
+  {
+    "id": "website-setup",
+    "slug": "website-setup",
+    "title": "Website setup",
+    "date": "2025-04-21",
+    "tracks": ["vibe coding"],
+    "summary": "How I set up this site from scratch using plain HTML and CSS — no frameworks, no templates, just Claude Code and a lot of trial and error.",
+    "thumbnail": "/posts/website-setup/thumb.jpg"
+  }
+]

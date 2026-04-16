@@ -1,0 +1,98 @@
+<h1>Building the Ondo Earnings Bot</h1>
+
+<p>I get asked about this a lot — how we keep track of earnings across all the assets we support on Ondo Global Markets.</p>
+
+<p>The honest answer is: I used to do it manually.</p>
+
+<p>Every week, I would open Yahoo Finance, cross-reference it with Nasdaq, filter down to only the stocks we support, format it into something readable, and send it out to partners. It worked. But it didn't scale — and as Ondo Global Markets expanded its coverage of tokenized U.S. stocks and ETFs, it became increasingly time-consuming to maintain.</p>
+
+<p>So I decided to automate it. And I did it entirely with Claude Code.</p>
+
+<picture>
+  <source srcset="/posts/ondo-earnings-bot/claude-prompt.webp" type="image/webp">
+  <img src="/posts/ondo-earnings-bot/claude-prompt.png" alt="Claude.ai prompt: Make me an Ondo Earnings Bot. Make no mistakes." class="blog-image" loading="lazy">
+</picture>
+
+<h2>What I built</h2>
+
+<p>I started with one prompt. Literally: <em>"Make me an Ondo Earnings Bot. Make no mistakes."</em></p>
+
+<p>What came out the other end was a Python-based Telegram bot that:</p>
+
+<ul>
+  <li>Pulls upcoming earnings data from Yahoo Finance and Nasdaq</li>
+  <li>Cross-references it against the Ondo GM asset universe (pulled from a live Google Sheet)</li>
+  <li>Filters out everything irrelevant — ETFs, assets we don't support, noise</li>
+  <li>Outputs a clean, formatted list directly into Telegram</li>
+  <li>Sends a weekly alert every Friday automatically, to every group it's been added to</li>
+</ul>
+
+<p>That's the core of it. But it grew.</p>
+
+<p>One thing Claude Code couldn't do for me: actually creating the Telegram bot. For that, you go to <strong>@BotFather</strong> — Telegram's official bot for creating bots. (Yes, there's a bot that makes your bot.) You send it a few commands, give your bot a name and username, and it hands you an API token. That token is how your Python script authenticates with Telegram. It sounds more complicated than it is — the whole thing takes about two minutes.</p>
+
+<picture>
+  <source srcset="/posts/ondo-earnings-bot/claude-code-build.webp" type="image/webp">
+  <img src="/posts/ondo-earnings-bot/claude-code-build.png" alt="Claude Code building the bot with a list of todos" class="blog-image" loading="lazy">
+</picture>
+
+<h2>The commands it supports</h2>
+
+<p>Over a few sessions with Claude Code, the bot went from a simple weekly cron job to a full interactive bot. You can ask it things like:</p>
+
+<ul>
+  <li><code>/today</code> — earnings today</li>
+  <li><code>/thisweek</code> — earnings this week</li>
+  <li><code>/nextweek</code> — earnings next week</li>
+  <li><code>/top</code> — top 10 upcoming earnings by market cap</li>
+  <li><code>/search Nike</code> — look up a specific asset</li>
+  <li><code>/earnings 2026-04-15</code> — earnings on any specific date</li>
+</ul>
+
+<p>There are also admin-only commands for me to manually refresh the data, check cache status, and cancel a running refresh if needed.</p>
+
+<h2>What I actually used to do manually</h2>
+
+<p>To understand why this was worth building, it helps to understand what I was replacing:</p>
+
+<ol>
+  <li>Open Yahoo Finance earnings calendar</li>
+  <li>Check Nasdaq for anything Yahoo missed</li>
+  <li>Go through the full list and manually cross-reference with Ondo's asset universe</li>
+  <li>Look up the Ondo ticker for each matching stock (e.g. Nike is NKE on Nasdaq, NKEon on Ondo GM)</li>
+  <li>Format it into a clean message</li>
+  <li>Send it out to partners individually</li>
+</ol>
+
+<p>This took 20–30 minutes every single week. And if I missed a week, nothing went out. The bot does all of this automatically, every Friday at 9am UTC, to every Telegram group it's been added to.</p>
+
+<picture>
+  <source srcset="/posts/ondo-earnings-bot/earnings-output.webp" type="image/webp">
+  <img src="/posts/ondo-earnings-bot/earnings-output.png" alt="Earnings filtered to Ondo GM assets, showing only the relevant stocks" class="blog-image" loading="lazy">
+</picture>
+
+<h2>The interesting technical bits</h2>
+
+<p>I'm not an engineer, but I did learn a few things building this. Turns out the hard part isn't getting the data — it's making the bot reliable. A few things we had to solve:</p>
+
+<p><strong>Dual-source earnings data.</strong> Yahoo Finance and Nasdaq often disagree. One has the date, the other has the time. We built a merge strategy: Yahoo is the primary source for dates, Nasdaq fills in gaps and adds call timing (before market open vs after market close).</p>
+
+<p><strong>Preventing duplicate sends.</strong> When the bot restarts, Telegram re-queues any unprocessed commands. Without a fix, a single <code>/refreshearnings</code> could run three times. We fixed this by checking the timestamp of every incoming message and ignoring anything sent before the bot started.</p>
+
+<p><strong>Only one instance can run at a time.</strong> Early on I accidentally had the bot running on two terminals at once. Both picked up the same command and both ran it. We added a PID lock file — if the bot is already running, a second instance refuses to start.</p>
+
+<p><strong>Cache hot-reload.</strong> Refreshing earnings data takes a few minutes. We run it as a subprocess so the bot stays responsive, and when it's done, the in-memory cache updates automatically — no restart needed.</p>
+
+<p><strong>Making it always-on.</strong> The bot is a Python script — which means at first, it only worked when I had my laptop open and the terminal running. Obviously not ideal for something meant to send alerts automatically every Friday morning. My husband helped me set it up on a VM on our home server instead. Now the script runs 24/7 in the background, completely independent of my laptop. This part was a bit beyond my solo abilities, but if you know anyone comfortable with Linux, setting up a simple VM is a one-time job that makes the whole thing genuinely useful.</p>
+
+<h2>Why it was worth it</h2>
+
+<p>The biggest benefit wasn't anything technically impressive — it was just removing friction. No more manually checking multiple calendars. No more cross-referencing tickers. No more reformatting the same message every week.</p>
+
+<p>Now I can share a clean earnings list with partners instantly, prepare for the week ahead faster, and as we add more assets to Ondo GM, the bot picks them up automatically.</p>
+
+<h2>Takeaway</h2>
+
+<p>This was a small project, but a high-leverage one. If you're doing something manually every week — especially something that involves copying data, cross-referencing sources, and formatting outputs — it's probably worth automating. Not because it's exciting. Because it frees up time for things that actually are.</p>
+
+<p>And if you're not an engineer? That's fine. I'm not either. Claude Code does the heavy lifting. You just have to know what you want to build.</p>

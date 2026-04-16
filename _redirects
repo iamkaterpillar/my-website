@@ -1,0 +1,9 @@
+# Handle clean URLs without .html extension
+/pages/about     /pages/about.html     200
+/pages/blog      /pages/blog.html      200
+
+# Handle post slug URLs (e.g. /claude-cowork → post.html?slug=claude-cowork)
+/:slug    /pages/post.html?slug=:slug   200
+
+# Handle 404s
+/*    /404.html   404
