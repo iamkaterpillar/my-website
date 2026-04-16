@@ -15,6 +15,12 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://www.iamkaterpillar.xyz/claude-cowork</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 <url>
     <loc>https://www.iamkaterpillar.xyz/ai-headshots</loc>
     <lastmod>2026-04-07</lastmod>

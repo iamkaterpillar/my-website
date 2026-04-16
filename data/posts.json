@@ -1,5 +1,14 @@
 [
   {
+    "id": "claude-cowork",
+    "slug": "claude-cowork",
+    "title": "Claude CoWork is changing the game",
+    "date": "2026-04-16",
+    "tracks": ["vibe coding", "ondo"],
+    "summary": "Three ways Claude CoWork has changed how I work — from building Dune dashboards without a data analyst, to generating slides in 10 minutes, to automating offsite logistics over Slack.",
+    "thumbnail": "/posts/claude-cowork/thumb.png"
+  },
+  {
     "id": "ai-headshots",
     "slug": "ai-headshots",
     "title": "Using AI to generate professional headshots",
