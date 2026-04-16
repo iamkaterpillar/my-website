@@ -1,5 +1,14 @@
 [
   {
+    "id": "linkedin-cowork",
+    "slug": "linkedin-cowork",
+    "title": "Using Claude CoWork to grow my LinkedIn network",
+    "date": "2026-04-16",
+    "tracks": ["vibe coding", "ondo"],
+    "summary": "I gave Claude a list of crypto reporters and let it loose on LinkedIn. It searched, verified, and drafted personalised connection notes for each one — while I just watched. Here's what worked, what hit the rate limit, and what I want to try next.",
+    "thumbnail": "/posts/linkedin-cowork/thumb.png"
+  },
+  {
     "id": "claude-cowork",
     "slug": "claude-cowork",
     "title": "Claude CoWork is changing the game",
