@@ -77,7 +77,7 @@ async function loadLayout() {
         } else if (!script.src.includes('layout.js')) {
           // For external scripts, wait for them to load
           newScript.onload = resolve;
-          newScript.onerror = reject;
+          newScript.onerror = resolve; // don't block layoutLoaded if a non-critical script fails
           document.body.appendChild(newScript);
         } else {
           resolve();
