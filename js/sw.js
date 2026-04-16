@@ -1,4 +1,4 @@
-const CACHE_VERSION = '6';
+const CACHE_VERSION = '7';
 const CACHE_NAME = `iamkaterpillar-v${CACHE_VERSION}`;
 const STATIC_ASSETS = [
   '/',
@@ -80,6 +80,21 @@ self.addEventListener('fetch', event => {
 
   // Handle HTML requests with network-first strategy
   if (event.request.headers.get('accept')?.includes('text/html')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(response => {
+          const clone = response.clone();
+          caches.open(CACHE_NAME)
+            .then(cache => cache.put(event.request, clone));
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Handle posts data and post HTML with network-first strategy (keeps content fresh)
+  if (event.request.url.includes('/data/posts.json') || event.request.url.includes('/posts/')) {
     event.respondWith(
       fetch(event.request)
         .then(response => {

@@ -1,7 +1,7 @@
 async function loadLayout() {
   try {
     // Load layout
-    const layoutResponse = await fetch('/components/layout.html?v=' + Date.now(), { cache: 'no-store' });
+    const layoutResponse = await fetch('/components/layout.html', { cache: 'no-store' });
     const layoutHtml = await layoutResponse.text();
     
     // Get the current page's content
